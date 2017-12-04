@@ -92,4 +92,16 @@ public class Student {
     public void setCourse(Course course) {
         this.course = course;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sno='" + sno + '\'' +
+                ", sname='" + sname + '\'' +
+                ", password='" + password + '\'' +
+                ", ssex=" + ssex +
+                ", sage=" + sage +
+                ", dept='" + dept + '\'' +
+                '}';
+    }
 }

@@ -24,7 +24,7 @@ public class StudentTest {
         student = studentService.login("201430340506","123456");
         if(student!=null){
             System.out.println("yes");
-        }
+            System.out.println(student.toString());        }
         else {
             System.out.println("no");
         }

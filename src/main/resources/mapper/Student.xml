@@ -3,17 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sscm.dao.StudentDao">
-    <resultMap id="userResultMap" type="com.sscm.model.Student">
+    <resultMap id="StudentResultMap" type="com.sscm.model.Student">
         <id property="sno" column="sno" />
         <result property="sname" column="sname"/>
         <result property="password" column="password"/>
         <result property="ssex" column="ssex"/>
         <result property="sage" column="sage"/>
-        <result property="dept" column="dept"/>
+        <result property="dept" column="sdept"/>
     </resultMap>
 
-   <select id="login" resultMap="userResultMap">
-       select * from student where sno=#{0} and password=#{1}
+   <select id="login"  parameterType="java.lang.String" resultMap="StudentResultMap">
+       select * from student where sno=#{arg0} and password=#{arg1}
    </select>
 
 
