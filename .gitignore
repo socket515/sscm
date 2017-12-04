@@ -1,5 +1,10 @@
 # Compiled class file
 *.class
+/target/*
+/src/main/resources/jdbc.properties
+/src/main/resources/spring-mvc.xml
+/src/main/resources/spring-mybatis.xml
+test/*
 
 # Log file
 *.log
