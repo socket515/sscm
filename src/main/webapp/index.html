@@ -1,12 +1,44 @@
+<!DOCTYPE html>
 <html>
-<body>
 <head>
-    <title>欢迎</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>demo</title>
+    <link href="css/login.css" type="text/css" rel="stylesheet">
 </head>
-<form action="" method="post" >
-    用户名： <input name="username" type="text"  ><hr/>
-    密码： <input name="password" type="password"><hr/>
-    <input value="登录" type="submit" >
-</form>
+<body>
+
+<div class="login">
+    <div class="message">demo</div>
+    <div id="darkbannerwrap"></div>
+
+    <form method="post" action="/login" onsubmit="return check()">
+        <input name="action" value="login" type="hidden">
+        <input name="username" id="user" placeholder="用户名"  required oninvalid="setCustomValidity('请输入用户名');" oninput="setCustomValidity('');" type="text">
+        <hr class="hr15">
+        <input name="password" id="key" placeholder="密码" required oninvalid="setCustomValidity('密码不能为空');" oninput="setCustomValidity('');" type="password">
+        <hr class="hr15">
+        <input value="登录" style="width:100%;" type="submit">
+        <hr class="hr20">
+        <!-- 帮助 <a onClick="alert('请联系管理员')">忘记密码</a> -->
+    </form>
+</div>
+<script language="javascript">
+function check(){
+ var user=document.getElementById("user").value;
+  var key=document.getElementById("key").value;
+ if(user.length>=10){
+    alert("用户名不能大于10");
+    return false;
+   }
+ if(key.length>=10){
+    alert("密码不能大于10");
+    return false;
+   }
+ return true;
+}
+</script>
 </body>
 </html>
