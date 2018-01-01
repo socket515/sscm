@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sscm.dao.TeacherDao">
+  <resultMap id="TeacherResultMap" type="com.sscm.entity.Teacher"> 
+  <result property="tno" column="tno"/> 
+  <result property="tname" column="tname"/>
+  <result property="tpass" column="tpass"/> 
+  <result property="tdept" column="tdept"/>
+  <result property="tcomment" column="tcomment"/> 
+  </resultMap>
+  <select id="loginTeacher" resultMap="TeacherResultMap" >
+		select * from teacher where tno=#{0} and tpass=#{1}
+  </select>
+</mapper>

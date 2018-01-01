@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sscm.dao.AdminDao">
+  <resultMap id="AdminResultMap" type="com.sscm.entity.Admin"> 
+  <result property="username" column="username"/> 
+  <result property="password" column="password"/>  
+  </resultMap>
+  <select id="loginAdmin" resultMap="AdminResultMap" >
+		select * from admin where username=#{0} and password=#{1}
+  </select>
+</mapper>

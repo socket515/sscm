@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>事务设置</title>
+<script language="javascript" src="js/js.js"></script>
+<script language="JavaScript" src="js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table width="400" style="text-align:left;margin-top:15px;">
+  <tr>
+    <td style="text-align:right;">大类：</td>
+    <td><input name="holidayTime" type="text" />    </td>
+    <td><input type="button" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="添 加"/>
+      &nbsp;&nbsp;
+      <input type="button" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="返 回" onclick="javascript:history.go(-1);"/></td>
+  </tr>
+</table>
+<hr style="width:98%;"/>
+<table class="table11" style="width:500px;">
+  <tr>
+    <th>大类</th>
+    <th style="text-align:center">操作</th>
+  </tr>
+  <tr>
+    <td>办公用品类</td>
+    <td style="text-align:center"><a href="#" onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>电子耗材类</td>
+    <td style="text-align:center"><a href="#" onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>凭证、帐簿类</td>
+    <td style="text-align:center"><a href="#" onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>宣传用品类</td>
+    <td style="text-align:center"><a href="#" onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>业务用品类</td>
+    <td style="text-align:center"><a href="#" onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+</table>
+<div>
+    总共有<span class="red">89</span>条记录，总共有<span class="red">9</span>页，当前第<span class="red">1</span>页。
+    <a id="First" href="#">首页</a>
+    <a id="Prev" href="#">上一页</a>
+    <a id="Next" href="#">下一页</a>
+    <a id="Last" href="#">尾页</a>
+    转到第
+    <select name="GoTo" id="GoTo">
+	<option selected="selected" value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select>页
+<div>	
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>外部调配</title>
+	<script language="JavaScript" src="../../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+	<link href="content.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript">
+        var P = window.parent, D = P.loadinndlg();   // 注意！这行代码是每个内容页必须加的内容，否则无法正确显示。
+
+		window.onload = function()
+		{
+    		P.crebtn( 'over', '确认', over);  //创建一个提交按钮
+		}
+		function over() //提交按钮调用的函数
+		{
+    		P.cancel();
+		}
+    </script>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+}
+-->
+</style></head>
+
+<body>
+<div style="text-align:center;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>物品名称:A4打印纸</td>
+          <td>大类:公用类</td>
+          <td>详细类别:打印纸</td>
+        </tr>
+      </table>
+  <table width="95%" id="divtable" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="4" align="left" bgcolor="#F4F4F4"></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#F4F4F4"><strong>批次</strong></td>
+      <td align="center" bgcolor="#F4F4F4"><strong>单价</strong></td>
+      <td align="center" bgcolor="#F4F4F4"><strong>库存数量</strong></td>
+      <td align="center" bgcolor="#F4F4F4"><strong>发货数量</strong></td>
+    </tr>
+    <tr>
+      <td align="center">12233335112</td>
+      <td align="center">24.00</td>
+      <td align="center">10</td>
+      <td align="center"><input name="textfield54" type="text" size="6" /></td>
+    </tr>
+    <tr>
+      <td align="center">12233335113</td>
+      <td align="center">23.00</td>
+      <td align="center">5</td>
+      <td align="center"><input name="textfield542" type="text" size="6" /></td>
+    </tr>
+    <tr>
+      <td align="center">12233335114</td>
+      <td align="center">22.00</td>
+      <td align="center">7</td>
+      <td align="center"><input name="textfield543" type="text" size="6" /></td>
+    </tr>
+    <tr>
+      <td align="center">12233335115</td>
+      <td align="center">25.00</td>
+      <td align="center">23</td>
+      <td align="center"><input name="textfield544" type="text" size="6" /></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

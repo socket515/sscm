@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>需求保障管理系统</title>
+<script language="javascript" src="js/js.js"></script>
+<script language="JavaScript" src="js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table width="700" style="text-align:left;margin-top:15px;" class="tableselect">
+  <tr>
+    <td style="text-align:right;">事务明细：</td>
+    <td><input name="holidayTime" type="text" />    </td>
+    <td style="text-align:right;">事务种类：</td>
+    <td><input name="holidayTime" type="text" />    </td>
+    <td><input name="add" type="button" value="查 询" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')"/>
+      &nbsp;&nbsp;
+      <input name="add" type="button" value="添加事务明细" class="btn2" onmouseover="changebg(this,'2')" onmouseout="changebg(this,'2')" onclick="jumpto(&quot;addService.html&quot;)"/></td>
+    <td><input name="add2" type="button" value="设置事务种类" class="btn2" onmouseover="changebg(this,'2')" onmouseout="changebg(this,'2')" onclick="jumpto(&quot;serviceType.html&quot;)"/></td>
+  </tr>
+</table>
+<hr style="width:98%;"/>
+<table class="table11" style="margin:0 auto;">
+  <tr>
+    <th>事务明细</th>
+    <th>事务种类</th>
+    <th>初审时限</th>
+    <th>响应时限</th>
+    <th>解决时限</th>
+    <th style="text-align:center">操作</th>
+  </tr>
+  <tr>
+    <td>施工进场</td>
+    <td>渠道建设</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>5工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>监控设备新增</td>
+    <td>安防包围</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>20工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>110联防新增</td>
+    <td>安防包围</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>10工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>自助设备开通</td>
+    <td>自主设备运维</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>3工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>自助设备调试</td>
+    <td>自主设备运维</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>3工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>设备维护、巡检</td>
+    <td>设备维护、巡检</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>1工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>门楣LED维修</td>
+    <td>电子设备类</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>2工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>网点UPS维修</td>
+    <td>电子设备类</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>2工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+  <tr>
+    <td>监控拷贝</td>
+    <td>安保设施类</td>
+    <td>3工时</td>
+    <td>3工时</td>
+    <td>10工作日</td>
+    <td style="text-align:center"><a href="addService.html">编辑</a>&nbsp;&nbsp;<a href="#"  onclick="javascript:confirm('确定要删除吗？');">删除</a></td>
+  </tr>
+</table>
+<div>
+    总共有<span class="red">89</span>条记录，总共有<span class="red">9</span>页，当前第<span class="red">1</span>页。
+    <a id="First" href="#">首页</a>
+    <a id="Prev" href="#">上一页</a>
+    <a id="Next" href="#">下一页</a>
+    <a id="Last" href="#">尾页</a>
+    转到第
+    <select name="GoTo" id="GoTo">
+	<option selected="selected" value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select>页
+<div>	
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>输入备注</title>
+	<link href="content.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript">
+        var P = window.parent, D = P.loadinndlg();   // 注意！这行代码是每个内容页必须加的内容，否则无法正确显示。
+
+		window.onload = function()
+		{
+    		P.crebtn( 'over', '提 交', over);  //创建一个提交按钮
+		}
+		function over() //提交按钮调用的函数
+		{
+    		P.cancel();
+		}
+    </script>
+</head>
+<body>
+<div style="text-align:center;">
+  <table width="90%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="right" width="70">数量：</td>
+      <td align="left"><input name="textfield6" type="text" value="25" size="5" /></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

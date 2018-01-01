@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>业务申报</title>
+<script language="javascript" src="js/js.js"></script>
+<script language="JavaScript" src="js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <table width="70%" style="text-align:left;margin-top:15px; margin-left:auto; margin-right:auto;">
+    <tr>
+      <td style="text-align:right;">大类：</td>
+      <td><select name="goodsCategoryID" id="goodsCategoryID" onchange="search();">
+          <option value="-1" selected="selected">全部</option>
+          <option>办公用品类</option>
+          <option>凭证、帐簿类</option>
+        </select>      </td>
+      <td style="text-align:right;">详细类别：</td>
+      <td><select name="goodsKindID" id="goodsKindID">
+          <option value="-1" selected="selected">全部</option>
+          <option>公用类</option>
+          <option>会计类</option>
+        </select>      </td>
+      <td style="text-align:right;">物品名称：</td>
+      <td><input name="holidayTime" type="text" size="25" /></td>
+    </tr>
+    <tr>
+      <td style="text-align:right;">订购单位：</td>
+      <td><select name="Agency">
+          <option selected="selected">全部</option>
+          <option>火车站支行专柜</option>
+          <option>游仙支行</option>
+          <option>涪城支行专柜</option>
+        </select></td>
+      <td style="text-align:right;">配送日期：</td>
+      <td colspan="3"><input name="startTime" type="text" class="Wdate" onclick="WdatePicker();" value="2011-01-08" size="12"/>
+        至
+        <input name="endTime" type="text" class="Wdate" onclick="WdatePicker();" value="2011-01-21" size="12"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="submit2" type="submit" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="查 询"/>      </td>
+    </tr>
+  </table>
+<hr style="border:1px #000000 dashed;width:98%;"/>
+  <table width="65%" style="text-align:left;margin:0 auto;">
+    <tr>
+      <td>配送号：
+        <input name="outListNum" type="text"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="submit22" type="submit" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="查 询"/>
+      </td>
+    </tr>
+  </table>
+<hr/>
+<table class="table11" style="width:700px;">
+  <tr>
+    <th style=" width:180px;">配送号</th>
+    <th><span style="text-align:right;">订购单位</span></th>
+    <th style=" width:80px;">状态</th>
+    <th><span style="text-align:right;">配送日期</span></th>
+    <th style=" width:45px;">操作</th>
+  </tr>
+  <tr>
+    <td>20100012112321258751</td>
+    <td>火车站支行专柜</td>
+    <td>已发货</td>
+    <td>2011-01-25</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <tr>
+    <td>20100012112321258752</td>
+    <td>游仙支行</td>
+    <td>已发货</td>
+    <td>2011-01-24</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <tr>
+    <td>20100012112321258753</td>
+    <td>涪城支行专柜</td>
+    <td>已收货</td>
+    <td>2011-01-23</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <tr>
+    <td>20100012112321258754</td>
+    <td>红星街储蓄所</td>
+    <td>已发货</td>
+    <td>2011-01-22</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <tr>
+    <td>20100012112321258755</td>
+    <td>越王楼储蓄所 </td>
+    <td>已发货</td>
+    <td>2011-01-21</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <tr>
+    <td>20100012112321258756</td>
+    <td>星河湾储蓄所 </td>
+    <td>已收货</td>
+    <td>2011-01-20</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <tr>
+    <td>20100012112321258757</td>
+    <td>涪城支行专柜</td>
+    <td>已发货</td>
+    <td>2011-01-19</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <tr>
+    <td>20100012112321258758</td>
+    <td>红星街储蓄所</td>
+    <td>已发货</td>
+    <td>2011-01-18</td>
+    <td><a href="returnGoods.html">详情</a></td>
+  </tr>
+  <c:forEach var="goodsDelivery" items="${goodsDeliveryList}">
+    <tr>
+      <td>20100012112321258759</td>
+      <td>越王楼储蓄所 </td>
+      <td>已收货</td>
+      <td>2011-01-17</td>
+      <td><a href="returnGoods.html">详情</a></td>
+    </tr>
+    <tr>
+      <td>20100012112321258760</td>
+      <td>星河湾储蓄所 </td>
+      <td>已发货</td>
+      <td>2011-01-16</td>
+      <td><a href="returnGoods.html">详情</a></td>
+    </tr>
+  </c:forEach>
+</table>
+<div> 总共有<span class="red">1934</span>条记录，总共有<span class="red">194</span>页，当前第<span class="red">1</span>页。 <a id="First" href="#">首页</a> <a id="Prev" href="#">上一页</a> <a id="Next" href="#">下一页</a> <a id="Last" href="#">尾页</a> 转到第
+  <select name="GoTo" id="GoTo">
+    <option selected="selected" value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option>...</option>
+  </select>
+  页 </div>
+</body>
+</html>
