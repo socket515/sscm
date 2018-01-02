@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<script language="javascript" src="js/js.js"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+</head>
+<body>
+<table class="table11"  style="width:900px;margin-top:15px;">
+  <tr>
+    <th colspan="6" style="text-align:center;">选填新物品详细信息</th>
+  </tr>
+  <form name="myform" method="post">
+    <tr>
+      <td width="114" align="right">物品名称</td>
+      <td colspan="3"><input name="textfield2" type="text" size="40" />
+        <font style="color:#F00">*</font> </td>
+      <td width="95" align="right">是否可订购</td>
+      <td>
+	     <input name="radiobutton" type="radio" value="radiobutton" checked="checked" />是
+         <input type="radio" name="radiobutton" value="radiobutton" />否	  </td>
+    </tr>
+  </form>
+  <tr>
+    <td align="right">大 类</td>
+    <td width="173"><select name="select">
+        <option selected="selected">办公用品类</option>
+        <option>电子耗材类</option>
+        <option>宣传用品类</option>
+      </select>
+    <font style="text-align:center; color:#F00">*</font> </td>
+    <td width="139" align="right">详细类别</td>
+    <td width="117"><select name="select2">
+        <option>个金类</option>
+        <option>会计类</option>
+        <option>公用类</option>
+        <option>外币类</option>
+      </select>
+    <font style="color:#F00">*</font> </td>
+    <td  align="right" style="text-align:right">配送方式</td>
+    <td width="234">
+		<select name="select9">
+			<option selected="selected">行内-会计凭证</option>
+			<option>行内-计算出纳</option>
+			<option>行内-红星文化</option>
+		</select>
+    <font style="color:#F00">*</font></td>
+  </tr>
+  
+  <tr>
+    <td align="right">入库单价</td>
+    <td><input name="textfield22" type="text" size="10" />
+        <font style="text-align:center; color:#F00">*</font> </td>
+    <td align="right">入库数量</td>
+    <td><input name="textfield23" type="text" size="10" />
+        <font style="text-align:center; color:#F00">*</font> </td>
+    <td align="right">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">是否纳入集中配送</td>
+    <td><label>
+      <input name="radiobutton" type="radio" value="radiobutton" checked="checked" />
+      是
+      <input type="radio" name="radiobutton" value="radiobutton" />
+      否</label></td>
+    <td align="right">纳入集中配送的时间</td>
+    <td><label><span style="text-align:left; ">
+      <input name="select52" type="text" class="Wdate" onclick="WdatePicker();" value="2011-01-08" size="15"/>
+      </span></label></td>
+    <td align="right">等 级</td>
+    <td><select name="select4">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">配送原则</td>
+    <td><select name="select7">
+        <option selected="selected">授权配送</option>
+        <option>按需配送</option>
+        <option>以旧换新</option>
+      </select></td>
+    <td align="right">配送发起部门</td>
+    <td><select name="select8">
+        <option selected="selected">配送中心</option>
+        <option>财会部</option>
+        <option>网管中心</option>
+      </select></td>
+    <td align="right">来源部门</td>
+    <td><select name="select5">
+        <option value="2" selected="selected">游仙支行</option>
+        <option value="1">网管中心</option>
+        <option value="3">三台支行</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">物品备注</td>
+    <td colspan="5"><textarea name="textfield" cols="100" rows="5"></textarea>    </td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><label>
+      <input type="submit" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" onclick="jumpto(&quot;itemSetup.html&quot;)" value="提 交" />
+      &nbsp;&nbsp;
+      <input type="reset" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="重 置" />
+      &nbsp;&nbsp;
+      <input type="button" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="返 回" onclick="javascript:history.go(-1);"/>
+      </label></td>
+  </tr>
+</table>
+<br />
+<br />
+<table class="table11"  style="width:500px;">
+  <tr>
+    <th colspan="2" style="text-align:center;">物品限额(默认0为无限额)</th>
+  </tr>
+  <tr>
+    <th>机构名称</th>
+    <th>配额</th>
+  </tr>
+  <form method="post" name="myform" id="myform">
+    <tr>
+      <td>红星街储蓄所 </td>
+      <td><input name="textfield222" type="text" value="0" size="10" />
+      </td>
+    </tr>
+  </form>
+  <tr>
+    <td>安昌桥储蓄所 </td>
+    <td><input name="textfield222" type="text" value="0" size="10" />
+    </td>
+  </tr>
+  <tr>
+    <td>花园景都储蓄所</td>
+    <td><input name="textfield222" type="text" value="0" size="10" />
+    </td>
+  </tr>
+  <tr>
+    <td>御营坝储蓄所</td>
+    <td><input name="textfield222" type="text" value="0" size="10" />
+    </td>
+  </tr>
+  <tr>
+    <td>跃进路储蓄所</td>
+    <td><input name="textfield222" type="text" value="0" size="10" />
+    </td>
+  </tr>
+  <tr>
+    <td>南河路储蓄所</td>
+    <td><input name="textfield222" type="text" value="0" size="10" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><label>
+      <input type="submit" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" onclick="jumpto(&quot;itemSetup.html&quot;)" value="提 交" />
+      &nbsp;&nbsp;
+      <input type="reset" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="重 置" />
+      &nbsp;&nbsp;
+      <input type="button" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="返 回" onclick="javascript:history.go(-1);"/>
+      </label></td>
+  </tr>
+</table>
+</body>
+</html>

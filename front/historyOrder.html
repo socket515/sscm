@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>订购历史查询</title>
+<script language="javascript" src="js/js.js"></script>
+<script language="JavaScript" src="js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <table width="70%" style="text-align:left;margin-top:15px; margin-left:auto; margin-right:auto;">
+    <tr>
+      <td style="text-align:right;">大类：</td>
+      <td><select name="goodsCategoryID" id="goodsCategoryID" onchange="search();">
+          <option value="-1" selected="selected">全部</option>
+          <option>办公用品类</option>
+          <option>凭证、帐簿类</option>
+        </select>      </td>
+      <td style="text-align:right;">详细类别：</td>
+      <td><select name="goodsKindID" id="goodsKindID">
+          <option value="-1" selected="selected">全部</option>
+          <option>公用类</option>
+          <option>会计类</option>
+        </select>      </td>
+      <td style="text-align:right;">物品名称：</td>
+      <td><input name="holidayTime" type="text" size="25" /></td>
+    </tr>
+    <tr>
+      <td style="text-align:right;">订购单位：</td>
+      <td><select name="Agency">
+          <option selected="selected">全部</option>
+          <option>火车站支行专柜</option>
+          <option>游仙支行</option>
+          <option>涪城支行专柜</option>
+      </select></td>
+      <td style="text-align:right;">订购日期：</td>
+      <td colspan="3"><input name="startTime" type="text" class="Wdate" onclick="WdatePicker();" value="2011-01-08" size="14"/>
+        至
+        <input name="endTime" type="text" class="Wdate" onclick="WdatePicker();" value="2011-01-21" size="14"/>
+      &nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align:right;">订购数量：</td>
+      <td>
+	  	<input type="text" name="minNum" size="6" /> 至
+		<input type="text" name="maxNum" size="6" />
+	  </td>
+      <td style="text-align:right;">状态：</td>
+      <td colspan="3">
+		  <select name="orderSate" id="select">
+			<option value="-1" selected="selected">全部</option>
+			<option>待审核</option>
+			<option>待配货</option>
+			<option>待发货</option>
+			<option>已发货</option>
+		  </select>
+		  &nbsp;&nbsp;
+        <input name="submit2" type="submit" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="查 询"/>        &nbsp;&nbsp;
+	  <a href="#">导出数据	  </a></td>
+	  </tr>
+  </table>
+<hr style="border:1px #000000 dashed;width:98%;"/>
+<table class="table11">
+  <tr>
+    <th style="width:160px">订单号</th>
+    <th  style="width:400px">物品名称－大类－详细类别</th>
+    <th>订购数量</th>
+    <th>订购单位</th>
+    <th>状态</th>
+    <th>订购时间</th>
+  </tr>
+  <tr>
+    <td>20100012112321258751</td>
+    <td>汇入汇款通知书 1×3000 (份)－办公用品类－ 公用类</td>
+    <td>10</td>
+    <td>火车站支行专柜</td>
+    <td>已发货</td>
+    <td>2011-01-25</td>
+  </tr>
+  <tr>
+    <td>20100012112321258752</td>
+    <td>汇入汇款通知书 1×3000 (份)－办公用品类－ 公用类</td>
+    <td>22</td>
+    <td>游仙支行</td>
+    <td>已发货</td>
+    <td>2011-01-24</td>
+  </tr>
+  <tr>
+    <td>20100012112321258753</td>
+    <td>分支行出口结汇水单/收帐通知 1×25×40 (箱)<span style="width:400px">－办公用品类	－公用类</span></td>
+    <td>11</td>
+    <td>涪城支行专柜</td>
+    <td>已收货</td>
+    <td>2011-01-23</td>
+  </tr>
+  <tr>
+    <td>20100012112321258754</td>
+    <td>售汇申请书 1×1000 (箱)<span style="width:400px">－办公用品类－	公用类</span></td>
+    <td>13</td>
+    <td>红星街储蓄所</td>
+    <td>已发货</td>
+    <td>2011-01-22</td>
+  </tr>
+  <tr>
+    <td>20100012112321258755</td>
+    <td>境内汇款申请书 1×50×10 (本)<span style="width:400px">－办公用品类－	公用类</span></td>
+    <td>14</td>
+    <td>越王楼储蓄所 </td>
+    <td>已发货</td>
+    <td>2011-01-21</td>
+  </tr>
+  <tr>
+    <td>20100012112321258756</td>
+    <td>境内付款/承兑通知书 1×50×10 (本)<span style="width:400px">－办公用品类</span><span style="width:400px">－	公用类</span></td>
+    <td>15</td>
+    <td>星河湾储蓄所 </td>
+    <td>已收货</td>
+    <td>2011-01-20</td>
+  </tr>
+  <tr>
+    <td>20100012112321258757</td>
+    <td>分支行出口结汇水单/收帐通知 1×25×40 (箱)<span style="width:400px">－办公用品类</span><span style="width:400px">－	公用类</span></td>
+    <td>45</td>
+    <td>涪城支行专柜</td>
+    <td>已发货</td>
+    <td>2011-01-19</td>
+  </tr>
+  <tr>
+    <td>20100012112321258758</td>
+    <td>结售汇水单（甲种） 1×25×200 (箱)<span style="width:400px">－办公用品类</span><span style="width:400px">－	公用类</span></td>
+    <td>44</td>
+    <td>红星街储蓄所</td>
+    <td>已发货</td>
+    <td>2011-01-18</td>
+  </tr>
+  <c:forEach var="goodsDelivery" items="${goodsDeliveryList}">
+    <tr>
+      <td>20100012112321258759</td>
+      <td>汇入汇款通知书 1×3000 (份)<span style="width:400px">－办公用品类</span><span style="width:400px">－	公用类</span></td>
+      <td>44</td>
+      <td>越王楼储蓄所 </td>
+      <td>已收货</td>
+      <td>2011-01-17</td>
+    </tr>
+    <tr>
+      <td>20100012112321258760</td>
+      <td>售汇申请书 1×1000 (箱)<span style="width:400px">－</span><span style="width:400px">办公用品类－	公用类</span></td>
+      <td>44</td>
+      <td>星河湾储蓄所 </td>
+      <td>已发货</td>
+      <td>2011-01-16</td>
+    </tr>
+  </c:forEach>
+</table>
+<div> 总共有<span class="red">1934</span>条记录，总共有<span class="red">194</span>页，当前第<span class="red">1</span>页。 <a id="First" href="#">首页</a> <a id="Prev" href="#">上一页</a> <a id="Next" href="#">下一页</a> <a id="Last" href="#">尾页</a> 转到第
+  <select name="GoTo" id="GoTo">
+    <option selected="selected" value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option>...</option>
+  </select>
+  页 </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+body {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+    color: #005893;
+    font-family: ËÎÌו;
+}
+
+.LoginBottomBg {
+    background: #155C8B repeat scroll 0 0;
+}
+
+.LoginTopBg {
+    background: url("../images/LoginBg.gif") repeat-x;
+    height: 569px;
+}
+
+.LoginBox {
+    background: url("../images/Login2.gif") no-repeat center;
+    height: 569px;
+}
+
+.LoginTop {
+    height: 158px;
+}
+
+.LogoImg {
+    height: 100px;
+}
+
+.LoginTb {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.LoginTb tr td {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+td.LoginTbLeft {
+    text-align: right;
+    padding-right: 20px;
+    width: 53%;
+	height:10px;
+}
+
+td.LoginTbRight {
+    text-align: left;
+    padding-left: 20px;
+    width: 47%;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>物品设置</title>
+<script language="javascript" src="js/js.js"></script>
+<script language="JavaScript" src="js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table  style="text-align:left;margin-top:15px;" class="tableselect">
+  <tr>
+    <td style="text-align:right;">大类</td>
+    <td style="text-align:right;"><select name="goodsCategoryID" id="goodsCategoryID" onchange="search();">
+      <option value="-1" selected="selected">全部</option>
+      <option>办公用品类</option>
+      <option>凭证、帐簿类</option>
+    </select></td>
+    <td style="text-align:right;">详细类别</td>
+    <td style="text-align:right;"><select name="goodsKindID" id="goodsKindID">
+      <option value="-1" selected="selected">全部</option>
+      <option>公用类</option>
+      <option>会计类</option>
+    </select></td>
+    <td style="text-align:right;">物品名称:</td>
+    <td><input name="tbGoodsName" type="text" size="12" /></td>
+    <td>
+		<input type="button" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="查 询" />&nbsp;&nbsp;<input type="button" class="btn2" onmouseover="changebg(this,'2')" onmouseout="changebg(this,'2')" value="添 加 物 品" onclick="jumpto(&quot;addItem.html&quot;)"/>&nbsp;&nbsp;
+    	<input type="button" class="btn2" onmouseover="changebg(this,'2')" onmouseout="changebg(this,'2')" value="设置大类"  onclick="jumpto(&quot;bigItemType.html&quot;)"/>&nbsp;&nbsp;<input type="button" class="btn2" onmouseover="changebg(this,'2')" onmouseout="changebg(this,'2')" value="设置详细类别"  onclick="jumpto(&quot;itemType.html&quot;)"/>    
+	</td>
+  </tr>
+</table>
+<hr style="width:98%;"/>
+<table class="table11">
+  <tr>
+    <th style="width:180px;">物品名称</th>
+    <th>大类</th>
+    <th>详细类别</th>
+    <th>来源部门</th>
+    <th style="text-align:center;">是否集中配送</th>
+    <th style="text-align:center;">等级</th>
+    <th style="text-align:center;">配送原则</th>
+    <th>配送发起部门</th>
+    <th style="text-align:center;">操作</th>
+  </tr>
+  <tr>
+    <td>一次性纸杯 1×50 (提)</td>
+    <td>办公用品类</td>
+    <td>公用类</td>
+    <td>办公室</td>
+    <td style="text-align:center;">是</td>
+    <td style="text-align:center;">B</td>
+    <td style="text-align:center;">授权配送</td>
+    <td>计划财务部</td>
+    <td style="text-align:center;"><a href="addItem.html">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+  </tr>
+  <tr>
+    <td>对账服务 1 (份)</td>
+    <td>凭证、帐簿类</td>
+    <td>会计类</td>
+    <td>办公室</td>
+    <td style="text-align:center;">是</td>
+    <td style="text-align:center;">B</td>
+    <td style="text-align:center;">按需配送</td>
+    <td>计划财务部</td>
+    <td style="text-align:center;"><a href="addItem.html">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+  </tr>
+  <tr>
+    <td>一次性纸杯 1×50 (提) </td>
+    <td>办公用品类</td>
+    <td>公用类</td>
+    <td>会计部</td>
+    <td style="text-align:center;">是</td>
+    <td style="text-align:center;">B</td>
+    <td style="text-align:center;">以旧换新</td>
+    <td>会计部</td>
+    <td style="text-align:center;"><a href="addItem.html">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+  </tr>
+  <tr>
+    <td>皮纹纸A4兰色(包)</td>
+    <td>办公用品类</td>
+    <td>公用类</td>
+    <td>计划财务部</td>
+    <td style="text-align:center;">否</td>
+    <td style="text-align:center;">B</td>
+    <td style="text-align:center;">授权配送</td>
+    <td>计划财务部</td>
+    <td style="text-align:center;"><a href="addItem.html">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+  </tr>
+</table>
+<div>
+    总共有<span class="red">573</span>条记录，总共有<span class="red">58</span>页，当前第<span class="red">1</span>页。
+    <a id="First" href="#">首页</a>
+    <a id="Prev" href="#">上一页</a>
+    <a id="Next" href="#">下一页</a>
+    <a id="Last" href="#">尾页</a>
+    转到第
+    <select name="GoTo" id="GoTo">
+	<option selected="selected" value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+</select>页
+<div>	
+</body>
+</html>

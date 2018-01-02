@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>退货清单</title>
+<script language="javascript" src="js/js.js"></script>
+<script language="JavaScript" src="js/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table width="98%" style="text-align:left;margin-top:15px;"  class="tableselect">
+  <tr>
+    <td style="text-align:right;">大类：</td>
+    <td><select name="select">
+      <option>全部</option>
+      <option>办公用品类</option>
+      <option>电子耗材类</option>
+      <option>凭证，账薄类</option>
+      <option>宣传用品类</option>
+      <option>业务用品类</option>
+    </select></td>
+    <td style="text-align:right;">详细类别：</td>
+    <td><select name="select">
+      <option>全部</option>
+      <option>公用类</option>
+      <option>激光打印类</option>
+      <option>喷墨打印类</option>
+      <option>其它电子耗材类</option>
+      <option>针式打印类</option>
+      <option>纸张类</option>
+      <option>出纳耗材</option>
+      <option>个金类</option>
+      <option>会计类</option>
+      <option>外币类</option>
+    </select></td>
+    <td style="text-align:right;">物品名称：</td>
+    <td><input name="goodsName" type="text" size="30" /></td>
+    <td style="text-align:right;">退货时间：</td>
+    <td><span>
+      <input name="select52" type="text" class="Wdate" onclick="WdatePicker();" value="2011-11-22" size="15"/>
+      </span><span style="text-align:right;">至 <span>
+        <input name="select522" type="text" class="Wdate" onclick="WdatePicker();" value="2011-01-08" size="15"/>
+      </span> </span></td>
+    <td style="width:50px;"><input name="search" type="button" value="查 询" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" /></td>
+  </tr>
+</table>
+<hr style="width:98%;"/>
+<table class="table11">
+  <tr>
+    <th style="text-align:center;width:70px;">退货时间</th>
+    <th>大类 — 详细类别 — 物品名称</th>
+    <th style="width:100px;">批次</th>
+    <th style="text-align:center;width:120px;">配送号</th>
+    <th style="width:40px;">数量</th>
+    <th style="width:60px;">单价</th>
+    <th style="width:90px;">退货机构</th>
+    <th style="width:70px;">退货人员</th>
+    <th style="width:50px; text-align:center;">操作</th>
+  </tr>
+  <tr>
+    <td style="text-align:center;">2011-02-23</td>
+    <td>电子耗材类 — 喷墨打印机类 — 墨盒 黑色HP816 (个)</td>
+    <td>20110225-00010</td>
+    <td style="text-align:center;">2011012502001801</td>
+    <td>5</td>
+    <td>￥55.00</td>
+    <td>中心金库</td>
+    <td>丁世凯</td>
+    <td style="text-align:center;"><a href="storageDetails3.html">详情</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">2011-02-22</td>
+    <td>电子耗材类 — 喷墨打印机类 — 墨盒 黑色HP816 (个)</td>
+    <td>20110225-00009</td>
+    <td style="text-align:center;">2011012502001802</td>
+    <td>5</td>
+    <td>￥523.50</td>
+    <td>个金部</td>
+    <td>退货人员</td>
+    <td style="text-align:center;"><a href="storageDetails3.html">详情</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">2011-02-21</td>
+    <td>凭证、帐簿类 — 个金类 — 个人开户申请表 (箱)</td>
+    <td>20110225-00008</td>
+    <td style="text-align:center;">2011012502001803</td>
+    <td>10</td>
+    <td>￥36.50</td>
+    <td>个金部</td>
+    <td>金开东</td>
+    <td style="text-align:center;"><a href="storageDetails3.html">详情</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">2011-02-20</td>
+    <td>凭证、帐簿类 — 个金类 — 电子银行服务申请表回执(箱)</td>
+    <td>20110225-00007</td>
+    <td style="text-align:center;">2011012502001804</td>
+    <td>15</td>
+    <td>￥15.00</td>
+    <td>中心金库</td>
+    <td>孙克军</td>
+    <td style="text-align:center;"><a href="storageDetails3.html">详情</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">2011-02-19</td>
+    <td>办公用品类 — 公用类 — 专用手套 (双)</td>
+    <td>20110225-00006</td>
+    <td style="text-align:center;">2011012502001805</td>
+    <td>140</td>
+    <td>￥32.00</td>
+    <td>ATM中心</td>
+    <td>康建娥</td>
+    <td style="text-align:center;"><a href="storageDetails3.html">详情</a></td>
+  </tr>
+</table>
+<div>
+    总共有<span class="red">39</span>条记录，总共有<span class="red">4</span>页，当前第<span class="red">1</span>页。
+    <a id="First" href="#">首页</a>
+    <a id="Prev" href="#">上一页</a>
+    <a id="Next" href="#">下一页</a>
+    <a id="Last" href="#">尾页</a>
+    转到第
+    <select name="GoTo" id="GoTo">
+	<option selected="selected" value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	</select>页
+<div>	
+</body>
+</html>

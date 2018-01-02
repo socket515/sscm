@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>需求保障管理系统</title>
+<script language="javascript" src="js/js.js"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table class="table11" style="width:900px;margin-top:15px;">
+  <tr>
+    <th colspan="6" style="text-align:center;">选填事务详细信息</th>
+  </tr>
+  <form name="myform" method="post">
+  <tr>
+    <td align="right">事务明细</td>
+    <td><label>
+    <input name="holidayTime" type="text" />
+    </label></td>
+    <td align="right">事务种类</td>
+    <td colspan="3"><select name="biglocation" size="1" onchange="changelocation(document.myform.biglocation.options[document.myform.biglocation.selectedIndex].value)">
+      <option value="-1" selected="selected">请选择</option>
+      <option value="1">网点设施类</option>
+      <option value="2">办公设施类</option>
+      <option value="3">电子设备类</option>
+    </select></td>
+  </tr>
+  </form>
+  <tr>
+    <td align="right">类 型</td>
+    <td><select name="select3">
+      <option selected="selected">网点提交</option>
+      <option>网管中心提交</option>
+    </select></td>
+    <td align="right">服务保障部门</td>
+    <td colspan="3"><select name="select2">
+      <option value="0">行长办公室</option>
+      <option value="1">会计部</option>
+      <option value="2">网管中心</option>
+      <option value="3">保卫部</option>
+      <option value="4">ATM中心</option>
+      <option value="5">办公室</option>
+                    </select></td>
+  </tr>
+  <tr>
+    <td align="right">服务保障级别</td>
+    <td><select name="select">
+        <option selected="selected">无</option>
+        <option>一级</option>
+        <option>二级</option>
+      </select></td>
+    <td align="right">涉及外包服务商</td>
+    <td><input name="holidayTime3" type="text" /></td>
+    <td align="right">初审时限 </td>
+    <td><select name="select4">
+      <option selected="selected">无</option>
+      <option>1工时</option>
+      <option>2工时</option>
+	  <option>3工时</option>
+	  <option>4工时</option>
+	  <option>5工时</option>
+	  <option>6工时</option>
+	  <option>1工作日</option>
+	  <option>2工作日</option>
+	  <option>3工作日</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td align="right">服务响应时限</td>
+    <td><select name="select7">
+      <option selected="selected">无</option>
+      <option>1工时</option>
+      <option>2工时</option>
+      <option>3工时</option>
+      <option>4工时</option>
+      <option>5工时</option>
+      <option>6工时</option>
+      <option>1工作日</option>
+      <option>2工作日</option>
+      <option>3工作日</option>
+    </select></td>
+    <td align="right">抵达现场时限 </td>
+    <td><select name="select6">
+      <option selected="selected">无</option>
+      <option>1工时</option>
+      <option>2工时</option>
+      <option>3工时</option>
+      <option>4工时</option>
+      <option>5工时</option>
+      <option>6工时</option>
+      <option>1工作日</option>
+      <option>2工作日</option>
+      <option>3工作日</option>
+    </select></td>
+    <td align="right">服务解决时限 </td>
+    <td><select name="select5">
+      <option selected="selected">无</option>
+      <option>1工时</option>
+      <option>2工时</option>
+      <option>3工时</option>
+      <option>4工时</option>
+      <option>5工时</option>
+      <option>6工时</option>
+      <option>1工作日</option>
+      <option>2工作日</option>
+      <option>3工作日</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td align="right">事务备注</td>
+    <td colspan="5"><textarea name="holidayTime52" cols="100" rows="4"></textarea></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><label>
+      <input type="submit" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" onclick="jumpto(&quot;servicesSetup.html&quot;)" value="提 交" />
+      &nbsp;&nbsp;
+      <input type="reset" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="重 置" />
+	  &nbsp;&nbsp;
+      <input type="button" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" value="返 回" onclick="javascript:history.go(-1);"/>
+    </label></td>
+  </tr>
+</table>
+
+</body>
+</html>
