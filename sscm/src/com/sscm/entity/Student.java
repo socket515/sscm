@@ -7,17 +7,29 @@ public class Student {
 	private boolean ssex;
 	private int sage;
 	private String sdept;
+	private String dt;
 	public Student() {
 	
 	}
 	public Student(String sno, String sname, String password, boolean ssex,
-			int sage, String sdept) {
+			int sage, String sdept, String dt) {
 		this.sno = sno;
 		this.sname = sname;
 		this.password = password;
 		this.ssex = ssex;
 		this.sage = sage;
 		this.sdept = sdept;
+		this.dt = dt;
+	}
+	public Student(String sno, String sname, boolean ssex,
+			int sage, String sdept, String dt) {
+		this.sno = sno;
+		this.sname = sname;
+		this.password = password;
+		this.ssex = ssex;
+		this.sage = sage;
+		this.sdept = sdept;
+		this.dt = dt;
 	}
 	public String getSno() {
 		return sno;
@@ -55,12 +67,19 @@ public class Student {
 	public void setSdept(String sdept) {
 		this.sdept = sdept;
 	}
+	public String getDt() {
+		return dt;
+	}
+	public void setDt(String dt) {
+		this.dt = dt;
+	}
 	@Override
 	public String toString() {
 		return "Student [sno=" + sno + ", sname=" + sname + ", password="
 				+ password + ", ssex=" + ssex + ", sage=" + sage + ", sdept="
-				+ sdept + "]";
+				+ sdept + ", dt=" + dt + "]";
 	}
+	
 	
 	
 }

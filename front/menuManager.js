@@ -8,7 +8,7 @@ var tab = new Ext.TabPanel({
     minTabWidth: 115,
     tabWidth:135,
     enableTabScroll:true,
-    html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="transQuery.html"></iframe>'
+    html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="returnsProcess.html"></iframe>'
 });
 
 var randomNum = Math.round(Math.random()*10000);
