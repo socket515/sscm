@@ -9,8 +9,19 @@
 <script src="./js/jquery.dataTables.js"></script>
 <script src="./js/dataTables.bootstrap.js"></script>
 <script src="./js/queryStudent.js"></script>
-<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<style type="text/css">
+.btn {
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    background: url(images/bg26_2.jpg) no-repeat left top;
+    color: #333333;
+    border: 0px;
+    vertical-align: middle;
+}
+</style>
 </head>
 <body>
 <div style="text-align:left;margin-top:15px; float:left;width:100%;">
@@ -23,27 +34,28 @@
   <table width="98%" style="text-align:left;">
     <tr>
       <td style="text-align:right;"><span style="width:100px;">所在学院</span></td>
-      <td><select name="applyAgencyID">
-        <option value="-1" selected="selected">数学与信息学院</option>
-        <option>工程学院</option>
-        <option>电子与信息学院</option>
-        <option>动物科学院</option>
+      <td><select name="applyAgencyID" id="sdept" >
+        <option value="数学与信息学院" selected="selected">数学与信息学院</option>
+        <option value="工程学院" >工程学院</option>
+        <option value="电子与信息学院" >电子与信息学院</option>
+        <option value="动物科学院" >动物科学院</option>
+		<option value="" >----------</option>
       </select></td>
       <td style="text-align:right;">学生名称：</td>
-      <td><input name="holidayTime" type="text" size="15" /></td>
+      <td><input name="holidayTime" id="sname" type="text" size="15" /></td>
       <td style="text-align:right;"><span style="width:60px;">入学时间</span>：</td>
-      <td><input name="select52" type="text" class="Wdate" onclick="WdatePicker();" value="2011-11-22" size="12"/>
+      <td><input name="select52" type="date" class="Wdate"  id="sdate" value="2014-09-12" size="12"/>
         至
-        <input name="select522" type="text" class="Wdate" onclick="WdatePicker();" value="2011-01-08" size="12"/></td>
-      <td style="width:50px;"><input name="search" type="button" value="查 询" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" /></td>
+        <input name="select522" type="date" class="Wdate" id="edate" value="2018-01-08" size="12"/></td>
+      <td style="width:50px;"><input name="search" type="button" id="search" value="查 询" class="btn"  /></td>
     </tr>
   </table>
   <hr style="border:1px #000000 dashed;width:98%;"/>
   <table width="98%" style="text-align:left; margin:0 auto;">
     <tr>
       <td>学号：&nbsp;&nbsp;
-        <input name="outListNum" type="text"/>&nbsp;&nbsp; 
-        <input name="search2" type="button" value="查 询" class="btn" onmouseover="changebg(this,'1')" onmouseout="changebg(this,'1')" />
+        <input name="outListNum" id="outListNum" type="text"/>&nbsp;&nbsp; 
+        <input name="search2" id="search2" type="button" value="查 询" class="btn"  />
         </td>
     </tr>
   </table>
@@ -51,75 +63,17 @@
     <thead>
         <tr>
       <th style=" width:140px;">学号</th>
-      <th style="width:100px;">姓名</th>
-      <th style="width:60px;">性别</th>
+      <th style="width:60px;">姓名</th>
+      <th style="width:40px;">性别</th>
       <th style="width:60px;">年龄</th>
       <th style="width:60px;">入学日期</th>
       <th style="width:40px;">院系</th>
-      <th style="text-align:center;width:50px;">操作</th>
+      <th style="text-align:center;width:150px;">操作</th>
         </tr>
     </thead>
     <tbody>
       
     </tbody>
 </table>
-  <!-- <table class="table11" style="margin:0 auto;">
-    <tr>
-      <th style=" width:140px;">学号</th>
-      <th style="width:100px;">姓名</th>
-      <th style="width:60px;">性别</th>
-      <th style="width:60px;">年龄</th>
-      <th style="width:60px;">入学日期</th>
-      <th style="width:40px;">院系</th>
-      <th style="text-align:center;width:50px;">操作</th>
-    </tr>
-    <tr>
-      <td>201430340506</td>
-      <td>黄少杰</td>
-      <td>男</td>
-      <td>20</td>
-      <td>2014-9-30</td>
-	  <td>数学与信息学院</td>
-      <td style="text-align:center;"><a href="returnDetail3.html">详情</a></td>
-    </tr>
-    <tr>
-      <td>201430340507</td>
-      <td>黄宇飞</td>
-      <td>男</td>
-      <td>20</td>
-      <td>2014-9-30</td>
-	  <td>数学与信息学院</td>
-      <td style="text-align:center;"><a href="returnDetail3.html">详情</a></td>
-    </tr>
-    <tr>
-     <td>201430340508</td>
-      <td>黄梓秦</td>
-      <td>男</td>
-      <td>20</td>
-      <td>2014-9-30</td>
-	  <td>数学与信息学院</td>
-      <td style="text-align:center;"><a href="returnDetail3.html">详情</a></td>
-    </tr>
-    <tr>
-      <td>201430340509</td>
-      <td>江威隆</td>
-      <td>男</td>
-      <td>20</td>
-      <td>2014-9-30</td>
-	  <td>数学与信息学院</td>
-      <td style="text-align:center;"><a href="returnDetail3.html">详情</a></td>
-    </tr>
-  </table> -->
-  <div> 总共有<span class="red">4</span>条记录，总共有<span class="red">1</span>页，当前第<span class="red">1</span>页。 <a id="First" href="#">首页</a> <a id="Prev" href="#">上一页</a> <a id="Next" href="#">下一页</a> <a id="Last" href="#">尾页</a> 转到第
-    <select name="GoTo" id="GoTo">
-      <option selected="selected" value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>
-    页 </div>
-</div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.sscm.service.impl;
 
+import java.util.List;
+
 import com.sscm.dao.StudentDao;
 import com.sscm.entity.Student;
 import com.sscm.service.StudentService;
@@ -15,6 +17,38 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public Student login(String username, String password) {
 		return studentDao.loginStudent(username, password);
+	}
+
+	@Override
+	public int getStudentsNum() {
+		return studentDao.getStudentsNum();
+	}
+
+	@Override
+	public int getStudentsByNum(String sdept, String sname, String sdate,
+			String edate) {
+		return studentDao.getStudentsByNum(sdept, sname, sdate, edate);
+	}
+
+	@Override
+	public List<Student> getStudents(int start, int end) {
+		return studentDao.getStudents(start, end);
+	}
+
+	@Override
+	public List<Student> getStudentsBySno(String sno) {
+		return studentDao.getStudentsBySno(sno);
+	}
+
+	@Override
+	public List<Student> getStudentsByArg(int start, int end, String sdept,
+			String sname, String sdate, String edate) {
+		return studentDao.getStudentsByArg(start, end, sdept, sname, sdate, edate);
+	}
+
+	@Override
+	public List<Student> getAll() {
+		return studentDao.getAll();
 	}
 
 }

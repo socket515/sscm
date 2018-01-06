@@ -1,17 +1,18 @@
-﻿$(document).ready( function () {
-    a=new Array();
+﻿var state = 0;
+$(document).ready( function () {
 
     var table=$('#table11').DataTable(
         {
         searching: false,//屏蔽datatales的查询框
-        aLengthMenu:[10],//设置一页展示10条记录
+        aLengthMenu:[10],
         "stateSave": true,
         "bRetrieve": true,
-          "ordering": false,//关闭排序
-         "pagingType":"simple_numbers",
-         "bLengthChange": false,//屏蔽tables的一页展示多少条记录的下拉列表
-         "processing": true, //打开数据加载时的等待效果
-         "serverSide": true,//打开后台分页
+        "ordering": false,//关闭排序
+        "pagingType":"simple_numbers",
+        "bLengthChange": false,//屏蔽tables的一页展示多少条记录的下拉列表
+        "processing": true, //打开数据加载时的等待效果
+        "serverSide": true,//打开后台分页
+		"bPaginate":true,
         " buttons": [
                    'selectAll',
                    'selectNone'
@@ -36,11 +37,18 @@
     		"ajax":{
     			"url":"/sscm/queryStudents",
     		    "dataSrc": "aaData", 
-    		    /*"data": function ( d ) {
-                    var level1 = $('#table_id_example_filter input').val();
-                    //添加额外的参数传给服务器
-                    d.extra_search = level1;
-                }*/
+    		    "data": function ( d ) {
+                    if(state==1){
+						d.sno = $('#outListNum').val();
+					}
+					else if(state==2){
+						d.sdept = $('#sdept').val(); 
+						d.sname = $('#sname').val();
+						d.sdate = $('#sdate').val();
+						d.edate = $('#edate').val();
+					}
+					d.state = state;
+				}
     		},
 //    		"aoColumnDefs": [
 //            {
@@ -70,13 +78,40 @@
                  "sClass": "text-center",
                  "mDataProp": "sno",
                  "render": function (mDataProp, type, full, meta) {
-                     return '<button class="btn disabled" value="' + mDataProp + '" >详情</button>';
+                     return '<button class="btn" value="' + mDataProp + '" >详情</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn" value="' + mDataProp + '" >删除</button>';
                  },
                  "bSortable": false
              },
     		],
             
         });
+		$("#table_id_example_filter").hide();
+		 //按钮查询
+	$(document).on("click","#search2",function(){
+		var sno = $('#outListNum').val();
+		if(sno==""){
+			alert("请输入学号！");
+			return;
+		}
+		state = 1;
+	    table.draw();
+	    //table.search(args1+" "+args2).draw(false);//保留分页，排序状态
+
+	});
+	$(document).on("click","#search",function(){
+		var sdept = $('#sdept').val(); 
+		var sname = $('#sname').val();
+		var sdate = $('#sdate').val();
+		var edate = $('#edate').val();
+		if(sdept==""&&sname==""&&sdate==""&&edate==""){
+			alert("请正确输入查询条件！");
+			return;
+		}
+		state = 2;
+	    table.draw();
+	    //table.search(args1+" "+args2).draw(false);//保留分页，排序状态
+
+	});
   
  });
 

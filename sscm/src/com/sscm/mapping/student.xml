@@ -10,8 +10,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <result property="ssex" column="ssex"/>
   <result property="sage" column="sage"/> 
   <result property="sdept" column="sdept"/> 
+  <result property="dt" column="dt"/> 
   </resultMap>
   <select id="loginStudent" resultMap="StudentResultMap" >
 		select * from student where sno=#{0} and password=#{1}
+  </select>
+  <select id="getStudentsNum" resultType="int" >
+		select count(1) from student  
+  </select>
+  <select id="getAll" resultMap="StudentResultMap" >
+		select * from student  
+  </select>
+  <select id="getStudents" resultMap="StudentResultMap" >
+		select * from student limit #{0},#{1} 
+  </select>
+  <select id="getStudentsBySno" resultMap="StudentResultMap" >
+		select * from student where sno=#{sno}
+  </select>
+  <select id="getStudentsByNum" resultType="int">
+		select count(*) from student where 1=1
+		<if test="sdept!=null&amp;&amp;!&quot;&quot;.equals(sdept)">
+			and sdept = #{sdept}
+		</if> 
+		<if test="sname!=null&amp;&amp;!&quot;&quot;.equals(sname)">
+		    and sname like CONCAT(CONCAT('%', #{sname}), '%')
+		</if>  
+		<if test="sdate!=null&amp;&amp;!&quot;&quot;.equals(sdate)">
+		    and dt &gt;= #{sdate}
+		</if>
+		<if test="edate!=null&amp;&amp;!&quot;&quot;.equals(edate)">
+		    and dt &lt;= #{edate}
+		</if>
+  </select>
+  <select id="getStudentsByArg" resultMap="StudentResultMap" >
+		select * from student where 1=1
+		<if test="sdept!=null&amp;&amp;!&quot;&quot;.equals(sdept)">
+			and sdept = #{sdept}
+		</if> 
+		<if test="sname!=null&amp;&amp;!&quot;&quot;.equals(sname)">
+		    and sname like CONCAT(CONCAT('%', #{sname}), '%')
+		</if>  
+		<if test="sdate!=null&amp;&amp;!&quot;&quot;.equals(sdate)">
+		    and dt &gt;= #{sdate}
+		</if>
+		<if test="edate!=null&amp;&amp;!&quot;&quot;.equals(edate)">
+		    and dt &lt;= #{edate}
+		</if>
+		limit #{start},#{end}	
   </select>
 </mapper>
