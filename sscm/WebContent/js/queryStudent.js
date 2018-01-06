@@ -3,7 +3,7 @@
 
     var table=$('#table11').DataTable(
         {
-        searching: true,//屏蔽datatales的查询框
+        searching: false,//屏蔽datatales的查询框
         aLengthMenu:[10],//设置一页展示10条记录
         "stateSave": true,
         "bRetrieve": true,
@@ -50,12 +50,30 @@
 //             ],
     		
     		"aoColumns" :[
-				{"aaData":"sno"},
-    			{"aaData":"sname"},
-    			{"aaData":"ssex"},
-    			{"aaData":"sage"},
-				{"aaData":"dt"},
-    			{"aaData":"sdept"},
+				{"mDataProp":"sno"},
+    			{"mDataProp":"sname"},
+    			{
+                 "sClass": "text-center",
+                 "mDataProp": "ssex",
+                 "render": function (mDataProp, type, full, meta) {
+                     if(mDataProp==true)
+						 return '男';
+					 else
+						 return '女';
+                 },
+                 "bSortable": false
+             },
+    			{"mDataProp":"sage"},
+				{"mDataProp":"dt"},
+    			{"mDataProp":"sdept"},
+				{
+                 "sClass": "text-center",
+                 "mDataProp": "sno",
+                 "render": function (mDataProp, type, full, meta) {
+                     return '<button class="btn disabled" value="' + mDataProp + '" >详情</button>';
+                 },
+                 "bSortable": false
+             },
     		],
             
         });

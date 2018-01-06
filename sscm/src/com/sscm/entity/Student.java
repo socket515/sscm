@@ -25,7 +25,6 @@ public class Student {
 			int sage, String sdept, String dt) {
 		this.sno = sno;
 		this.sname = sname;
-		this.password = password;
 		this.ssex = ssex;
 		this.sage = sage;
 		this.sdept = sdept;
