@@ -95,7 +95,7 @@ Ext.onReady(function() {
     var QueryTeacher= new Ext.tree.TreeNode({
         id:'QueryTeacher',
         icon:'img/im2.gif',
-        text:'查看教师信息',
+        text:'教师信息管理',
         listeners:{
             'click':function(node, event) {
                 event.stopEvent();
@@ -133,53 +133,8 @@ Ext.onReady(function() {
             }
         }
     });
-
-    var ChangeTeacher= new Ext.tree.TreeNode({
-        id:'ChangeTeacher',
-        icon:'img/im2.gif',
-        text:'修改教师信息',
-        listeners:{
-            'click':function(node, event) {
-                event.stopEvent();
-                var n = tab.getComponent(node.id);
-                var url = 'returnsProcess.html';
-                if (!n) { //判断是否已经打开该面板
-                    n = actionFn(node, url);
-                } else {
-                    tab.remove(n);
-                    n = tab.getComponent(node.id);
-                    n = actionFn(node, url);
-                }
-                tab.setActiveTab(n);
-            }
-        }
-    });
-	
-	var DeleteTeaherProcess= new Ext.tree.TreeNode({
-        id:'DeleteTeaherProcess',
-        icon:'img/im2.gif',
-        text:'删除教师信息',
-        listeners:{
-            'click':function(node, event) {
-                event.stopEvent();
-                var n = tab.getComponent(node.id);
-                var url = 'returnsProcess.html';
-                if (!n) { //判断是否已经打开该面板
-                    n = actionFn(node, url);
-                } else {
-                    tab.remove(n);
-                    n = tab.getComponent(node.id);
-                    n = actionFn(node, url);
-                }
-                tab.setActiveTab(n);
-            }
-        }
-    });
-
     root3.appendChild(QueryTeacher);
 	root3.appendChild(AddTeacher);
-    root3.appendChild(ChangeTeacher);
-	root3.appendChild(DeleteTeaherProcess);
     
     var tree3 = new Ext.tree.TreePanel({
 		renderTo:"tree2",

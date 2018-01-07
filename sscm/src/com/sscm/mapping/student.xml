@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       update student set password=#{1} where sno={0}
   </update>
   <insert id="add" parameterType="com.sscm.entity.Student">
-  	  insert into student(sno,sname,password,ssex,sage,sdept,dt)
+  	  insert into student(sno,sname,password,ssex,sage,sdept,dt) 
   	  values(#{sno},#{sname},#{password},#{ssex},#{sage},#{sdept},#{dt})    
   </insert>
 </mapper>

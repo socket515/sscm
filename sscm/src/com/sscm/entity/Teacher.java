@@ -5,16 +5,18 @@ public class Teacher {
 	private String tname;
 	private String tpass;
 	private String tdept;
+	private String dt;
 	private String tcomment;
 	public Teacher() {
 		
 	}
 	public Teacher(String tno, String tname, String tpass, String tdept,
-			String tcomment) {
+			String dt,String tcomment) {
 		this.tno = tno;
 		this.tname = tname;
 		this.tpass = tpass;
 		this.tdept = tdept;
+		this.dt = dt;
 		this.tcomment = tcomment;
 	}
 	public String getTno() {
@@ -47,11 +49,20 @@ public class Teacher {
 	public void setTcomment(String tcomment) {
 		this.tcomment = tcomment;
 	}
+	
+	public String getDt() {
+		return dt;
+	}
+	public void setDt(String dt) {
+		this.dt = dt;
+	}
 	@Override
 	public String toString() {
 		return "Teacher [tno=" + tno + ", tname=" + tname + ", tpass=" + tpass
-				+ ", tdept=" + tdept + ", tcomment=" + tcomment + "]";
+				+ ", tdept=" + tdept + ", dt=" + dt + ", tcomment=" + tcomment
+				+ "]";
 	}
+	
 	
 	
 	
