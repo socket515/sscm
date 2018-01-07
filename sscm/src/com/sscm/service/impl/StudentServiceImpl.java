@@ -51,4 +51,24 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.getAll();
 	}
 
+	@Override
+	public void delete(String sno) {
+		studentDao.delete(sno);
+	}
+
+	@Override
+	public void update(Student student) {
+		studentDao.update(student);
+	}
+
+	@Override
+	public void add(Student student) {
+		studentDao.add(student);
+	}
+
+	@Override
+	public void changepassword(String sno, String password) {
+		studentDao.changepassword(sno, password);
+	}
+
 }

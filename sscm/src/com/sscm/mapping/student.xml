@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from student  
   </select>
   <select id="getStudents" resultMap="StudentResultMap" >
-		select * from student limit #{0},#{1} 
+		select * from student order by sno limit #{0},#{1} 
   </select>
   <select id="getStudentsBySno" resultMap="StudentResultMap" >
 		select * from student where sno=#{sno}
@@ -56,6 +56,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="edate!=null&amp;&amp;!&quot;&quot;.equals(edate)">
 		    and dt &lt;= #{edate}
 		</if>
+		order by sno 
 		limit #{start},#{end}	
   </select>
+  <delete id="delete" >
+      delete from student where sno = #{0}
+  </delete>
+  <update id="update" parameterType="com.sscm.entity.Student">
+      update student set sname = #{sname},ssex=#{ssex},sage=#{sage},sdept=#{sdept},dt=#{dt} where sno=#{sno}
+  </update>
+  <update id="changepassword">
+      update student set password=#{1} where sno={0}
+  </update>
+  <insert id="add" parameterType="com.sscm.entity.Student">
+  	  insert into student(sno,sname,password,ssex,sage,sdept,dt)
+  	  values(#{sno},#{sname},#{password},#{ssex},#{sage},#{sdept},#{dt})    
+  </insert>
 </mapper>

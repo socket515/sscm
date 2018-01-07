@@ -1,10 +1,11 @@
 ﻿var state = 0;
+var table;
 $(document).ready( function () {
 
-    var table=$('#table11').DataTable(
+		table=$('#table11').DataTable(
         {
         searching: false,//屏蔽datatales的查询框
-        aLengthMenu:[10],
+        aLengthMenu:[5],
         "stateSave": true,
         "bRetrieve": true,
         "ordering": false,//关闭排序
@@ -76,9 +77,9 @@ $(document).ready( function () {
     			{"mDataProp":"sdept"},
 				{
                  "sClass": "text-center",
-                 "mDataProp": "sno",
+				 "mDataProp":"sno",
                  "render": function (mDataProp, type, full, meta) {
-                     return '<button class="btn" value="' + mDataProp + '" >详情</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn" value="' + mDataProp + '" >删除</button>';
+                     return '<button class="btns" onclick="detailFunc(' + full.sno +',\''+full.sname+'\',\''+ full.password +'\','+full.ssex+','+full.sage+',\'' + full.dt +'\',\''+full.sdept+'\')" >详情</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
                  },
                  "bSortable": false
              },
@@ -112,7 +113,85 @@ $(document).ready( function () {
 	    //table.search(args1+" "+args2).draw(false);//保留分页，排序状态
 
 	});
+	$("#deleteHaulBtn").click(function() {
+		// ajax异步删除
+		var sno = $("#deleteHaulId").val();
+		if(sno=="") return;
+		$.ajax({
+			type: "POST",
+			url: "/sscm/deleteStudents",
+			data: { sno: sno },
+			success: function(msg) {
+				table.draw();
+				//$("#delcfmOverhaul").modal('hide')
+				$("#deleteHaulId").val('');
+			},
+			error: function(a) {
+				//$("#delcfmOverhaul").modal('hide')
+				alert("删除失败");
+			}
+		});
+	});
+	$("#closemodel").click(function() {
+		$("#deleteHaulId").val('');
+	});
+	$("#closemodelsend").click(function() {
+		$("#modestuno").val('');
+		$("#modepass").val('');
+		$("#modestuname").val('');
+		$("#modesage").val('');
+		$("#modedept").val('');
+	});
+	$("#sendHaulBtn").click(function() {
+		var sno = $("#modestuno").val();
+		var name = $("#modestuname").val();
+		var sex = $("#modesex").val();
+		var age = $("#modesage").val();
+		var dept = $("#modedept").val();
+	    var dt = $("#modedate").val();
+		if(sno==""||name==""||sex==""||age==""||dept==""||dt==""){
+			alert("请正确输入");
+			return;
+		}
+		$.ajax({
+					type: "POST",
+					url: "/sscm/updateStudents",
+					data: { sno:sno,sname:name,ssex:sex,sage:age,sdept:dept,dt:dt },
+						success: function(msg) {
+							alert("修改成功");
+							table.draw();
+						},
+					error: function(a) {
+						alert("修改失败");
+					}
+				});
+	});
   
  });
+ function detailFunc(sno,sname,password,ssex,sage,dt,sdept){
+	$("#modestuno").val(sno);
+	$("#modepass").val(password);
+	$("#modestuname").val(sname);
+	if(ssex==true){
+		$("#modesex").val(1);
+	}else{
+		$("#modesex").val(0);
+	}
+	$("#modesage").val(sage);
+	$("#modedept").val(sdept);
+	$("#modedate").val(dt);
+	$("#updateOverhaul").modal({
+        backdrop : 'static',
+        keyboard : false
+    });
+ }
+ function deletefunc(sno){
+	$("#deleteHaulId").val(sno);
+	$("#delcfmOverhaul").modal({
+        backdrop : 'static',
+        keyboard : false
+    });
+ }
+	 
 
 

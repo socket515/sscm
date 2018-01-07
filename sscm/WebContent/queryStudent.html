@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <style type="text/css">
-.btn {
+.btns {
     width: 50px;
     height: 25px;
     font-size: 12px;
@@ -39,7 +39,7 @@
         <option value="工程学院" >工程学院</option>
         <option value="电子与信息学院" >电子与信息学院</option>
         <option value="动物科学院" >动物科学院</option>
-		<option value="" >----------</option>
+		<option value="" >---------------</option>
       </select></td>
       <td style="text-align:right;">学生名称：</td>
       <td><input name="holidayTime" id="sname" type="text" size="15" /></td>
@@ -47,7 +47,7 @@
       <td><input name="select52" type="date" class="Wdate"  id="sdate" value="2014-09-12" size="12"/>
         至
         <input name="select522" type="date" class="Wdate" id="edate" value="2018-01-08" size="12"/></td>
-      <td style="width:50px;"><input name="search" type="button" id="search" value="查 询" class="btn"  /></td>
+      <td style="width:50px;"><input name="search" type="button" id="search" value="查 询" class="btns"  /></td>
     </tr>
   </table>
   <hr style="border:1px #000000 dashed;width:98%;"/>
@@ -55,7 +55,7 @@
     <tr>
       <td>学号：&nbsp;&nbsp;
         <input name="outListNum" id="outListNum" type="text"/>&nbsp;&nbsp; 
-        <input name="search2" id="search2" type="button" value="查 询" class="btn"  />
+        <input name="search2" id="search2" type="button" value="查 询" class="btns"  />
         </td>
     </tr>
   </table>
@@ -65,9 +65,9 @@
       <th style=" width:140px;">学号</th>
       <th style="width:60px;">姓名</th>
       <th style="width:40px;">性别</th>
-      <th style="width:60px;">年龄</th>
+      <th style="width:40px;">年龄</th>
       <th style="width:60px;">入学日期</th>
-      <th style="width:40px;">院系</th>
+      <th style="width:60px;">院系</th>
       <th style="text-align:center;width:150px;">操作</th>
         </tr>
     </thead>
@@ -75,5 +75,65 @@
       
     </tbody>
 </table>
+<!-- 模态框   信息删除确认 -->
+<div class="modal fade" id="delcfmOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 隐藏需要删除的id -->
+                <input type="hidden" id="deleteHaulId" />
+                    <p>您确认要删除该条信息吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="closemodel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="deleteHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+<!-- 模态框   修改信息 -->
+<div class="modal fade" id="updateOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">学生信息</h4>
+            </div>
+            <div class="modal-body">
+                学号：<input type="text" name="stuno" id="modestuno"  /></br>
+                密码：<input type="text" name="pass" id="modepass" readonly="readonly"/></br>
+                姓名：<input type="text" name="stuname" id="modestuname"/></br>  
+                性别：<select name="applyAgencyID" id="modesex" ></br>
+						<option value="1" >男</option>
+						<option value="0" >女</option>
+						</select>
+				年龄：<input type="text" name="modesage" id="modesage" /></br>
+				院系： <select name="applyAgencyID" id="modedept" ></br>
+						<option value="数学与信息学院" >数学与信息学院</option>
+						<option value="工程学院" >工程学院</option>
+						<option value="电子与信息学院" >电子与信息学院</option>
+						<option value="动物科学院" >动物科学院</option>
+						</select>
+				入学日期： <input type="date"  name="stuno" id="modedate" />   
+			</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="closemodelsend" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="sendHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
 </body>
 </html>

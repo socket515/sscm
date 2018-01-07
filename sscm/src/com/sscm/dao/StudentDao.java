@@ -23,5 +23,13 @@ public interface StudentDao {
 			@Param("edate")String edate);
 	
 	public List<Student> getAll();
+	
+	public void delete(String sno);
+	
+	public void update(Student student);
+	
+	public void add(Student student);
+	
+	public void changepassword(String sno,String password);
 
 }
