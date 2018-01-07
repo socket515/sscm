@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>增加学生信息</title>
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script language="javascript" src="js/addstudent.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table class="table11"  style="width:900px;margin-top:15px;">
+  <tr>
+    <th colspan="6" style="text-align:center;">学生信息</th>
+  </tr>
+  <tr>
+    <td align="right">学生学号</td>
+    <td colspan="2">
+		<input type="text" name="addsno" id="addsno" />
+    </td>
+    <td align="right">学生姓名</td>
+    <td colspan="2">
+		<input type="text" name="addsname" id="addsname" />
+	</td>
+  </tr>
+  <tr>
+    <td align="right">性别</td>
+    <td colspan="2"><select name="addsex" id="addsex">
+        <option value="1" selected="selected">男</option>
+        <option value="0">女</option>
+      </select></td>
+    <td align="right">年龄</td>
+    <td colspan="2">
+		<input type="text" name="addsage" id="addsage" />
+	</td>
+  </tr>
+  <tr>
+    <td align="right">所在院系</td>
+    <td colspan="2" >
+		<select name="addsdept" id="addsdept" >
+        <option value="数学与信息学院" selected="selected">数学与信息学院</option>
+        <option value="工程学院" >工程学院</option>
+        <option value="电子与信息学院" >电子与信息学院</option>
+        <option value="动物科学院" >动物科学院</option>
+      </select>
+	</td>
+	<td colspan="3" >
+	</td>
+  </tr>
+  <tr>
+	<td align="right">入学日期</td>
+    <td colspan="2" >
+		<input type="date" name="adddt" id="adddt" >
+	</td>
+	<td colspan="3" >
+	</td>
+  </tr>
+  <tr>
+    <td align="right">事务备注</td>
+    <td colspan="2">添加后初始密码和学号一致</td>
+	<td colspan="3">
+	当不输入学日期时默认为当天
+	</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center">
+        <input type="button" class="btn" id="addsend"   value="提 交" />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="button" class="btn" id="addreset"  value="重 置" />
+	</td>
+  </tr>
+</table>
+<!-- 模态框   信息添加确认 -->
+<div class="modal fade" id="addsure">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                    <p>您确认要增加该条信息吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="addclose" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="addHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+</body>
+</html>

@@ -303,7 +303,7 @@ Ext.onReady(function() {
 	var QueryStudent= new Ext.tree.TreeNode({
         id:'QueryStudent',
         icon:'img/user.gif',
-        text:'查询学生信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+        text:'学生信息管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
         listeners:{
             'click':function(node, event) {
                 event.stopEvent();
@@ -329,7 +329,7 @@ Ext.onReady(function() {
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'deliveryTracking.html';
+                var url = 'addstudent.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {
@@ -342,54 +342,8 @@ Ext.onReady(function() {
         }
     });
 	
-	var ChangeStudent= new Ext.tree.TreeNode({
-        id:'ChangeStudent',
-        icon:'img/user.gif',
-        text:'修改学生信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
-        listeners:{
-            'click':function(node, event) {
-                event.stopEvent();
-                var n = tab.getComponent(node.id);
-                var url = 'returnTracking.html';
-                if (!n) { //判断是否已经打开该面板
-                    n = actionFn(node, url);
-                } else {
-                    tab.remove(n);
-                    n = tab.getComponent(node.id);
-                    n = actionFn(node, url);
-                }
-                tab.setActiveTab(n);
-            }
-        }
-    });
-
-    var DeleteStudent= new Ext.tree.TreeNode({
-        id:'DeleteStudent',
-        icon:'img/user.gif',
-        text:'删除学生信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
-        listeners:{
-            'click':function(node, event) {
-                event.stopEvent();
-                var n = tab.getComponent(node.id);
-                var url = 'demandReport.html';
-                if (!n) { //判断是否已经打开该面板
-                    n = actionFn(node, url);
-                } else {
-                    tab.remove(n);
-                    n = tab.getComponent(node.id);
-                    n = actionFn(node, url);
-                }
-                tab.setActiveTab(n);
-            }
-        }
-    });
-	
-
-
 	root2.appendChild(QueryStudent);
 	root2.appendChild(AddStudent);
-	root2.appendChild(ChangeStudent);
-    root2.appendChild(DeleteStudent);
 
     var tree2 = new Ext.tree.TreePanel({
         renderTo:"tree1",

@@ -1,10 +1,13 @@
 package com.sscm.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.sscm.dao.StudentDao;
 import com.sscm.entity.Student;
 import com.sscm.service.StudentService;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Resource
 	private StudentDao studentDao;
+	
+	private  SimpleDateFormat sdf =  new SimpleDateFormat( "yyyy-MM-dd" ); 
 	
 	@Override
 	public Student login(String username, String password) {
@@ -63,6 +68,11 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public void add(Student student) {
+		student.setPassword(student.getSno());
+		String dt = student.getDt();
+		if(dt==null||dt.equals("")){
+			student.setDt(sdf.format(new Date()));
+		}
 		studentDao.add(student);
 	}
 

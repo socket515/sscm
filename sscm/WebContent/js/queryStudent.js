@@ -79,7 +79,7 @@ $(document).ready( function () {
                  "sClass": "text-center",
 				 "mDataProp":"sno",
                  "render": function (mDataProp, type, full, meta) {
-                     return '<button class="btns" onclick="detailFunc(' + full.sno +',\''+full.sname+'\',\''+ full.password +'\','+full.ssex+','+full.sage+',\'' + full.dt +'\',\''+full.sdept+'\')" >详情</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
+                     return '<button class="btns" onclick="detailFunc(' + full.sno +',\''+full.sname+'\',\''+ full.password +'\','+full.ssex+','+full.sage+',\'' + full.dt +'\',\''+full.sdept+'\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
                  },
                  "bSortable": false
              },
@@ -114,7 +114,6 @@ $(document).ready( function () {
 
 	});
 	$("#deleteHaulBtn").click(function() {
-		// ajax异步删除
 		var sno = $("#deleteHaulId").val();
 		if(sno=="") return;
 		$.ajax({
