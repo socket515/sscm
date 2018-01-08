@@ -1,5 +1,7 @@
 package com.sscm.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -28,7 +30,6 @@ public class TeacherController {
 	@ResponseBody
 	public DatatablesViewPage<Teacher> queryTeacher(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
-		logger.info("request Teacher");
 		int start =Integer.parseInt(request.getParameter("start"));    
         int length = Integer.parseInt(request.getParameter("length"));  
         String state = request.getParameter("state");
@@ -55,5 +56,48 @@ public class TeacherController {
 		view.setiTotalRecords(5);
 		view.setAaData(list); 
 		return view;
+	}
+	@RequestMapping(value="/admin/addTeacher", method=RequestMethod.POST)
+	public void addTeacher(Teacher teacher,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(teacher==null){
+				out.print("false");
+			}else {
+				teacherService.add(teacher);
+			}	
+		} catch (Exception e) {
+			logger.info("addTeacher 出错了！",e);
+			out.print("false");
+		}
+		out.print("true");
+	}
+	@RequestMapping(value="/admin/delTeacher", method=RequestMethod.POST)
+	public void delTeacher(String tno,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(tno==null||tno.equals("")){
+				out.print("false");
+			}else {
+				teacherService.delete(tno);
+			}	
+		} catch (Exception e) {
+			logger.info("delTeacher 出错了！",e);
+			out.print("false");
+		}
+	}
+	@RequestMapping(value="/admin/changeTeacher", method=RequestMethod.POST)
+	public void changeTeacher(Teacher teacher,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(teacher==null){
+				out.print("false");
+			}else {
+				teacherService.update(teacher);
+			}	
+		} catch (Exception e) {
+			logger.info("addTeacher 出错了！",e);
+			out.print("false");
+		}
 	}
 }

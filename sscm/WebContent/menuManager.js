@@ -100,7 +100,7 @@ Ext.onReady(function() {
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'demandsProcess.html';
+                var url = 'queryTeacher.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {
@@ -121,7 +121,7 @@ Ext.onReady(function() {
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'itemsProcess.html';
+                var url = 'addteacher.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {

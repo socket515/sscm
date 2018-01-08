@@ -67,7 +67,7 @@ public class StudentController {
 				studentService.delete(sno);
 			}	
 		} catch (Exception e) {
-			logger.info("deleteStudents 出错了！");
+			logger.info("deleteStudents 出错了！",e);
 			out.print("false");
 		}
 	}
@@ -82,7 +82,7 @@ public class StudentController {
 				studentService.update(student);
 			}	
 		} catch (Exception e) {
-			logger.info("deleteStudents 出错了！");
+			logger.info("updateStudents 出错了！",e);
 			out.print("false");
 		}
 	}
@@ -97,7 +97,7 @@ public class StudentController {
 				studentService.add(student);
 			}	
 		} catch (Exception e) {
-			logger.info("deleteStudents 出错了！");
+			logger.info("addStudents 出错了！",e);
 			out.print("false");
 		}
 	}

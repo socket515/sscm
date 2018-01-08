@@ -55,5 +55,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    and dt &lt;= #{edate}
 		</if>
   </select>
-  
+  <insert id="add" parameterType="com.sscm.entity.Teacher" >
+      insert into teacher(tno,tname,tpass,tdept,dt,tcomment) 
+      values(#{tno},#{tname},#{tpass},#{tdept},#{dt},#{tcomment})
+  </insert>	
+  <update id="update" parameterType="com.sscm.entity.Teacher" >
+      update teacher set tname=#{tname},tdept=#{tdept},dt=#{dt},tcomment=#{tcomment}
+      where tno=#{tno} 
+  </update>
+  <delete id="delete"  >
+      delete from teacher where tno=#{0}
+  </delete>
 </mapper>

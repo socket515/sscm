@@ -36,7 +36,7 @@ $(document).ready( function () {
             // "scrollY": "300px",//滚动宽度
     		//"scrollCollapse": "false",//滚动条
     		"ajax":{
-    			"url":"/sscm/queryStudents",
+    			"url":"/sscm/admin/queryTeacher",
     		    "dataSrc": "aaData", 
     		    "data": function ( d ) {
                     if(state==1){

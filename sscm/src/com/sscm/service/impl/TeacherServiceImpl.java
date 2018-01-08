@@ -1,5 +1,7 @@
 package com.sscm.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +16,8 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	@Resource
 	private TeacherDao teacherDao;
+	
+	private  SimpleDateFormat sdf =  new SimpleDateFormat( "yyyy-MM-dd" );
 
 	@Override
 	public Teacher login(String username, String password) {
@@ -45,6 +49,26 @@ public class TeacherServiceImpl implements TeacherService {
 	public List<Teacher> getByArg(int start, int end, String tname,
 			String tdept, String sdate, String edate) {
 		return teacherDao.getByArg(start, end, tname, tdept, sdate, edate);
+	}
+
+	@Override
+	public void add(Teacher teacher) {
+		teacher.setTpass(teacher.getTno());
+		String dt = teacher.getDt();
+		if(dt==null||dt.equals("")){
+			teacher.setDt(sdf.format(new Date()));
+		}
+		teacherDao.add(teacher);
+	}
+
+	@Override
+	public void update(Teacher teacher) {
+		teacherDao.update(teacher);
+	}
+
+	@Override
+	public void delete(String tno) {
+		teacherDao.delete(tno);
 	}
 
 }

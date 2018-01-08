@@ -16,5 +16,8 @@ public interface TeacherDao {
 	public List<Teacher> getByArg(@Param("start")int start,@Param("end")int end,
 			@Param("tname")String tname,@Param("tdept")String tdept,
 			@Param("sdate")String sdate,@Param("edate")String edate);
+	public void add(Teacher teacher);
+	public void update(Teacher teacher);
+	public void delete(String tno);
 	
 }
