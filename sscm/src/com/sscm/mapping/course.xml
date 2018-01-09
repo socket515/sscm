@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sscm.dao.CourseDao">
+  <resultMap id="CourseResultMap" type="com.sscm.entity.Course"> 
+  <result property="cno" column="cno"/> 
+  <result property="cname" column="cname"/>
+  <result property="credit" column="credit"/> 
+  <result property="type" column="type"/>
+  <result property="state" column="state"/> 
+  <result property="introduction" column="introduction"/> 
+  </resultMap>
+  <select id="getNum" resultType="int" >
+		select count(1) from course  
+  </select>
+  <select id="getCourse" resultMap="CourseResultMap" >
+		select * from course  limit #{0},#{1} 
+  </select>
+  <select id="getByNum" resultMap="CourseResultMap" >
+		select * from course where cno=#{0}
+  </select>
+  <select id="getByArgNum" resultType="int">
+		select count(*) from course where 1=1
+		<if test="cname!=null&amp;&amp;!&quot;&quot;.equals(cname)">
+		    and cname like CONCAT(CONCAT('%', #{cname}), '%')
+		</if>  
+		    and type = #{type}
+  </select>
+   <select id="getByNameNum" resultType="int">
+		select count(*) from course where 1=1
+		and cname like CONCAT(CONCAT('%', #{0}), '%')
+  </select>
+  <select id="getByArg" resultMap="CourseResultMap" >
+		select count(*) from course where 1=1
+		<if test="cname!=null&amp;&amp;!&quot;&quot;.equals(cname)">
+		    and cname like CONCAT(CONCAT('%', #{cname}), '%')
+		</if>  
+		and  type = #{type}
+		limit #{start},#{end}	
+  </select>
+  <select id="getByName" resultMap="CourseResultMap" >
+		select count(*) from course where 1=1
+		and cname like CONCAT(CONCAT('%', #{cname}), '%')
+		limit #{start},#{end}	
+  </select>
+  <delete id="delete" >
+      delete from course where cno = #{0}
+  </delete>
+  <update id="update" parameterType="com.sscm.entity.Course">
+      update course set cname=#{cname},credit=#{credit},type=#{type},state=#{state}
+      ,introduction = #{introduction}
+      where cno=#{cno}
+  </update>
+  <insert id="add" parameterType="com.sscm.entity.Course">
+  	  insert into course(cname,credit,type,state,introduction) 
+  	  values(#{cname},#{credit},#{type},#{state},#{introduction})  
+  </insert>
+</mapper>

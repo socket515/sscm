@@ -65,12 +65,13 @@ public class TeacherController {
 				out.print("false");
 			}else {
 				teacherService.add(teacher);
+				out.print("true");
 			}	
 		} catch (Exception e) {
 			logger.info("addTeacher 出错了！",e);
 			out.print("false");
 		}
-		out.print("true");
+		
 	}
 	@RequestMapping(value="/admin/delTeacher", method=RequestMethod.POST)
 	public void delTeacher(String tno,HttpServletResponse response) throws IOException{
@@ -80,6 +81,7 @@ public class TeacherController {
 				out.print("false");
 			}else {
 				teacherService.delete(tno);
+				out.print("true");
 			}	
 		} catch (Exception e) {
 			logger.info("delTeacher 出错了！",e);
@@ -94,6 +96,7 @@ public class TeacherController {
 				out.print("false");
 			}else {
 				teacherService.update(teacher);
+				out.print("true");
 			}	
 		} catch (Exception e) {
 			logger.info("addTeacher 出错了！",e);

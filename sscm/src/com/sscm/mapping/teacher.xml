@@ -60,7 +60,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       values(#{tno},#{tname},#{tpass},#{tdept},#{dt},#{tcomment})
   </insert>	
   <update id="update" parameterType="com.sscm.entity.Teacher" >
-      update teacher set tname=#{tname},tdept=#{tdept},dt=#{dt},tcomment=#{tcomment}
+      update teacher set tname=#{tname},tdept=#{tdept},dt=#{dt}
+      <if test="tcomment!=null&amp;&amp;!&quot;&quot;.equals(tcomment)">
+         ,tcomment=#{tcomment}
+       </if>
       where tno=#{tno} 
   </update>
   <delete id="delete"  >

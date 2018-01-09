@@ -154,12 +154,12 @@ Ext.onReady(function() {
     var QueryCourse= new Ext.tree.TreeNode({
         id:'QueryCourse',
         icon:'img/im2.gif',
-        text:'查询课程信息&nbsp;&nbsp;&nbsp;&nbsp;',
+        text:'课程信息管理&nbsp;&nbsp;&nbsp;&nbsp;',
         listeners:{
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'serviceStatistics.html';
+                var url = 'queryCourse.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {
@@ -193,52 +193,9 @@ Ext.onReady(function() {
         }
     });
 
-	var ChangeCouerse= new Ext.tree.TreeNode({
-        id:'ChangeCouerse',
-        icon:'img/im2.gif',
-        text:'修改课程信息&nbsp;&nbsp;&nbsp;&nbsp;',
-        listeners:{
-            'click':function(node, event) {
-                event.stopEvent();
-                var n = tab.getComponent(node.id);
-                var url = 'historyOrder.html';
-                if (!n) { //判断是否已经打开该面板
-                    n = actionFn(node, url);
-                } else {
-                    tab.remove(n);
-                    n = tab.getComponent(node.id);
-                    n = actionFn(node, url);
-                }
-                tab.setActiveTab(n);
-            }
-        }
-    });
-	
-	var DeleteCourse= new Ext.tree.TreeNode({
-        id:'DeleteCourse',
-        icon:'img/im2.gif',
-        text:'修改课程信息&nbsp;&nbsp;&nbsp;&nbsp;',
-        listeners:{
-            'click':function(node, event) {
-                event.stopEvent();
-                var n = tab.getComponent(node.id);
-                var url = 'historyOrder.html';
-                if (!n) { //判断是否已经打开该面板
-                    n = actionFn(node, url);
-                } else {
-                    tab.remove(n);
-                    n = tab.getComponent(node.id);
-                    n = actionFn(node, url);
-                }
-                tab.setActiveTab(n);
-            }
-        }
-    });
 	
     root5.appendChild(QueryCourse);
     root5.appendChild(AddCourse);
-	root5.appendChild(ChangeCouerse);
-	root5.appendChild(DeleteCourse);
 
     var tree5 = new Ext.tree.TreePanel({
 		renderTo:"tree4",

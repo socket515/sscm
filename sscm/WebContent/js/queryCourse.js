@@ -36,15 +36,15 @@ $(document).ready( function () {
             // "scrollY": "300px",//滚动宽度
     		//"scrollCollapse": "false",//滚动条
     		"ajax":{
-    			"url":"/sscm/admin/queryTeacher",
+    			"url":"/sscm/queryStudents",
     		    "dataSrc": "aaData", 
     		    "data": function ( d ) {
                     if(state==1){
-						d.tno = $('#tno').val();
+						d.sno = $('#outListNum').val();
 					}
 					else if(state==2){
-						d.tdept = $('#tdept').val(); 
-						d.tname = $('#tname').val();
+						d.sdept = $('#sdept').val(); 
+						d.sname = $('#sname').val();
 						d.sdate = $('#sdate').val();
 						d.edate = $('#edate').val();
 					}
@@ -59,15 +59,27 @@ $(document).ready( function () {
 //             ],
     		
     		"aoColumns" :[
-				{"mDataProp":"tno"},
-    			{"mDataProp":"tname"},
+				{"mDataProp":"sno"},
+    			{"mDataProp":"sname"},
+    			{
+                 "sClass": "text-center",
+                 "mDataProp": "ssex",
+                 "render": function (mDataProp, type, full, meta) {
+                     if(mDataProp==true)
+						 return '男';
+					 else
+						 return '女';
+                 },
+                 "bSortable": false
+             },
+    			{"mDataProp":"sage"},
 				{"mDataProp":"dt"},
-    			{"mDataProp":"tdept"},
+    			{"mDataProp":"sdept"},
 				{
                  "sClass": "text-center",
-				 "mDataProp":"tno",
+				 "mDataProp":"sno",
                  "render": function (mDataProp, type, full, meta) {
-                     return '<button class="btns" onclick="detailFunc(' + full.tno +',\''+full.tname+'\',\''+ full.tpass +'\',\''+full.dt +'\',\''+full.sdept+'\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
+                     return '<button class="btns" onclick="detailFunc(' + full.sno +',\''+full.sname+'\',\''+ full.password +'\','+full.ssex+','+full.sage+',\'' + full.dt +'\',\''+full.sdept+'\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
                  },
                  "bSortable": false
              },
@@ -79,7 +91,7 @@ $(document).ready( function () {
 	$(document).on("click","#search2",function(){
 		var sno = $('#outListNum').val();
 		if(sno==""){
-			alert("请输入工号！");
+			alert("请输入学号！");
 			return;
 		}
 		state = 1;
@@ -88,8 +100,8 @@ $(document).ready( function () {
 
 	});
 	$(document).on("click","#search",function(){
-		var sdept = $('#tdept').val(); 
-		var sname = $('#tname').val();
+		var sdept = $('#sdept').val(); 
+		var sname = $('#sname').val();
 		var sdate = $('#sdate').val();
 		var edate = $('#edate').val();
 		if(sdept==""&&sname==""&&sdate==""&&edate==""){
@@ -106,16 +118,11 @@ $(document).ready( function () {
 		if(sno=="") return;
 		$.ajax({
 			type: "POST",
-			url: "/sscm//admin/delTeacher",
-			data: { tno: sno },
+			url: "/sscm/deleteStudents",
+			data: { sno: sno },
 			success: function(msg) {
+				table.draw();
 				//$("#delcfmOverhaul").modal('hide')
-				if(msg=="true"){
-					table.draw();
-					alert("删除成功");
-				} else {
-					alert("删除失败");
-				}
 				$("#deleteHaulId").val('');
 			},
 			error: function(a) {
@@ -128,32 +135,30 @@ $(document).ready( function () {
 		$("#deleteHaulId").val('');
 	});
 	$("#closemodelsend").click(function() {
-		$("#modetno").val('');
+		$("#modestuno").val('');
 		$("#modepass").val('');
-		$("#modetname").val('');
-		$("#modetdept").val('');
-		$("#modetdate").val('');
+		$("#modestuname").val('');
+		$("#modesage").val('');
+		$("#modedept").val('');
 	});
 	$("#sendHaulBtn").click(function() {
-		var sno = $("#modetno").val();
-		var name = $("#modetname").val();
-		var dept = $("#modetdept").val();
-	    var dt = $("#modetdate").val();
-		if(sno==""||name==""||dept==""||dt==""){
+		var sno = $("#modestuno").val();
+		var name = $("#modestuname").val();
+		var sex = $("#modesex").val();
+		var age = $("#modesage").val();
+		var dept = $("#modedept").val();
+	    var dt = $("#modedate").val();
+		if(sno==""||name==""||sex==""||age==""||dept==""||dt==""){
 			alert("请正确输入");
 			return;
 		}
 		$.ajax({
 					type: "POST",
-					url: "/sscm/admin/changeTeacher",
-					data: { tno:sno,tname:name,tdept:dept,dt:dt },
+					url: "/sscm/updateStudents",
+					data: { sno:sno,sname:name,ssex:sex,sage:age,sdept:dept,dt:dt },
 						success: function(msg) {
-							if (msg=="true"){
-								alert("修改成功");
-								table.draw();
-							}else{
-								alert("修改失败");
-							}
+							alert("修改成功");
+							table.draw();
 						},
 					error: function(a) {
 						alert("修改失败");
@@ -162,12 +167,18 @@ $(document).ready( function () {
 	});
   
  });
- function detailFunc(sno,sname,password,dt,sdept){
-	$("#modetno").val(sno);
+ function detailFunc(sno,sname,password,ssex,sage,dt,sdept){
+	$("#modestuno").val(sno);
 	$("#modepass").val(password);
-	$("#modetname").val(sname);
-	$("#modetdept").val(sdept);
-	$("#modetdate").val(dt);
+	$("#modestuname").val(sname);
+	if(ssex==true){
+		$("#modesex").val(1);
+	}else{
+		$("#modesex").val(0);
+	}
+	$("#modesage").val(sage);
+	$("#modedept").val(sdept);
+	$("#modedate").val(dt);
 	$("#updateOverhaul").modal({
         backdrop : 'static',
         keyboard : false
