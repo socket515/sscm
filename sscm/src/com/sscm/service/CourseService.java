@@ -5,7 +5,7 @@ import java.util.List;
 import com.sscm.entity.Course;
 
 public interface CourseService {
-	public void delete(int cno);
+	public void delete(String cno);
 	public void update(Course course);
 	public void add(Course course);
 	public int getNum();

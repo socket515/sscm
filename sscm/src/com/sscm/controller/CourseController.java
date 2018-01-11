@@ -1,5 +1,7 @@
 package com.sscm.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -41,8 +43,9 @@ public class CourseController {
 			num = 1;
 		}else if (state.equals("2")) {
 			String cname = request.getParameter("cname");
-			String type = request.getParameter("type");
+			String type = request.getParameter("ctype");
 			num = courseService.getByArgNum(cname, type);
+			System.out.println(num);
 			list = courseService.getByArg(start, length, cname, type);
 		}else {
 			return null;
@@ -55,6 +58,36 @@ public class CourseController {
 		
 	}
 	
+	@RequestMapping(value="/admin/deleteCourse", method=RequestMethod.POST)
+	public void  deleteCourse(String cno,HttpServletResponse response)throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(cno==null||cno.equals("")){
+				out.print("false");
+			}else {
+				courseService.delete(cno);
+				out.print("true");
+			}	
+		} catch (Exception e) {
+			logger.info("deleteCourse 出错了！",e);
+			out.print("false");
+		}
+	}
 	
+	@RequestMapping(value="/admin/updateCourse", method=RequestMethod.POST)
+	public void  updateCourse(Course course,HttpServletResponse response)throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(course==null){
+				out.print("false");
+			}else {
+				courseService.update(course);
+				out.print("true");
+			}	
+		} catch (Exception e) {
+			logger.info("updateCourse 出错了！",e);
+			out.print("false");
+		}
+	}
 
 }

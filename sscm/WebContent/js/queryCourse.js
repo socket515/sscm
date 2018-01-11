@@ -36,17 +36,15 @@ $(document).ready( function () {
             // "scrollY": "300px",//滚动宽度
     		//"scrollCollapse": "false",//滚动条
     		"ajax":{
-    			"url":"/sscm/queryStudents",
+    			"url":"/sscm/admin/queryCourse",
     		    "dataSrc": "aaData", 
     		    "data": function ( d ) {
                     if(state==1){
-						d.sno = $('#outListNum').val();
+						d.cno = $('#outListNum').val();
 					}
 					else if(state==2){
-						d.sdept = $('#sdept').val(); 
-						d.sname = $('#sname').val();
-						d.sdate = $('#sdate').val();
-						d.edate = $('#edate').val();
+						d.ctype = $('#ctype').val(); 
+						d.cname = $('#sname').val();
 					}
 					d.state = state;
 				}
@@ -59,27 +57,30 @@ $(document).ready( function () {
 //             ],
     		
     		"aoColumns" :[
-				{"mDataProp":"sno"},
-    			{"mDataProp":"sname"},
-    			{
-                 "sClass": "text-center",
-                 "mDataProp": "ssex",
-                 "render": function (mDataProp, type, full, meta) {
-                     if(mDataProp==true)
-						 return '男';
-					 else
-						 return '女';
-                 },
-                 "bSortable": false
-             },
-    			{"mDataProp":"sage"},
-				{"mDataProp":"dt"},
-    			{"mDataProp":"sdept"},
+				{"mDataProp":"cno"},
+    			{"mDataProp":"cname"},
 				{
                  "sClass": "text-center",
-				 "mDataProp":"sno",
+                 "mDataProp": "type",
                  "render": function (mDataProp, type, full, meta) {
-                     return '<button class="btns" onclick="detailFunc(' + full.sno +',\''+full.sname+'\',\''+ full.password +'\','+full.ssex+','+full.sage+',\'' + full.dt +'\',\''+full.sdept+'\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
+                     if(mDataProp)
+						 return '选修';
+					 else
+						 return '必修';
+                 },
+                 "bSortable": false
+                },
+    			{"mDataProp":"credit"},
+				{
+                 "sClass": "text-center",
+				 "mDataProp":"state",
+                 "render": function (mDataProp, type, full, meta) {
+					 if(mDataProp){
+						 return '<button class="btns" disabled="disabled">修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns"'+
+						 ' disabled="disabled">删除</button>';
+					 } else {
+						 return '<button class="btns" onclick="detailFunc(' + full.cno +',\''+full.cname+'\','+ full.credit +','+full.type+',\''+full.introduction+'\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + full.cno + ')" >删除</button>';
+					 }  
                  },
                  "bSortable": false
              },
@@ -91,7 +92,7 @@ $(document).ready( function () {
 	$(document).on("click","#search2",function(){
 		var sno = $('#outListNum').val();
 		if(sno==""){
-			alert("请输入学号！");
+			alert("请输入课程代码！");
 			return;
 		}
 		state = 1;
@@ -100,11 +101,9 @@ $(document).ready( function () {
 
 	});
 	$(document).on("click","#search",function(){
-		var sdept = $('#sdept').val(); 
+		var ctype = $('#ctype').val(); 
 		var sname = $('#sname').val();
-		var sdate = $('#sdate').val();
-		var edate = $('#edate').val();
-		if(sdept==""&&sname==""&&sdate==""&&edate==""){
+		if(ctype==""&&sname==""){
 			alert("请正确输入查询条件！");
 			return;
 		}
@@ -114,12 +113,12 @@ $(document).ready( function () {
 
 	});
 	$("#deleteHaulBtn").click(function() {
-		var sno = $("#deleteHaulId").val();
-		if(sno=="") return;
+		var cno = $("#deleteHaulId").val();
+		if(cno=="") return;
 		$.ajax({
 			type: "POST",
-			url: "/sscm/deleteStudents",
-			data: { sno: sno },
+			url: "/sscm/admin/deleteCourse",
+			data: { cno: cno },
 			success: function(msg) {
 				table.draw();
 				//$("#delcfmOverhaul").modal('hide')
@@ -135,27 +134,25 @@ $(document).ready( function () {
 		$("#deleteHaulId").val('');
 	});
 	$("#closemodelsend").click(function() {
-		$("#modestuno").val('');
-		$("#modepass").val('');
-		$("#modestuname").val('');
-		$("#modesage").val('');
-		$("#modedept").val('');
+		$("#addcno").val('');
+		$("#addcname").val('');
+		$("#tcomment").val('');
+		$("#addcredit").val('');
 	});
 	$("#sendHaulBtn").click(function() {
-		var sno = $("#modestuno").val();
-		var name = $("#modestuname").val();
-		var sex = $("#modesex").val();
-		var age = $("#modesage").val();
-		var dept = $("#modedept").val();
-	    var dt = $("#modedate").val();
-		if(sno==""||name==""||sex==""||age==""||dept==""||dt==""){
+		var cno = $("#addcno").val();
+		var name = $("#addcname").val();
+		var ctype = $("#addctype").val();
+		var comment = $("#tcomment").val();
+		var credit = $("#addcredit").val();
+		if(cno==""||name==""||comment==""||credit==""||ctype==""){
 			alert("请正确输入");
 			return;
 		}
 		$.ajax({
 					type: "POST",
-					url: "/sscm/updateStudents",
-					data: { sno:sno,sname:name,ssex:sex,sage:age,sdept:dept,dt:dt },
+					url: "/sscm/admin/updateCourse",
+					data: { cno:cno,cname:name,credit:credit,type:ctype,introduction:comment},
 						success: function(msg) {
 							alert("修改成功");
 							table.draw();
@@ -167,18 +164,16 @@ $(document).ready( function () {
 	});
   
  });
- function detailFunc(sno,sname,password,ssex,sage,dt,sdept){
-	$("#modestuno").val(sno);
-	$("#modepass").val(password);
-	$("#modestuname").val(sname);
-	if(ssex==true){
-		$("#modesex").val(1);
+ function detailFunc(cno,cname,credit,type,introduction){
+	$("#addcno").val(cno);
+	$("#addcname").val(cname);
+	$("#addcredit").val(credit);
+	if(type==true){
+		$("#addctype").val(1);
 	}else{
-		$("#modesex").val(0);
+		$("#addctype").val(0);
 	}
-	$("#modesage").val(sage);
-	$("#modedept").val(sdept);
-	$("#modedate").val(dt);
+	$("#tcomment").val(introduction);
 	$("#updateOverhaul").modal({
         backdrop : 'static',
         keyboard : false

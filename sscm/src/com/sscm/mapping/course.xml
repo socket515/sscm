@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and cname like CONCAT(CONCAT('%', #{0}), '%')
   </select>
   <select id="getByArg" resultMap="CourseResultMap" >
-		select count(*) from course where 1=1
+		select * from course where 1=1
 		<if test="cname!=null&amp;&amp;!&quot;&quot;.equals(cname)">
 		    and cname like CONCAT(CONCAT('%', #{cname}), '%')
 		</if>  
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit #{start},#{end}	
   </select>
   <select id="getByName" resultMap="CourseResultMap" >
-		select count(*) from course where 1=1
+		select * from course where 1=1
 		and cname like CONCAT(CONCAT('%', #{cname}), '%')
 		limit #{start},#{end}	
   </select>

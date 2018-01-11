@@ -2,17 +2,17 @@ package com.sscm.entity;
 
 public class Course {
 	private String cno ;
-	private String cnamae;
+	private String cname;
 	private int credit;
 	private boolean type;
 	private boolean state;
 	private String introduction;
 	public Course() {
 	}
-	public Course(String cno, String cnamae, int credit, boolean type,
+	public Course(String cno, String cname, int credit, boolean type,
 			boolean state, String introduction) {
 		this.cno = cno;
-		this.cnamae = cnamae;
+		this.cname = cname;
 		this.credit = credit;
 		this.type = type;
 		this.state = state;
@@ -24,11 +24,11 @@ public class Course {
 	public void setCno(String cno) {
 		this.cno = cno;
 	}
-	public String getCnamae() {
-		return cnamae;
+	public String getCname() {
+		return cname;
 	}
-	public void setCnamae(String cnamae) {
-		this.cnamae = cnamae;
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 	public int getCredit() {
 		return credit;
@@ -56,7 +56,7 @@ public class Course {
 	}
 	@Override
 	public String toString() {
-		return "Course [cno=" + cno + ", cnamae=" + cnamae + ", credit="
+		return "Course [cno=" + cno + ", cname=" + cname + ", credit="
 				+ credit + ", type=" + type + ", state=" + state
 				+ ", introduction=" + introduction + "]";
 	}

@@ -102,21 +102,15 @@
                 <h4 class="modal-title">学生信息</h4>
             </div>
             <div class="modal-body">
-                学号：<input type="text" name="stuno" id="modestuno" readonly="readonly" /></br>
-                密码：<input type="text" name="pass" id="modepass" readonly="readonly"/></br>
-                姓名：<input type="text" name="stuname" id="modestuname"/></br>  
-                性别：<select name="applyAgencyID" id="modesex" ></br>
-						<option value="1" >男</option>
-						<option value="0" >女</option>
+                课程代码：<input type="text" name="addcno" id="addcno" readonly="readonly" /></br>
+                课程名称：<input type="text" name="addcname" id="addcname"/></br>  
+				课程类别：<select name="applyAgencyID" id="addctype" ></br>
+						<option value="0" >必修</option>
+						<option value="1" >选修</option>
 						</select>
-				年龄：<input type="text" name="modesage" id="modesage" /></br>
-				院系： <select name="applyAgencyID" id="modedept" ></br>
-						<option value="数学与信息学院" >数学与信息学院</option>
-						<option value="工程学院" >工程学院</option>
-						<option value="电子与信息学院" >电子与信息学院</option>
-						<option value="动物科学院" >动物科学院</option>
-						</select>
-				入学日期： <input type="date"  name="stuno" id="modedate" />   
+				学分： <input type="text" name="addcredit" id="addcredit"/></br> 
+				课程简介:
+						<textarea name="textfield" id="tcomment" cols="90" rows="3"></textarea>
 			</div>				
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="closemodelsend" data-dismiss="modal">取消</button>

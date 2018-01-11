@@ -16,7 +16,7 @@ public class CourseServiceImpl implements CourseService {
 	private CourseDao courseDao;
 
 	@Override
-	public void delete(int cno) {
+	public void delete(String cno) {
 		courseDao.delete(cno);
 	}
 
@@ -41,9 +41,9 @@ public class CourseServiceImpl implements CourseService {
 			return courseDao.getByNameNum(cname);
 		}else {
 			if(type.equals("1")){
-				return courseDao.getByArgNum(cname, true);
+				return courseDao.getByArgNum(cname, 1);
 			}
-			return courseDao.getByArgNum(cname, false);
+			return courseDao.getByArgNum(cname, 0);
 		}
 	}
 
@@ -58,9 +58,9 @@ public class CourseServiceImpl implements CourseService {
 			return courseDao.getByName(start, end, cname);
 		}else {
 			if(type.equals("1")){
-				return courseDao.getByArg(start, end, cname, true);
+				return courseDao.getByArg(start, end, cname, 1);
 			}
-			return courseDao.getByArg(start, end, cname, false);
+			return courseDao.getByArg(start, end, cname, 0);
 		}
 	}
 
