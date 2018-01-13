@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>增加课程信息</title>
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script language="javascript" src="js/addteacher.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table class="table11"  style="width:900px;margin-top:15px;">
+  <tr>
+    <th colspan="6" style="text-align:center;">教师信息</th>
+  </tr>
+  <tr>
+    <td align="right">课程代码</td>
+    <td colspan="2">
+		<input type="text" name="addcno" id="addcno" />
+    </td>
+    <td align="right">课程名称</td>
+    <td colspan="2">
+		<input type="text" name="addcname" id="addcname" />
+	</td>
+  </tr>
+  <tr>
+    <td align="right">课程类型</td>
+    <td colspan="2">
+		<select name="addctype" id="addctype" >
+        <option value="0" selected="selected">必修</option>
+        <option value="1" >选修</option>
+		</select>
+    </td>
+    <td colspan="3">
+	</td>
+  </tr>
+  <tr>
+    <td align="right">学分</td>
+    <td colspan="2" >
+		<input type="text" name="addcreditt" id="addcreditt" >
+	</td>
+	<td colspan="3" >
+	</td>
+  </tr>
+  <tr>
+    <td align="right">课程简介</td>
+    <td colspan="5">
+	简要填写课程简单介绍<br />
+	<label>
+      <textarea name="textfield" id="tcomment" cols="100" rows="5"></textarea>
+      </label></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center">
+        <input type="button" class="btn" id="addsend" value="提 交" />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="reset" class="btn" id="addreset"  value="重 置" />
+	</td>
+  </tr>
+</table>
+<!-- 模态框   信息添加确认 -->
+<div class="modal fade" id="addsure">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                    <p>您确认要增加该条信息吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="addclose" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="addHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+</body>
+</html>

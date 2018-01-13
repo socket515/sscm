@@ -9,20 +9,19 @@
 		resetAttr();
 	});
 	$("#addHaulBtn").click(function() {
-		var sno = $("#addsno").val();
-		var name = $("#addsname").val();
-		var sex = $("#addsex").val();
-		var age = $("#addsage").val();
-		var dept = $("#addsdept").val();
-		var dt = $("#adddt").val();
-		if(sno==""||name==""||sex==""||age==""){
+		var cno = $("#addcno").val();
+		var name = $("#addcname").val();
+		var type = $("#addctype").val();
+		var credit = $("#addcreditt").val();
+		var introduction = $("#tcomment").val();
+		if(cno==""||name==""||credit==""||type==""){
 			alert("请正确填写信息");
 			return;
 		}
 		$.ajax({
 			type: "POST",
 			url: "/sscm/addStudents",
-			data: { sno:sno,sname:name,ssex:sex,sage:age,sdept:dept,dt:dt },
+			data: { cno:cno,cname:name,credit:credit,type:type,introduction:introduction},
 					success: function(msg) {
 						alert("添加成功！");
 						resetAttr();
@@ -34,10 +33,9 @@
 	});
 });
 function resetAttr() {
-	$("#addsno").val('');
-	$("#addsname").val('');
-	$("#addsex").val('');
-	$("#addsage").val('');
-	$("#addsdept").val('');
-	$("#adddt").val('');
+	$("#addcno").val('');
+	$("#addcname").val('');
+	$("#addctype").val('');
+	$("#addcreditt").val('');
+	$("#tcomment").val('');
 }

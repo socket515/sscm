@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sscm.entity.Admin;
 import com.sscm.service.AdminService;
 import com.sscm.service.StudentService;
 import com.sscm.service.TeacherService;
@@ -60,6 +61,29 @@ public class LoginController {
 			}
 		}
 		
+	}
+	@RequestMapping(value="/admin/changepassword",method=RequestMethod.POST)
+	public void adminpwd(String opwd,String npwd,HttpServletRequest request,
+			HttpServletResponse response)throws IOException{
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		Admin admin = (Admin)session.getAttribute("admin");
+		if(admin==null){
+			out.print("false");
+			return;
+		}
+		if(!admin.getPassword().equals(opwd)){
+			out.print("worng");
+			return;
+		}
+		try {
+			System.out.println(npwd);
+			adminService.change(admin);
+			out.print("true");
+		} catch (Exception e) {
+			logger.info("adminpwd³ö´íÁË£¡", e);
+			out.print("false");
+		}
 	}
 	
 	

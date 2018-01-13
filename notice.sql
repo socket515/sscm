@@ -1,0 +1,1 @@
+insert notice(dt,creator,content) values('2018-01-12','admin','大家好'),('2018-01-12','admin','永远快乐');

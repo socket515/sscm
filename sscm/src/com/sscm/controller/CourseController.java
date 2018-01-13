@@ -89,5 +89,21 @@ public class CourseController {
 			out.print("false");
 		}
 	}
+	
+	@RequestMapping(value="/admin/addCourse", method=RequestMethod.POST)
+	public void  addCourse(Course course,HttpServletResponse response)throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(course==null){
+				out.print("false");
+			}else {
+				courseService.add(course);
+				out.print("true");
+			}	
+		} catch (Exception e) {
+			logger.info("addCourse ณ๖ดํมหฃก",e);
+			out.print("false");
+		}
+	}
 
 }

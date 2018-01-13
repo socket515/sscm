@@ -4,4 +4,5 @@ import com.sscm.entity.Admin;
 
 public interface AdminService {
 	public Admin login(String username,String password);
+	public void change(Admin admin);
 }

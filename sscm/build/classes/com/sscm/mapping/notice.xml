@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sscm.dao.NoticeDao">
+  <resultMap id="NoticeResultMap" type="com.sscm.entity.Notice"> 
+  <result property="id" column="id"/> 
+  <result property="dt" column="dt"/> 
+  <result property="creator" column="creator"/>
+  <result property="content" column="content"/> 
+  </resultMap>
+  <select id="query" resultMap="NoticeResultMap" >
+      select * from notice order by dt desc limit 5
+  </select>
+  <insert id="add">
+      insert notice(dt,creator,content) values(#{dt},#{creator},#{content})
+  </insert>
+   <select id="query2" resultMap="NoticeResultMap" >
+      select * from notice order by dt desc limit #{0},#{1}
+  </select>
+  <select id="count" resultType="int">
+      select count(1) from notice
+  </select>
+  <delete id="delete" >
+      delete from notice where id = #{0}
+  </delete>
+</mapper>

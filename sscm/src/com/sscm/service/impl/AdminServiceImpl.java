@@ -18,4 +18,9 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.loginAdmin(username, password);
 	}
 
+	@Override
+	public void change(Admin admin) {
+		adminDao.change(admin);
+	}
+
 }

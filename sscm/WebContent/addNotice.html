@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>添加公告</title>
+<script src="./js/jquery-1.9.1.min.js"></script>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div>
+<table class="table11" style="width:90%; text-align:center;">
+  <tr>
+    <th style="text-align:center;">公告内容</th>
+  </tr>
+    <tr>
+      <td><textarea name="textfield" id="content" cols="100" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <td><input type="button" class="btn"  onclick="commit()" value="提 交"/>&nbsp;
+      <input type="button" class="btn"  value="取 消"/></td>
+    </tr>
+</table>
+<script language="javascript" >
+	function commit(){
+	   var content = document.getElementById("content").value;
+	   if(content==""){
+			alert("请正确填写");
+			return;
+	   }
+	   $.ajax({
+				type: "POST",
+				url: "/sscm/admin/addNotice",
+				data: {content:content},
+				success: function(msg) {
+					if(msg=="true"){
+						alert("添加成功！");
+					}
+					else{
+						alert("添加失败！");
+					}
+				},
+				error: function(a) {
+				//$("#delcfmOverhaul").modal('hide')
+					alert("error");
+				}
+		});
+	}
+</script>
+</body>
+</html>
