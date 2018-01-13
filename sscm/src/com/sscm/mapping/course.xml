@@ -48,9 +48,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       delete from course where cno = #{0}
   </delete>
   <update id="update" parameterType="com.sscm.entity.Course">
-      update course set cname=#{cname},credit=#{credit},type=#{type},state=#{state}
+      update course set cname=#{cname},credit=#{credit},type=#{type}
       ,introduction = #{introduction}
       where cno=#{cno}
+  </update>
+  <update id="changestate" >
+      update course set state=1 where cno = #{0}
   </update>
   <insert id="add" parameterType="com.sscm.entity.Course">
   	  insert into course(cname,credit,type,state,introduction) 

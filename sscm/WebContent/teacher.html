@@ -1,0 +1,77 @@
+<html>
+<head>
+    <!-- HTTP 1.1 -->
+	<meta http-equiv="Cache-Control" content="no-store"/>
+	<!-- HTTP 1.0 -->
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<!-- Prevents caching at the Proxy Server -->
+	<meta http-equiv="Expires" content="0"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="icon" href="./images/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="./css/ext-all.css"/>
+	<script src="./js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="./js/ext/ext-base.js"></script>
+	<script type="text/javascript" src="./js/ext/ext-all.js"></script>
+	<script type="text/javascript" src="./js/ext/ext-lang-zh_CN.js"></script>
+	<script type="text/javascript">
+		Ext.BLANK_IMAGE_URL = 'img/s.gif';
+	</script>
+	<link href="./styles/messages.css" rel="stylesheet" type="text/css">
+    <title>学生选课系统</title>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
+    <script language="javascript" src="./js/Clock.js"></script>
+</head>
+<body>
+<div id="loading-mask" style=""></div>
+<div id="loading">
+    <div class="loading-indicator">
+    </div>
+	<script language="javascript" src="./menuTeacher.js"></script>
+    <div id="north">
+        <span>
+            <div height="90" class="api-title" style="background: url('images/top_bg.jpg') repeat-x; height:90px">
+            </div>
+            <div height="20" style="background: url('images/menu_bg.jpg') repeat-x;height:20px;font-size:10pt;">
+                <div style="float:left;margin:0 0 0 10px;font:normal 12px tahoma, arial, sans-serif;color:#ffffff;">
+                    <label id="nowDateTime">&nbsp;</label>
+                </div>
+                <div id="demo1" style="float:right;margin:0 5px 0 0;font:normal 12px tahoma, arial, sans-serif;color:#ffffff;">
+                    
+                </div>
+            </div>
+        </span>
+    </div>
+    <div id="west">
+    </div>
+    <div id="south">
+        
+    </div>
+</div>
+<script type="text/javascript">
+    var clock = new Clock();
+    clock.display(document.getElementById("nowDateTime"));
+	$.ajax({
+			type: "GET",
+			url: "/sscm/teacher/getTeacher",
+			success: function(msg) {
+				data = eval('(' + msg + ')');
+				if(data!=null){
+					addConten(data);
+				}else{
+					alert("登录超时")
+					window.top.location.href = 'login.html';
+				}
+			},
+			error: function(a) {
+				alert("登录超时")
+				window.top.location.href = 'login.html';
+			}
+		});
+	function addConten(datas){
+		var div = document.getElementById("demo1");
+		text= "[欢迎]&nbsp; "+datas.tname+"&nbsp;&nbsp;老师 &nbsp;&nbsp;<a href=\"#\" onClick=\"window.top.location.href = 'login.html';\">【退出】</a>"
+		div.innerHTML = text;
+	}
+</script>
+</body>
+</html>

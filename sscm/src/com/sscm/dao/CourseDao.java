@@ -18,6 +18,6 @@ public interface CourseDao {
 	public void delete(String cno);
 	public void update(Course course);
 	public void add(Course course);
-	
+	public void changestate(String cno);
 
 }

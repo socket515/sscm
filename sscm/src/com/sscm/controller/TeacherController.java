@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -90,6 +91,28 @@ public class TeacherController {
 	}
 	@RequestMapping(value="/admin/changeTeacher", method=RequestMethod.POST)
 	public void changeTeacher(Teacher teacher,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(teacher==null){
+				out.print("false");
+			}else {
+				teacherService.update(teacher);
+				out.print("true");
+			}	
+		} catch (Exception e) {
+			logger.info("addTeacher ³ö´íÁË£¡",e);
+			out.print("false");
+		}
+	}
+	@RequestMapping(value="/teacher/getTeacher", method=RequestMethod.GET)
+	@ResponseBody
+	public Teacher getTeacher(HttpServletRequest request,HttpServletResponse response){
+		response.reset();
+		HttpSession session = request.getSession();
+		return (Teacher)session.getAttribute("teacher");
+	}
+	@RequestMapping(value="/teacher/changeTeacher", method=RequestMethod.POST)
+	public void updateTeacher(Teacher teacher,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
 			if(teacher==null){

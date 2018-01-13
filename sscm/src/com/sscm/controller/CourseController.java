@@ -58,6 +58,39 @@ public class CourseController {
 		
 	}
 	
+	@RequestMapping(value="/teacher/queryCourse", method=RequestMethod.GET)
+	@ResponseBody
+	public DatatablesViewPage<Course> queryCourseByTeacher(HttpServletRequest request,HttpServletResponse response){
+		response.reset();
+		logger.info("have request");
+		int start =Integer.parseInt(request.getParameter("start"));    
+        int length = Integer.parseInt(request.getParameter("length"));  
+        String state = request.getParameter("state");
+        List<Course> list = null;
+        int num = 0;
+        if (state.equals("0")){
+        	list = courseService.getCourse(start, length);
+        	num = courseService.getNum();
+        } else if (state.equals("1")) {
+			list = courseService.getByNum(request.getParameter("cno"));
+			num = 1;
+		}else if (state.equals("2")) {
+			String cname = request.getParameter("cname");
+			String type = request.getParameter("ctype");
+			num = courseService.getByArgNum(cname, type);
+			System.out.println(num);
+			list = courseService.getByArg(start, length, cname, type);
+		}else {
+			return null;
+		}
+        DatatablesViewPage<Course> view = new DatatablesViewPage<Course>();
+		view.setiTotalDisplayRecords(num);
+		view.setiTotalRecords(5);
+		view.setAaData(list); 
+		return view;
+		
+	}
+	
 	@RequestMapping(value="/admin/deleteCourse", method=RequestMethod.POST)
 	public void  deleteCourse(String cno,HttpServletResponse response)throws IOException{
 		PrintWriter out = response.getWriter();

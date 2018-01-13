@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sscm.dao.ArrangeDao">
+  <resultMap id="ArrangeResultMap" type="com.sscm.entity.Arrange"> 
+  <result property="cno" column="cno"/> 
+  <result property="cname" column="cname"/>
+  <result property="credit" column="credit"/>
+  <result property="type" column="type"/>
+  <result property="maxnum" column="maxnum"/>  
+  <result property="atime" column="atime"/>  
+  <result property="address" column="address"/>
+  <result property="sd" column="sd"/> 
+  </resultMap>
+  <insert id="add" parameterType="com.sscm.entity.Arrange">
+      insert into arrange(cno,tno,anum,maxnum,atime,address,sd) values
+      (#{cno},#{tno},#{anum},#{maxnum},#{atime},#{address},#{sd})
+  </insert>
+  <select id="queryByTeacher" resultMap="ArrangeResultMap">
+      select c.cno,c.cname,c.credit,c.type,a.maxnum,a.atime,a.address,a.sd
+      from arrange a left join course c on a.cno=c.cno
+      where a.tno = #{tno}
+      limit #{start},#{end}
+  </select>
+</mapper>
