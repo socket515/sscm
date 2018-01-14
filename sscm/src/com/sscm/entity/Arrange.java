@@ -7,6 +7,7 @@ public class Arrange {
 	private String tname;
 	private int credit;
 	private boolean type;
+	private int id;
 	private int anum;
 	private int maxnum;
 	private int atime;
@@ -93,6 +94,12 @@ public class Arrange {
 	}
 	public void setTname(String tname) {
 		this.tname = tname;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {

@@ -13,6 +13,68 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <result property="address" column="address"/>
   <result property="sd" column="sd"/> 
   </resultMap>
+   <resultMap id="sArrangeResultMap" type="com.sscm.entity.Arrange"> 
+  <result property="cno" column="cno"/> 
+  <result property="cname" column="cname"/>
+  <result property="credit" column="credit"/>
+  <result property="type" column="type"/>
+  <result property="tname" column="tname"/>
+  <result property="id" column="id"/>
+  <result property="anum" column="anum"/>  
+  <result property="maxnum" column="maxnum"/>  
+  <result property="atime" column="atime"/>  
+  <result property="address" column="address"/>
+  <result property="sd" column="sd"/> 
+  </resultMap>
+   <select id="queryByStudent" resultMap="sArrangeResultMap">
+      select c.cno,c.cname,c.credit,c.type,t.tname,a.id,a.maxnum,a.atime,a.address,a.sd
+      from arrange a left join course c on a.cno=c.cno
+      left join teacher t on a.tno = t.tno
+      where 1=1
+      <if test="cno!=null&amp;&amp;!&quot;&quot;.equals(cno)">
+		    and c.cno = #{cno}
+	  </if>  
+      <if test="cname!=null&amp;&amp;!&quot;&quot;.equals(cname)">
+		    and c.cname like CONCAT(CONCAT('%', #{cname}), '%')
+	  </if>
+	  <if test="type!=null">
+		    and c.type  = #{type}
+	  </if>
+	  <if test="tname!=null&amp;&amp;!&quot;&quot;.equals(tname)">
+		    and t.tname like CONCAT(CONCAT('%', #{tname}), '%')
+	  </if>
+	  <if test="atime!=null&amp;&amp;atime!=-1">
+		    and a.atime like CONCAT(CONCAT('%', #{atime}), '%')
+	  </if>
+	  <if test="address!=null&amp;&amp;address!=-1">
+		    and a.address like CONCAT(CONCAT('%', #{address}), '%')
+	  </if>
+      limit #{start},#{end}
+  </select>
+  <select id="countByStudent" resultType="int">
+      select count(1)
+      from arrange a left join course c on a.cno=c.cno
+      left join teacher t on a.tno = t.tno
+      where 1=1
+      <if test="cno!=null&amp;&amp;!&quot;&quot;.equals(cno)">
+		    and c.cno = #{cno}
+	  </if>  
+      <if test="cname!=null&amp;&amp;!&quot;&quot;.equals(cname)">
+		    and c.cname like CONCAT(CONCAT('%', #{cname}), '%')
+	  </if>
+	  <if test="type!=null">
+		    and c.type  = #{type}
+	  </if>
+	  <if test="tname!=null&amp;&amp;!&quot;&quot;.equals(tname)">
+		    and t.tname like CONCAT(CONCAT('%', #{tname}), '%')
+	  </if>
+	  <if test="atime!=null&amp;&amp;atime!=-1">
+		    and a.atime like CONCAT(CONCAT('%', #{atime}), '%')
+	  </if>
+	  <if test="address!=null&amp;&amp;address!=-1">
+		    and a.address like CONCAT(CONCAT('%', #{address}), '%')
+	  </if>
+  </select>
   <insert id="add" parameterType="com.sscm.entity.Arrange">
       insert into arrange(cno,tno,anum,maxnum,atime,address,sd) values
       (#{cno},#{tno},#{anum},#{maxnum},#{atime},#{address},#{sd})
@@ -23,4 +85,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where a.tno = #{tno}
       limit #{start},#{end}
   </select>
+  <select id="countByTeacher" resultType="int">
+      select count(1)
+      from arrange a left join course c on a.cno=c.cno
+      where a.tno = #{tno}
+  </select>
+  <select id="selected" resultType="int">
+      select count(1) from arrange
+      where id in (select aid from sc where sno=#{sno} )
+      and atime = #{atime}
+  </select>
+  <select id="queryCount" resultType="int">
+      select count(anum) from arrange where id=#{0}
+  </select>
+  <update id="selectArrange">
+      update arrange set anum=anum-1 where id=#{0}
+  </update>
+  <insert id="selectCourse">
+      insert into sc(aid,sno) values(#{id},#{sno})
+  </insert>
 </mapper>

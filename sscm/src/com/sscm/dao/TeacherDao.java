@@ -19,5 +19,6 @@ public interface TeacherDao {
 	public void add(Teacher teacher);
 	public void update(Teacher teacher);
 	public void delete(String tno);
+	public void changepwd(String tno, String pwd);
 	
 }

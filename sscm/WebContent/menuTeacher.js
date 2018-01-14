@@ -196,7 +196,7 @@ Ext.onReady(function() {
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'personalSetup.html';
+                var url = 'changepasswordT.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {
@@ -234,7 +234,7 @@ Ext.onReady(function() {
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'notice.html';
+                var url = 'noticet.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {

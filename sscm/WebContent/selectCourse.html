@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>事务流程监控</title>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery.dataTables.js"></script>
+<script src="./js/dataTables.bootstrap.js"></script>
+<script src="./js/selectCourse.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<style type="text/css">
+.btns {
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    background: url(images/bg26_2.jpg) no-repeat left top;
+    color: #333333;
+    border: 0px;
+    vertical-align: middle;
+}
+</style>
+</head>
+<body>
+<div style="text-align:left;margin-top:15px; float:left;width:100%;">
+  <div style="text-align:left;margin-left:5px;width:40%; float:left;">
+    &nbsp;
+    &nbsp; </div>
+  <div class="controltitle">【学生选课系统】</div>
+</div>
+<div style="width:100%; float:left;">
+    <table width="850" style="text-align:left; float:none;" class="tableselect" >
+      <tr>
+        <td align="left">课程代码</td>
+        <td align="left">
+		<input type="text" name="querycno" id="querycno">
+        </td>
+        <td align="left">课程名称</td>
+        <td align="left"><input type="text" name="querycname" id="querycname"></td>
+        <td align="left">课程性质：</td>
+        <td align="left"><select name="isPush" id="querytype" >
+            <option value="-1" selected="selected" >不限</option>
+            <option value="1">必修</option>
+            <option value="0">选修</option>
+          </select></td>
+      </tr>
+      <tr>
+        <td align="left">教师姓名</td>
+        <td align="left"><input type="text" name="querytname" id="querytname"></td>
+        <td align="left">上课时间：</td>
+        <td>
+			<select name="smalllocation"  id="queryatime">
+				<option value="-1" selected="selected" >不限</option>
+				<option value="0" >周一1-2节</option>
+				<option value="1" >周一3-4节</option>
+			    <option value="2" >周一5-6节</option>
+		        <option value="3" >周一7-8节</option>
+			    <option value="4" >周二1-2节</option>
+				<option value="5" >周二3-4节</option>
+				<option value="6" >周二5-6节</option>
+				<option value="7" >周二7-8节</option>
+				<option value="8" >周三1-2节</option>
+				<option value="9" >周三3-4节</option>
+				<option value="10" >周三5-6节</option>
+				<option value="11" >周三7-8节</option>
+				<option value="12" >周四1-2节</option>
+				<option value="13" >周四3-4节</option>
+				<option value="14" >周四5-6节</option>
+				<option value="15" >周四7-8节</option>
+				<option value="16" >周五1-2节</option>
+				<option value="17" >周五3-4节</option>
+				<option value="18" >周五5-6节</option>
+				<option value="19" >周五7-8节</option>
+            </select>
+         </td>
+        <td align="left">上课地点：</td>
+        <td>
+			<select name="applyAgencyID" id="address" ></br>
+				<option value="-1" selected="selected" >不限</option>
+				<option value="0" >1101课室</option>
+				<option value="1" >1102课室</option>
+				<option value="2" >1103课室</option>
+				<option value="3" >1104课室</option>
+				<option value="4" >1201课室</option>
+				<option value="5" >1202课室</option>
+				<option value="6" >1203课室</option>
+				<option value="7" >1204课室</option>
+				<option value="8" >1301课室</option>
+				<option value="9" >1302课室</option>
+				<option value="10" >1303课室</option>
+				<option value="11" >1304课室</option>
+				<option value="12" >1401课室</option>
+				<option value="13" >1402课室</option>
+				<option value="14" >1403课室</option>
+				<option value="15" >1404课室</option>
+				<option value="16" >1501课室</option>
+				<option value="17" >1502课室</option>
+				<option value="18" >1503课室</option>
+				<option value="19" >1504课室</option>
+			</select>
+		</td>
+        <td align="right"></td>
+        <td><input name="submit" type="button" class="btns" id="search" value="查 询" /></td>
+      </tr>
+    </table>
+  <table class="table11"  id="table11" >
+  <thead>
+    <tr>
+      <th style="width:80px;" align="center" >课程代码</th>
+      <th style="width:80px;" align="center" >课程名称</th>
+	  <th style="width:40px;" align="center" >学分</th>
+      <th style="width:40px;" align="center" >性质</th>
+      <th style="width:100px;" align="center" >教师姓名</th>
+      <th style="width:50px;" align="center" >剩余人数</th>
+      <th style="width:50px;" align="center" >总共人数</th>
+      <th style="width:120px;" align="center" >上课时间</th>
+	  <th style="width:120px;" align="center" >上课地点</th>
+      <th style="text-align:center;width:50px;" align="center" >操作</th>
+    </tr>
+  </thead>
+  <tbody>
+      
+   </tbody>
+  </table>
+ <!-- 模态框   信息删除确认 -->
+<div class="modal fade" id="delcfmOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 隐藏需要删除的id -->
+                <input type="hidden" id="deleteHaulId" />
+				<input type="hidden" id="times" />
+                    <p>您确认要选该课程！</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="closemodel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="deleteHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+</body>
+</html>

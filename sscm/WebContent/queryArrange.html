@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>课程信安排</title>
+<title>课程信息管理</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css">
 <script src="./js/jquery-1.9.1.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/jquery.dataTables.js"></script>
 <script src="./js/dataTables.bootstrap.js"></script>
-<script src="./js/arrangeCourse.js"></script>
+<script src="./js/queryCourse.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <style type="text/css">
@@ -67,6 +67,30 @@
       
     </tbody>
 </table>
+<!-- 模态框   信息删除确认 -->
+<div class="modal fade" id="delcfmOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 隐藏需要删除的id -->
+                <input type="hidden" id="deleteHaulId" />
+                    <p>您确认要删除该条信息吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="closemodel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="deleteHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
 <!-- 模态框   修改信息 -->
 <div class="modal fade" id="updateOverhaul">
     <div class="modal-dialog">
@@ -75,58 +99,18 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">安排课程</h4>
-				<input type="hidden" id="arrangecno" />
+                <h4 class="modal-title">学生信息</h4>
             </div>
             <div class="modal-body">
-                开课时间：<input type="date" name="addcno" id="adate"  /></br>
-                开课人数：<input type="text" name="addcname" id="anumber"/></br>  
-				上课时间：<select name="applyAgencyID" id="atime" ></br>
-						<option value="0" selected="selected" >周一1-2节</option>
-						<option value="1" >周一3-4节</option>
-						<option value="2" >周一5-6节</option>
-						<option value="3" >周一7-8节</option>
-						<option value="4" >周二1-2节</option>
-						<option value="5" >周二3-4节</option>
-						<option value="6" >周二5-6节</option>
-						<option value="7" >周二7-8节</option>
-						<option value="8" >周三1-2节</option>
-						<option value="9" >周三3-4节</option>
-						<option value="10" >周三5-6节</option>
-						<option value="11" >周三7-8节</option>
-						<option value="12" >周四1-2节</option>
-						<option value="13" >周四3-4节</option>
-						<option value="14" >周四5-6节</option>
-						<option value="15" >周四7-8节</option>
-						<option value="16" >周五1-2节</option>
-						<option value="17" >周五3-4节</option>
-						<option value="18" >周五5-6节</option>
-						<option value="19" >周五7-8节</option>
+                课程代码：<input type="text" name="addcno" id="addcno" readonly="readonly" /></br>
+                课程名称：<input type="text" name="addcname" id="addcname"/></br>  
+				课程类别：<select name="applyAgencyID" id="addctype" ></br>
+						<option value="0" >必修</option>
+						<option value="1" >选修</option>
 						</select>
-				上课地点： <select name="applyAgencyID" id="address" ></br>
-						<option value="0" selected="selected" >1101课室</option>
-						<option value="1" >1102课室</option>
-						<option value="2" >1103课室</option>
-						<option value="3" >1104课室</option>
-						<option value="4" >1201课室</option>
-						<option value="5" >1202课室</option>
-						<option value="6" >1203课室</option>
-						<option value="7" >1204课室</option>
-						<option value="8" >1301课室</option>
-						<option value="9" >1302课室</option>
-						<option value="10" >1303课室</option>
-						<option value="11" >1304课室</option>
-						<option value="12" >1401课室</option>
-						<option value="13" >1402课室</option>
-						<option value="14" >1403课室</option>
-						<option value="15" >1404课室</option>
-						<option value="16" >1501课室</option>
-						<option value="17" >1502课室</option>
-						<option value="18" >1503课室</option>
-						<option value="19" >1504课室</option>
-						</select>
+				学分： <input type="text" name="addcredit" id="addcredit"/></br> 
 				课程简介:
-						<textarea name="textfield" id="tcomment" cols="90" rows="3" readonly="readonly" ></textarea>
+						<textarea name="textfield" id="tcomment" cols="90" rows="3"></textarea>
 			</div>				
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="closemodelsend" data-dismiss="modal">取消</button>

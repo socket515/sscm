@@ -71,4 +71,9 @@ public class TeacherServiceImpl implements TeacherService {
 		teacherDao.delete(tno);
 	}
 
+	@Override
+	public void changepwd(String tno, String pwd) {
+		teacherDao.changepwd(tno, pwd);
+	}
+
 }

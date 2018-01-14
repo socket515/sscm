@@ -29,7 +29,7 @@
 					data: { username: name,password:pwd,value:val },
 						success: function(msg) {
 							if (msg == "student") {
-								window.location.href= "student/login.html";
+								window.location.href= "student.html";
 							} 
 							else if (msg == "teacher") {
 								window.location.href= "teacher.html";
@@ -93,7 +93,7 @@
                         <td align="right" width="80" height="45">用户名：
                         </td>
                         <td colspan="2" align="left">
-                            <input name="txtName" type="text" id="txtName" class="IN01" value="200130472" />
+                            <input name="txtName" type="text" id="txtName" class="IN01" value="201430340506" />
                         </td>
                     </tr>
                     <tr>
@@ -122,8 +122,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td ><input type="radio" name="bm" value="1" /><span>学生登录</span></td>
-						<td >&nbsp;&nbsp;<input type="radio" name="bm" value="2"/ checked="checked" ><span>教师登录</span></td>
+                        <td ><input type="radio" name="bm" value="1" checked="checked" /><span>学生登录</span></td>
+						<td >&nbsp;&nbsp;<input type="radio" name="bm" value="2"/  ><span>教师登录</span></td>
                         <td >&nbsp;&nbsp;<input type="radio" name="bm" value="3"  /><span>管理员登录</span></td>
                     </tr>
                     

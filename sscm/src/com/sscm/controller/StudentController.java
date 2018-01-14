@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -98,6 +99,29 @@ public class StudentController {
 			}	
 		} catch (Exception e) {
 			logger.info("addStudents 出错了！",e);
+			out.print("false");
+		}
+	}
+	
+	@RequestMapping(value="/student/getStudent", method=RequestMethod.GET)
+	@ResponseBody
+	public Student getStudent(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Student student = (Student) session.getAttribute("student");
+		return student;
+	}
+	
+	@RequestMapping(value="/student/updateStudents", method=RequestMethod.POST)
+	public void changeStudents(Student student,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		try {
+			if(student==null){
+				out.print("false");
+			}else {
+				studentService.update(student);
+			}	
+		} catch (Exception e) {
+			logger.info("changeStudents 出错了！",e);
 			out.print("false");
 		}
 	}

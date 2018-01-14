@@ -8,7 +8,7 @@ var tab = new Ext.TabPanel({
     minTabWidth: 115,
     tabWidth:135,
     enableTabScroll:true,
-    html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="transQuery.html"></iframe>'
+    html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="studentInfo.html"></iframe>'
 });
 
 var randomNum = Math.round(Math.random()*10000);
@@ -94,7 +94,7 @@ Ext.onReady(function() {
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'itemsProcess.html';
+                var url = 'selectCourse.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {
@@ -173,7 +173,7 @@ Ext.onReady(function() {
             'click':function(node, event) {
                 event.stopEvent();
                 var n = tab.getComponent(node.id);
-                var url = 'returnsProcess.html';
+                var url = 'studentInfo.html';
                 if (!n) { //判断是否已经打开该面板
                     n = actionFn(node, url);
                 } else {
