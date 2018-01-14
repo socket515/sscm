@@ -31,6 +31,7 @@ public class ArrangeServiceImpl implements ArrangeService {
 	}
 
 	@Override
+	@Transactional
 	public void add2(Arrange arrange) throws DuplicateKeyException {
 		arrange.setAnum(arrange.getMaxnum());
 		arrangeDao.add(arrange);
@@ -91,6 +92,17 @@ public class ArrangeServiceImpl implements ArrangeService {
 		int num = arrangeDao.selected(sno, time);
 		if(num!=0) return false;
 		return true;
+	}
+
+	@Override
+	public DatatablesViewPage<Arrange> getViewSP(int start, int end, String sno) {
+		List<Arrange> list = arrangeDao.queryPersonalCourse(start, end, sno);
+		int num = arrangeDao.queryCountP(sno);
+		DatatablesViewPage<Arrange> view = new DatatablesViewPage<Arrange>();
+		view.setAaData(list);
+		view.setiTotalDisplayRecords(num);
+		view.setiTotalRecords(5);
+		return view;
 	}
 
 }

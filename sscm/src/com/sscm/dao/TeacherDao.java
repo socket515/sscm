@@ -11,6 +11,8 @@ public interface TeacherDao {
 	public int getNum();
 	public int getNumByArgs(@Param("tname")String tname,@Param("tdept")String tdept,
 			@Param("sdate")String sdate,@Param("edate")String edate);
+	public int countByS(@Param("tname")String tname,@Param("tdept")String tdept,
+			@Param("sdate")String sdate,@Param("edate")String edate);
 	public List<Teacher> getAll(int start,int end);
 	public List<Teacher> getByNo(String tno);
 	public List<Teacher> getByArg(@Param("start")int start,@Param("end")int end,
@@ -20,5 +22,9 @@ public interface TeacherDao {
 	public void update(Teacher teacher);
 	public void delete(String tno);
 	public void changepwd(String tno, String pwd);
+	public List<Teacher> queryTeacherByS(@Param("start")int start,@Param("end")int end,
+			@Param("tname")String tname,@Param("tdept")String tdept,
+			@Param("sdate")String sdate,@Param("edate")String edate);
+	public List<Teacher> getByNoS(String tno);
 	
 }

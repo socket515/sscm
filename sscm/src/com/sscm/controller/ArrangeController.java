@@ -64,6 +64,7 @@ public class ArrangeController {
 		try {
 			if(arrange==null){
 				out.print("false");
+				return;
 			}else {
 				System.out.println(arrange);
 				Teacher teacher = (Teacher)session.getAttribute("teacher");
@@ -125,6 +126,18 @@ public class ArrangeController {
         
 	}
 	
+	@RequestMapping(value="/student/getPersonalCourse", method=RequestMethod.GET)
+	@ResponseBody
+	public DatatablesViewPage<Arrange> getPersonalCourse(HttpServletRequest request,HttpServletResponse response){
+		response.reset();
+		HttpSession session = request.getSession();
+		Student student = (Student)session.getAttribute("student");
+		if(student==null) return null;
+		int start =Integer.parseInt(request.getParameter("start"));    
+        int length = Integer.parseInt(request.getParameter("length"));
+		return arrangeService.getViewSP(start, length, student.getSno());
+	}
+	
 	@RequestMapping(value="/student/selectCourse", method=RequestMethod.POST)
 	public void selectCourse(int id,int time,HttpServletRequest request,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
@@ -139,6 +152,7 @@ public class ArrangeController {
 				arrangeService.arrangeCourse(id, student.getSno());
 			}else {
 				out.print("wrong");
+				return;
 			}
 			out.print("true");
 		} catch(ZeroException e){

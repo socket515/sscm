@@ -11,6 +11,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <result property="dt" column="dt"/>
   <result property="tcomment" column="tcomment"/> 
   </resultMap>
+  <resultMap id="TeacherSResultMap" type="com.sscm.entity.Teacher"> 
+  <result property="tno" column="tno"/> 
+  <result property="tname" column="tname"/>
+  <result property="tdept" column="tdept"/>  
+  <result property="dt" column="dt"/>
+  <result property="tcomment" column="tcomment"/> 
+  </resultMap>
+  <select id="queryTeacherByS" resultMap="TeacherSResultMap" >
+      select tno,tname,tdept,dt,tcomment
+      from teacher where 1=1
+      <if test="tdept!=null&amp;&amp;!&quot;&quot;.equals(tdept)">
+			and tdept = #{tdept}
+		</if> 
+		<if test="tname!=null&amp;&amp;!&quot;&quot;.equals(tname)">
+		    and tname like CONCAT(CONCAT('%', #{tname}), '%')
+		</if>  
+		<if test="sdate!=null&amp;&amp;!&quot;&quot;.equals(sdate)">
+		    and dt &gt;= #{sdate}
+		</if>
+		<if test="edate!=null&amp;&amp;!&quot;&quot;.equals(edate)">
+		    and dt &lt;= #{edate}
+		</if>
+		order by tno 
+		limit #{start},#{end}
+  </select>
+  <select id="getByNoS" resultMap="TeacherSResultMap" >
+		select tno,tname,tdept,dt,tcomment from teacher where tno = #{tno} 
+  </select>
+  <select id="countByS" resultType="int" >
+      select count(1)
+      from teacher where 1=1
+      <if test="tdept!=null&amp;&amp;!&quot;&quot;.equals(tdept)">
+			and tdept = #{tdept}
+		</if> 
+		<if test="tname!=null&amp;&amp;!&quot;&quot;.equals(tname)">
+		    and tname like CONCAT(CONCAT('%', #{tname}), '%')
+		</if>  
+		<if test="sdate!=null&amp;&amp;!&quot;&quot;.equals(sdate)">
+		    and dt &gt;= #{sdate}
+		</if>
+		<if test="edate!=null&amp;&amp;!&quot;&quot;.equals(edate)">
+		    and dt &lt;= #{edate}
+		</if>
+  </select>
   <select id="loginTeacher" resultMap="TeacherResultMap" >
 		select * from teacher where tno=#{0} and tpass=#{1}
   </select>
@@ -18,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from teacher order by tno limit #{0},#{1}
   </select>
   <select id="getByNo" resultMap="TeacherResultMap" >
-		select * from teacher where tno = #{tno} order by tno limit #{start},#{end}
+		select * from teacher where tno = #{tno} 
   </select>
   <select id="getByArg" resultMap="TeacherResultMap" >
 		select * from teacher where 1=1

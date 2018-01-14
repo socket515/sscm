@@ -58,6 +58,27 @@ public class TeacherController {
 		view.setAaData(list); 
 		return view;
 	}
+	@RequestMapping(value="/student/queryTeacher", method=RequestMethod.GET)
+	@ResponseBody
+	public DatatablesViewPage<Teacher> queryTeacherBystudent(HttpServletRequest request,HttpServletResponse response){
+		response.reset();
+		int start =Integer.parseInt(request.getParameter("start"));    
+        int length = Integer.parseInt(request.getParameter("length"));  
+        String state = request.getParameter("state");
+        DatatablesViewPage<Teacher> view = new DatatablesViewPage<Teacher>();
+        if (state.equals("0")){
+        	String tdept = request.getParameter("tdept");
+			String tname = request.getParameter("tname");
+			String sdate = request.getParameter("sdate");
+			String edate = request.getParameter("edate");
+			view = teacherService.queryTeachers(start, length, tname, tdept, sdate, edate);
+        } else if (state.equals("1")) {
+			view = teacherService.queryTeachers(request.getParameter("tno"));
+		}else {
+			return null;
+		}
+		return view;
+	}
 	@RequestMapping(value="/admin/addTeacher", method=RequestMethod.POST)
 	public void addTeacher(Teacher teacher,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();

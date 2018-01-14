@@ -2,6 +2,7 @@ package com.sscm.service;
 
 import java.util.List;
 
+import com.sscm.entity.DatatablesViewPage;
 import com.sscm.entity.Teacher;
 
 public interface TeacherService {
@@ -15,4 +16,6 @@ public interface TeacherService {
 	public void update(Teacher teacher);
 	public void delete(String tno);
 	public void changepwd(String tno, String pwd);
+	public DatatablesViewPage<Teacher> queryTeachers(int start,int end,String tname,String tdept,String sdate,String edate);
+	public DatatablesViewPage<Teacher> queryTeachers(String tno);
 }

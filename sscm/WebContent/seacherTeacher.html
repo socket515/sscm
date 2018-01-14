@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>教师信息管理</title>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery.dataTables.js"></script>
+<script src="./js/dataTables.bootstrap.js"></script>
+<script src="./js/seacherTeacher.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<style type="text/css">
+.btns {
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    background: url(images/bg26_2.jpg) no-repeat left top;
+    color: #333333;
+    border: 0px;
+    vertical-align: middle;
+}
+</style>
+</head>
+<body>
+<div style="text-align:left;margin-top:15px; float:left;width:100%;">
+  <div style="text-align:left;margin-left:5px;width:40%; float:left;">
+    &nbsp;
+    &nbsp; </div>
+  <div class="controltitle">【教师信息管理】</div>
+</div>
+<div style="width:100%; float:left;">
+  <table width="98%" style="text-align:left;">
+    <tr>
+      <td style="text-align:right;"><span style="width:100px;">所在学院</span></td>
+      <td><select name="applyAgencyID" id="tdept" >
+        <option value="数学与信息学院" >数学与信息学院</option>
+        <option value="工程学院" >工程学院</option>
+        <option value="电子与信息学院" >电子与信息学院</option>
+        <option value="动物科学院" >动物科学院</option>
+		<option value="" selected="selected" >---------------</option>
+      </select></td>
+      <td style="text-align:right;">教师名称：</td>
+      <td><input name="holidayTime" id="tname" type="text" size="15" /></td>
+      <td style="text-align:right;"><span style="width:60px;">入职时间</span>：</td>
+      <td><input name="select52" type="date" class="Wdate"  id="sdate"  size="12"/>
+        至
+        <input name="select522" type="date" class="Wdate" id="edate"  size="12"/></td>
+      <td style="width:50px;"><input name="search" type="button" id="search" value="查 询" class="btns"  /></td>
+    </tr>
+  </table>
+  <hr style="border:1px #000000 dashed;width:98%;"/>
+  <table width="98%" style="text-align:left; margin:0 auto;">
+    <tr>
+      <td>教师工号：&nbsp;&nbsp;
+        <input name="outListNum" id="tno" type="text"/>&nbsp;&nbsp; 
+        <input name="search2" id="search2" type="button" value="查 询" class="btns"  />
+        </td>
+    </tr>
+  </table>
+  <table id="table11" class="table11" style="margin:0 auto;" >
+    <thead>
+        <tr>
+      <th style=" width:140px;">教师工号</th>
+      <th style="width:60px;">姓名</th>
+      <th style="width:60px;">入职日期</th>
+      <th style="width:60px;">院系</th>
+      <th style="text-align:center;width:150px;">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+</table>
+<!-- 模态框   信息删除确认 -->
+<div class="modal fade" id="delcfmOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                简介：</br>
+                <label>
+      <textarea name="textfield" id="tcomment" cols="100" rows="5" readonly="readonly" ></textarea>
+      </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" align="center"  id="deleteHaulBtn" data-dismiss="modal">确定</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+</body>
+</html>

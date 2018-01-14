@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sscm.entity.Admin;
+import com.sscm.entity.Student;
 import com.sscm.entity.Teacher;
 import com.sscm.service.AdminService;
 import com.sscm.service.StudentService;
@@ -103,6 +104,29 @@ public class LoginController {
 		}
 		try {
 			teacherService.changepwd(teacher.getTno(), npwd);
+			out.print("true");
+		} catch (Exception e) {
+			logger.info("adminpwd出错了！", e);
+			out.print("false");
+		}
+	}
+	
+	@RequestMapping(value="/student/changepassword",method=RequestMethod.POST)
+	public void studentpwd(String opwd,String npwd,HttpServletRequest request,
+			HttpServletResponse response)throws IOException{
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		Student student = (Student)session.getAttribute("student");
+		if(student==null){
+			out.print("false");
+			return;
+		}
+		if(!student.getPassword().equals(opwd)){
+			out.print("worng");
+			return;
+		}
+		try {
+			studentService.changepassword(student.getSno(), npwd);
 			out.print("true");
 		} catch (Exception e) {
 			logger.info("adminpwd出错了！", e);

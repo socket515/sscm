@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.sscm.dao.TeacherDao;
+import com.sscm.entity.DatatablesViewPage;
 import com.sscm.entity.Teacher;
 import com.sscm.service.TeacherService;
 @Service("teacherService")
@@ -74,6 +75,28 @@ public class TeacherServiceImpl implements TeacherService {
 	@Override
 	public void changepwd(String tno, String pwd) {
 		teacherDao.changepwd(tno, pwd);
+	}
+
+	@Override
+	public DatatablesViewPage<Teacher> queryTeachers(int start, int end,
+			String tname, String tdept, String sdate, String edate) {
+		List<Teacher> list = teacherDao.queryTeacherByS(start, end, tname, tdept, sdate, edate);
+		int num = teacherDao.countByS(tname, tdept, sdate, edate);
+		DatatablesViewPage<Teacher> view = new DatatablesViewPage<Teacher>();
+		view.setAaData(list);
+		view.setiTotalDisplayRecords(num);
+		view.setiTotalRecords(5);
+		return view;
+	}
+
+	@Override
+	public DatatablesViewPage<Teacher> queryTeachers(String tno) {
+		List<Teacher> list = teacherDao.getByNoS(tno);
+		DatatablesViewPage<Teacher> view = new DatatablesViewPage<Teacher>();
+		view.setAaData(list);
+		view.setiTotalDisplayRecords(1);
+		view.setiTotalRecords(5);
+		return view;
 	}
 
 }
