@@ -50,6 +50,28 @@
 <script type="text/javascript">
     var clock = new Clock();
     clock.display(document.getElementById("nowDateTime"));
+	$.ajax({
+			type: "GET",
+			url: "/sscm/admin/getadmin",
+			success: function(msg) {
+				if(msg!=""){
+					var data = eval('(' + msg + ')');
+					addConten(data);	
+				}else{
+					alert("登录超时")
+					window.top.location.href = 'login.html';
+				}
+			},
+			error: function(a) {
+				alert("登录超时")
+				window.top.location.href = 'login.html';
+			}
+		});
+	function addConten(datas){
+		var div = document.getElementById("demo1");
+		text= "[欢迎]&nbsp; "+datas.username+"&nbsp;&nbsp;管理员 &nbsp;&nbsp;<a href=\"#\" onClick=\"window.top.location.href = 'login.html';\">【退出】</a>"
+		div.innerHTML = text;
+	}
 </script>
 </body>
 </html>

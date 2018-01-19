@@ -53,9 +53,9 @@
 			type: "GET",
 			url: "/sscm/student/getStudent",
 			success: function(msg) {
-				data = eval('(' + msg + ')');
-				if(data!=null){
-					addConten(data);
+				if(msg!=""){
+					var data = eval('(' + msg + ')');
+					addConten(data);	
 				}else{
 					alert("登录超时")
 					window.top.location.href = 'login.html';

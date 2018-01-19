@@ -26,7 +26,7 @@ public class StudentController {
 	@Resource
 	private StudentService studentService;
 	
-	@RequestMapping(value="/queryStudents", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/queryStudents", method=RequestMethod.GET)
 	@ResponseBody
 	public DatatablesViewPage<Student> querStudents(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
@@ -58,7 +58,7 @@ public class StudentController {
 		return view;
 	}
 	
-	@RequestMapping(value="/deleteStudents", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/deleteStudents", method=RequestMethod.POST)
 	public void deleteStudents(String sno,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
@@ -73,7 +73,7 @@ public class StudentController {
 		}
 	}
 	
-	@RequestMapping(value="/updateStudents", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/updateStudents", method=RequestMethod.POST)
 	public void updateStudents(Student student,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {
@@ -88,7 +88,7 @@ public class StudentController {
 		}
 	}
 	
-	@RequestMapping(value="/addStudents", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/addStudents", method=RequestMethod.POST)
 	public void addStudents(Student student,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		try {

@@ -49,8 +49,16 @@
     
      <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/sscm/student/**.html"/>
+            <mvc:mapping path="/student/**"/>
         <bean class="com.sscm.interceptors.StudentInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+        <bean class="com.sscm.interceptors.AdminInterceptors"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/teacher/**"/>
+        <bean class="com.sscm.interceptors.TeacherInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors> 
     

@@ -137,6 +137,9 @@ $(document).ready( function () {
 								alert("选课失败");
 							} else if(msg=="err"){
 								alert("连接超时");
+							}else{
+								alert("连接超时");
+								window.top.location.href = 'login.html';
 							}
 						},
 					error: function(a) {

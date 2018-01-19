@@ -20,7 +20,7 @@
 		}
 		$.ajax({
 			type: "POST",
-			url: "/sscm/addStudents",
+			url: "/sscm/admin/addStudents",
 			data: { cno:cno,cname:name,credit:credit,type:type,introduction:introduction},
 					success: function(msg) {
 						alert("添加成功！");

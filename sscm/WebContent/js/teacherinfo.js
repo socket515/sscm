@@ -60,9 +60,9 @@ function init(){
 			type: "GET",
 			url: "/sscm/teacher/getTeacher",
 			success: function(msg) {
-				data = eval('(' + msg + ')');
-				if(data!=null){
-					initData(data);
+				if(msg!=""){
+					var data = eval('(' + msg + ')');
+					initData(data);	
 				}else{
 					alert("登录超时")
 					window.top.location.href = 'login.html';

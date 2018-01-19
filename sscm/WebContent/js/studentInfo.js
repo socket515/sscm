@@ -56,8 +56,8 @@ function init(){
 			type: "GET",
 			url: "/sscm/student/getStudent",
 			success: function(msg) {
-				data = eval('(' + msg + ')');
-				if(data!=null){
+				if(msg=""){
+					var data = eval('(' + msg + ')');
 					initData(data);
 				}else{
 					alert("登录超时")

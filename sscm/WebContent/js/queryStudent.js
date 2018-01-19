@@ -36,7 +36,7 @@ $(document).ready( function () {
             // "scrollY": "300px",//滚动宽度
     		//"scrollCollapse": "false",//滚动条
     		"ajax":{
-    			"url":"/sscm/queryStudents",
+    			"url":"/sscm/admin/queryStudents",
     		    "dataSrc": "aaData", 
     		    "data": function ( d ) {
                     if(state==1){
@@ -118,7 +118,7 @@ $(document).ready( function () {
 		if(sno=="") return;
 		$.ajax({
 			type: "POST",
-			url: "/sscm/deleteStudents",
+			url: "/sscm/admin/deleteStudents",
 			data: { sno: sno },
 			success: function(msg) {
 				table.draw();
@@ -154,7 +154,7 @@ $(document).ready( function () {
 		}
 		$.ajax({
 					type: "POST",
-					url: "/sscm/updateStudents",
+					url: "/sscm/admin/updateStudents",
 					data: { sno:sno,sname:name,ssex:sex,sage:age,sdept:dept,dt:dt },
 						success: function(msg) {
 							alert("修改成功");

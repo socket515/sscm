@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sscm.entity.Admin;
 import com.sscm.entity.Student;
@@ -132,6 +133,14 @@ public class LoginController {
 			logger.info("adminpwd³ö´íÁË£¡", e);
 			out.print("false");
 		}
+	}
+	
+	@RequestMapping(value="/admin/getadmin",method=RequestMethod.POST)
+	@ResponseBody
+	public Admin getadmin(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Admin admin = (Admin) session.getAttribute("admin");
+		return admin;
 	}
 	
 
