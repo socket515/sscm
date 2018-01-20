@@ -9,6 +9,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<link rel="icon" href="./images/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="./css/ext-all.css"/>
+	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="./js/ext/ext-base.js"></script>
 	<script type="text/javascript" src="./js/ext/ext-all.js"></script>
 	<script type="text/javascript" src="./js/ext/ext-lang-zh_CN.js"></script>
@@ -35,8 +36,7 @@
                 <div style="float:left;margin:0 0 0 10px;font:normal 12px tahoma, arial, sans-serif;color:#ffffff;">
                     <label id="nowDateTime">&nbsp;</label>
                 </div>
-                <div style="float:right;margin:0 5px 0 0;font:normal 12px tahoma, arial, sans-serif;color:#ffffff;">
-                    [欢迎]&nbsp; 系统&nbsp;&nbsp;系统管理员 &nbsp;&nbsp;<a href="#" onClick="window.top.location.href = 'login.html';">【退出】</a>
+                <div  id="demo1" style="float:right;margin:0 5px 0 0;font:normal 12px tahoma, arial, sans-serif;color:#ffffff;">
                 </div>
             </div>
         </span>
@@ -69,8 +69,15 @@
 		});
 	function addConten(datas){
 		var div = document.getElementById("demo1");
-		text= "[欢迎]&nbsp; "+datas.username+"&nbsp;&nbsp;管理员 &nbsp;&nbsp;<a href=\"#\" onClick=\"window.top.location.href = 'login.html';\">【退出】</a>"
+		text= "[欢迎]&nbsp; "+datas.username+"&nbsp;&nbsp;管理员 &nbsp;&nbsp;<a href=\"#\" onClick=\"unlogin()\">【退出】</a>"
 		div.innerHTML = text;
+	}
+	function unlogin(){
+		$.ajax({
+			type: "POST",
+			url: "/sscm/unlogin",
+		});
+		window.top.location.href = 'login.html';
 	}
 </script>
 </body>

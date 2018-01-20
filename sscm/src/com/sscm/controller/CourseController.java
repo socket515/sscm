@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -133,7 +134,11 @@ public class CourseController {
 				courseService.add(course);
 				out.print("true");
 			}	
-		} catch (Exception e) {
+		} 
+		catch (DuplicateKeyException e){
+			out.print("key");
+		}
+		catch (Exception e) {
 			logger.info("addCourse ³ö´íÁË£¡",e);
 			out.print("false");
 		}

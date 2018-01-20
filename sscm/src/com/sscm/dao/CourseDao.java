@@ -3,6 +3,7 @@ package com.sscm.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.dao.DuplicateKeyException;
 
 import com.sscm.entity.Course;
 
@@ -17,7 +18,7 @@ public interface CourseDao {
 	public List<Course> getByName(@Param("start")int start,@Param("end")int end,@Param("cname")String cname);
 	public void delete(String cno);
 	public void update(Course course);
-	public void add(Course course);
+	public void add(Course course) throws DuplicateKeyException ;
 	public void changestate(String cno);
 
 }

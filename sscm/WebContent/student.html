@@ -68,8 +68,15 @@
 		});
 	function addConten(datas){
 		var div = document.getElementById("demo1");
-		text= "[欢迎]&nbsp; "+datas.sname+"&nbsp;&nbsp;同学 &nbsp;&nbsp;<a href=\"#\" onClick=\"window.top.location.href = 'login.html';\">【退出】</a>"
+		text= "[欢迎]&nbsp; "+datas.sname+"&nbsp;&nbsp;同学 &nbsp;&nbsp;<a href=\"#\" onClick=\"unlogin()\">【退出】</a>"
 		div.innerHTML = text;
+	}
+	function unlogin(){
+		$.ajax({
+			type: "POST",
+			url: "/sscm/unlogin",
+		});
+		window.top.location.href = 'login.html';
 	}
 </script>
 </body>

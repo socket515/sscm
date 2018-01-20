@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       update course set state=1 where cno = #{0}
   </update>
   <insert id="add" parameterType="com.sscm.entity.Course">
-  	  insert into course(cname,credit,type,state,introduction) 
-  	  values(#{cname},#{credit},#{type},#{state},#{introduction})  
+  	  insert into course(cno,cname,credit,type,state,introduction) 
+  	  values(#{cno},#{cname},#{credit},#{type},#{state},#{introduction})  
   </insert>
 </mapper>

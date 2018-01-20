@@ -2,6 +2,8 @@ package com.sscm.service;
 
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import com.sscm.entity.Student;
 
 public interface StudentService {
@@ -14,6 +16,6 @@ public interface StudentService {
 	public List<Student> getStudentsByArg(int start,int end,String sdept,String sname,String sdate,String edate);
 	public void delete(String sno);
 	public void update(Student student);
-	public void add(Student student);
+	public void add(Student student) throws DuplicateKeyException ;
 	public void changepassword(String sno,String password);
 }

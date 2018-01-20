@@ -9,27 +9,28 @@
 		resetAttr();
 	});
 	$("#addHaulBtn").click(function() {
-		var sno = $("#addtno").val();
-		var name = $("#addtname").val();
-		var dept = $("#addtdept").val();
-		var dt = $("#adddt").val();
+		var cno = $("#addcno").val();
+		var name = $("#addcname").val();
+		var type = $("#addctype").val();
+		var creditt = $("#addcreditt").val();
 		var comment = $("#tcomment").val();
-		if(sno==""||name==""){
+		if(cno==""||name==""||creditt==""){
 			alert("请正确填写信息");
 			return;
 		}
 		$.ajax({
 			type: "POST",
-			url: "/sscm/admin/addTeacher",
-			data: { tno:sno,tname:name,tdept:dept,dt:dt,tcomment:comment },
+			url: "/sscm/admin/addCourse",
+			data: { cno:cno,cname:name,type:type,credit:creditt,introduction:comment },
 					success: function(msg) {
 						if (msg=="false"){
 							alert("添加失败！");
-						} else{
+						} else if(msg=="true"){
 							alert("添加成功！");
+							resetAttr();
+						}else if(msg=="key"){
+							alert("课程代码不要重复");
 						}
-						
-						resetAttr();
 					},
 					error: function(a) {
 						alert("增加失败");
@@ -38,9 +39,8 @@
 	});
 });
 function resetAttr() {
-	$("#addtno").val('');
-	$("#addtname").val('');
-	$("#addtdept").val('');
-	$("#adddt").val('');
+	$("#addcno").val('');
+	$("#addcname").val('');
+	$("#addcreditt").val('');
 	$("#tcomment").val('');
 }

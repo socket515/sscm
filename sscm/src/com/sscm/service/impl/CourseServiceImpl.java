@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.sscm.dao.CourseDao;
@@ -26,7 +27,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public void add(Course course) {
+	public void add(Course course) throws DuplicateKeyException {
 		courseDao.add(course);
 	}
 

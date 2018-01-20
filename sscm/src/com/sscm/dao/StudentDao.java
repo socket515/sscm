@@ -3,6 +3,7 @@ package com.sscm.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.dao.DuplicateKeyException;
 
 import com.sscm.entity.Student;
 
@@ -28,7 +29,7 @@ public interface StudentDao {
 	
 	public void update(Student student);
 	
-	public void add(Student student);
+	public void add(Student student) throws DuplicateKeyException;
 	
 	public void changepassword(String sno,String password);
 

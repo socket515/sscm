@@ -9,6 +9,8 @@ import com.sscm.entity.Student;
 import com.sscm.service.StudentService;
 
 import javax.annotation.Resource;
+
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 @Service("studentService")
@@ -67,7 +69,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public void add(Student student) {
+	public void add(Student student) throws DuplicateKeyException {
 		student.setPassword(student.getSno());
 		String dt = student.getDt();
 		if(dt==null||dt.equals("")){

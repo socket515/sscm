@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.sscm.dao.TeacherDao;
@@ -53,7 +54,7 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
-	public void add(Teacher teacher) {
+	public void add(Teacher teacher) throws DuplicateKeyException {
 		teacher.setTpass(teacher.getTno());
 		String dt = teacher.getDt();
 		if(dt==null||dt.equals("")){

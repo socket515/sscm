@@ -135,12 +135,18 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping(value="/admin/getadmin",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/getadmin",method=RequestMethod.GET)
 	@ResponseBody
 	public Admin getadmin(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Admin admin = (Admin) session.getAttribute("admin");
 		return admin;
+	}
+	
+	@RequestMapping(value="/unlogin",method=RequestMethod.POST)
+	public void unlogin(HttpServletRequest request){
+		System.out.println("t");
+		request.getSession().invalidate();
 	}
 	
 
