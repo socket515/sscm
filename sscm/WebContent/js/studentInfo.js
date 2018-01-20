@@ -56,7 +56,7 @@ function init(){
 			type: "GET",
 			url: "/sscm/student/getStudent",
 			success: function(msg) {
-				if(msg=""){
+				if(msg!=""){
 					var data = eval('(' + msg + ')');
 					initData(data);
 				}else{
