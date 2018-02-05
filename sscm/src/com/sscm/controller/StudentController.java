@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sscm.entity.BarInfo;
 import com.sscm.entity.DatatablesViewPage;
+import com.sscm.service.DataService;
 import com.sscm.service.StudentService;
 import com.sscm.entity.Student;
 @Controller
@@ -26,6 +28,9 @@ public class StudentController {
 	
 	@Resource
 	private StudentService studentService;
+	
+	@Resource
+	private DataService dataService;
 	
 	@RequestMapping(value="/admin/queryStudents", method=RequestMethod.GET)
 	@ResponseBody
@@ -111,10 +116,11 @@ public class StudentController {
 	
 	@RequestMapping(value="/student/getStudent", method=RequestMethod.GET)
 	@ResponseBody
-	public Student getStudent(HttpServletRequest request){
+	public BarInfo getStudent(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Student student = (Student) session.getAttribute("student");
-		return student;
+		BarInfo bar = dataService.getBar(student.getSname());
+		return bar;
 	}
 	
 	@RequestMapping(value="/student/updateStudents", method=RequestMethod.POST)

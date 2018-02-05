@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sscm.entity.Admin;
+import com.sscm.entity.BarInfo;
 import com.sscm.entity.Student;
 import com.sscm.entity.Teacher;
 import com.sscm.service.AdminService;
+import com.sscm.service.DataService;
 import com.sscm.service.StudentService;
 import com.sscm.service.TeacherService;
 
@@ -31,6 +33,8 @@ public class LoginController {
 	private TeacherService teacherService;
 	@Resource
 	private AdminService adminService;
+	@Resource
+	private DataService dataService;
 	
 	//µÇÂ¼
 	@RequestMapping(value="userLogin",method=RequestMethod.POST)
@@ -137,10 +141,11 @@ public class LoginController {
 	
 	@RequestMapping(value="/admin/getadmin",method=RequestMethod.GET)
 	@ResponseBody
-	public Admin getadmin(HttpServletRequest request){
+	public BarInfo getadmin(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Admin admin = (Admin) session.getAttribute("admin");
-		return admin;
+		BarInfo bar = dataService.getBar(admin.getUsername());
+		return bar;
 	}
 	
 	@RequestMapping(value="/unlogin",method=RequestMethod.POST)

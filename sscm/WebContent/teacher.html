@@ -69,7 +69,9 @@
 		});
 	function addConten(datas){
 		var div = document.getElementById("demo1");
-		text= "[欢迎]&nbsp; "+datas.tname+"&nbsp;&nbsp;老师 &nbsp;&nbsp;<a href=\"#\" <a href=\"#\" onClick=\"unlogin()\">【退出】</a>"
+		text=datas.info+"&nbsp;&nbsp;&nbsp;&nbsp;[欢迎]&nbsp;"+datas.tname+"&nbsp;&nbsp;老师 &nbsp;&nbsp;<a href=\"#\" <a href=\"#\" onClick=\"unlogin()\">【退出】</a>"
+		sessionStorage.setItem("year", datas.year);
+		sessionStorage.setItem("term", datas.term);
 		div.innerHTML = text;
 	}
 	function unlogin(){

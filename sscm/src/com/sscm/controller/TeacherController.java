@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sscm.entity.BarInfo;
 import com.sscm.entity.DatatablesViewPage;
 import com.sscm.entity.Teacher;
+import com.sscm.service.DataService;
 import com.sscm.service.TeacherService;
 
 @Controller
@@ -27,6 +29,9 @@ public class TeacherController {
 	
 	@Resource
 	private TeacherService teacherService;
+	
+	@Resource
+	private DataService dataService;
 	
 	@RequestMapping(value="/admin/queryTeacher", method=RequestMethod.GET)
 	@ResponseBody
@@ -132,10 +137,12 @@ public class TeacherController {
 	}
 	@RequestMapping(value="/teacher/getTeacher", method=RequestMethod.GET)
 	@ResponseBody
-	public Teacher getTeacher(HttpServletRequest request,HttpServletResponse response){
+	public BarInfo getTeacher(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
 		HttpSession session = request.getSession();
-		return (Teacher)session.getAttribute("teacher");
+		Teacher teacher = (Teacher)session.getAttribute("teacher");
+		BarInfo barInfo =  dataService.getBar(teacher.getTname());
+		return barInfo;
 	}
 	@RequestMapping(value="/teacher/changeTeacher", method=RequestMethod.POST)
 	public void updateTeacher(Teacher teacher,HttpServletResponse response) throws IOException{

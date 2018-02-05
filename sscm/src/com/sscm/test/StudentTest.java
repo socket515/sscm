@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sscm.entity.Student;
 import com.sscm.service.AdminService;
+import com.sscm.service.DataService;
 import com.sscm.service.StudentService;
 import com.sscm.service.TeacherService;
 
@@ -22,21 +23,13 @@ public class StudentTest {
 	private TeacherService teacherService;
 	@Resource
 	private AdminService adminService;
+	@Resource
+	private DataService dataService;
+	
 	
 	@Test
 	public void test(){
-		String key = null;
-		Object obj = null;
-		if(key==null&&obj==null){
-			obj =  studentService.login("201430340506", "123456");
-			if(obj!=null){
-				System.out.println((Student)obj);
-			}
-		}
-		Student student = studentService.login("201430340506", "123456");
-		System.out.println(student);
-		System.out.println(teacherService.login("s2123", "123456"));
-		System.out.println(adminService.login("admin", "admin"));
+		System.out.println(dataService.getBar("ss"));
 	}
 	
 
