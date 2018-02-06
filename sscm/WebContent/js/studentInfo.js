@@ -20,15 +20,16 @@ $(document).ready( function () {
 		var ssex= $("#addsex").val();
 		var sage = $("#addsage").val();
 		var sdept = $("#addsdept").val();
+		var major = $("#major").val();
 		var dt = $("#adddt").val();
-		if(sno==""||sname==""||ssex==""||sage==""||sdept==""||dt==""){
+		if(sno==""||sname==""||ssex==""||sage==""||sdept==""||dt==""||major==""){
 			alert("请正确填写信息");
 			return;
 		}
 		$.ajax({
 			type: "POST",
 			url: "/sscm/student/updateStudents",
-			data: { sno:sno,sname:sname,ssex:ssex,sage:sage,sdept:sdept,dt:dt},
+			data: { sno:sno,sname:sname,ssex:ssex,sage:sage,major:major,sdept:sdept,dt:dt},
 					success: function(msg) {
 						alert("修改成功！");
 						lockAttr();
@@ -77,4 +78,5 @@ function initData(data){
 	$("#addsage").val(data.sage);
 	$("#addsdept").val(data.sdept);
 	$("#adddt").val(data.dt);
+	$("#major").val(data.major);
 }

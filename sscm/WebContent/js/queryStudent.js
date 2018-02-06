@@ -74,6 +74,7 @@ $(document).ready( function () {
              },
     			{"mDataProp":"sage"},
 				{"mDataProp":"dt"},
+				{"mDataProp":"major"},
     			{"mDataProp":"sdept"},
 				{
                  "sClass": "text-center",
@@ -148,14 +149,15 @@ $(document).ready( function () {
 		var age = $("#modesage").val();
 		var dept = $("#modedept").val();
 	    var dt = $("#modedate").val();
-		if(sno==""||name==""||sex==""||age==""||dept==""||dt==""){
+		var major = $("#major").val();
+		if(sno==""||name==""||sex==""||age==""||dept==""||dt==""||major==""){
 			alert("请正确输入");
 			return;
 		}
 		$.ajax({
 					type: "POST",
 					url: "/sscm/admin/updateStudents",
-					data: { sno:sno,sname:name,ssex:sex,sage:age,sdept:dept,dt:dt },
+					data: { sno:sno,sname:name,ssex:sex,sage:age,sdept:dept,major:major,dt:dt },
 						success: function(msg) {
 							alert("修改成功");
 							table.draw();

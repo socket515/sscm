@@ -52,7 +52,7 @@
     clock.display(document.getElementById("nowDateTime"));
 	$.ajax({
 			type: "GET",
-			url: "/sscm/teacher/getTeacher",
+			url: "/sscm/teacher/getBar",
 			success: function(msg) {
 				if(msg!=""){
 					var data = eval('(' + msg + ')');

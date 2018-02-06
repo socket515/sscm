@@ -114,13 +114,22 @@ public class StudentController {
 		}
 	}
 	
-	@RequestMapping(value="/student/getStudent", method=RequestMethod.GET)
+	@RequestMapping(value="/student/getBar", method=RequestMethod.GET)
 	@ResponseBody
-	public BarInfo getStudent(HttpServletRequest request){
+	public BarInfo getBar(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		Student student = (Student) session.getAttribute("student");
 		BarInfo bar = dataService.getBar(student.getSname());
 		return bar;
+	}
+	
+	@RequestMapping(value="/student/getStudent", method=RequestMethod.GET)
+	@ResponseBody
+	public Student getStudent(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Student student = (Student) session.getAttribute("student");
+		student.setPassword("");
+		return student;
 	}
 	
 	@RequestMapping(value="/student/updateStudents", method=RequestMethod.POST)

@@ -135,14 +135,23 @@ public class TeacherController {
 			out.print("false");
 		}
 	}
-	@RequestMapping(value="/teacher/getTeacher", method=RequestMethod.GET)
+	@RequestMapping(value="/teacher/getBar", method=RequestMethod.GET)
 	@ResponseBody
-	public BarInfo getTeacher(HttpServletRequest request,HttpServletResponse response){
+	public BarInfo getBar(HttpServletRequest request,HttpServletResponse response){
 		response.reset();
 		HttpSession session = request.getSession();
 		Teacher teacher = (Teacher)session.getAttribute("teacher");
 		BarInfo barInfo =  dataService.getBar(teacher.getTname());
 		return barInfo;
+	}
+	@RequestMapping(value="/teacher/getTeacher", method=RequestMethod.GET)
+	@ResponseBody
+	public Teacher getTeacher(HttpServletRequest request,HttpServletResponse response){
+		response.reset();
+		HttpSession session = request.getSession();
+		Teacher teacher = (Teacher)session.getAttribute("teacher");
+		teacher.setTpass("");
+		return teacher;
 	}
 	@RequestMapping(value="/teacher/changeTeacher", method=RequestMethod.POST)
 	public void updateTeacher(Teacher teacher,HttpServletResponse response) throws IOException{

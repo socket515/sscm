@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <result property="password" column="password"/> 
   <result property="ssex" column="ssex"/>
   <result property="sage" column="sage"/> 
+  <result property="major" column="major"/> 
   <result property="sdept" column="sdept"/> 
   <result property="dt" column="dt"/> 
   </resultMap>
