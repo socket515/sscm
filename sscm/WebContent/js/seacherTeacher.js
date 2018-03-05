@@ -107,6 +107,9 @@ $(document).ready( function () {
   
  });
  function detailFunc(tcomment){
+ if (tcomment=="null"){
+		tcomment="";
+	}
 	$("#tcomment").val(tcomment);
 	$("#delcfmOverhaul").modal({
         backdrop : 'static',
