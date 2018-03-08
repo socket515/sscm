@@ -164,5 +164,23 @@ public class ArrangeController {
 			out.print("err");
 		}
 	}
+	
+	@RequestMapping(value="/student/cancleCourse", method=RequestMethod.POST)
+	public void cancleCourse(int id,HttpServletRequest request,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		try {
+			Student student = (Student) session.getAttribute("student");
+			arrangeService.cancleCourse(id, student.getSno());
+			out.print("true");
+		} catch(ZeroException e){
+			logger.info(e);
+			out.print("fail");
+		}
+		catch (Exception e) {
+			logger.info("cancleCourse",e);
+			out.print("err");
+		}
+	}
 
 }

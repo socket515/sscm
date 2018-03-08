@@ -127,6 +127,26 @@ Ext.onReady(function() {
             }
         }
     });
+	var cancleCourse= new Ext.tree.TreeNode({
+        id:'cancleCourse',
+        icon:'img/im2.gif',
+        text:'退选系统',
+        listeners:{
+            'click':function(node, event) {
+                event.stopEvent();
+                var n = tab.getComponent(node.id);
+                var url = 'cancleCourse.html';
+                if (!n) { //判断是否已经打开该面板
+                    n = actionFn(node, url);
+                } else {
+                    tab.remove(n);
+                    n = tab.getComponent(node.id);
+                    n = actionFn(node, url);
+                }
+                tab.setActiveTab(n);
+            }
+        }
+    });
 	var queryTeacher= new Ext.tree.TreeNode({
         id:'queryTeacher',
         icon:'img/im2.gif',
@@ -149,6 +169,7 @@ Ext.onReady(function() {
     });
     root3.appendChild(SelectCourse);
 	root3.appendChild(AddTeacher);
+	root3.appendChild(cancleCourse);
 	root3.appendChild(queryTeacher);
     
     var tree3 = new Ext.tree.TreePanel({
