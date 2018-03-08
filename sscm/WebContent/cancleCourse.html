@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>个人课表</title>
+<link href="styles/style.css" rel="stylesheet" type="text/css">
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery.dataTables.js"></script>
+<script src="./js/dataTables.bootstrap.js"></script>
+<script src="./js/cancleCourse.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+</head>
+<body>
+<table class="table11" id="table11" >
+<thead>
+  <tr>
+    <th style="width:100px">课程代码</th>
+    <th  style="width:100px">课程名称</th>
+    <th style="width:40px">类型</th>
+    <th style="width:40px">学分</th>
+	<th  style="width:100px">老师姓名</th>
+    <th  style="width:100px">上课时间</th>
+	<th  style="width:100px">上课地点</th>
+	<th  style="width:100px">操作</th>
+  </tr>
+</thead>
+<tbody>
+      
+</tbody>
+
+</table>
+<!-- 模态框   信息删除确认 -->
+<div class="modal fade" id="delcfmOverhaul">
+    <div class="modal-dialog">
+        <div class="modal-content message_align">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 隐藏需要删除的id -->
+                <input type="hidden" id="deleteHaulId" />
+                    <p>您确认要退选吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="closemodel" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary"  id="deleteHaulBtn" data-dismiss="modal">确认</button>
+            </div>
+		</div>
+    </div>
+	<!-- /.modal-content -->
+</div>
+</body>
+</html>
