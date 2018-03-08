@@ -24,4 +24,7 @@ public interface ArrangeDao {
 	public int queryCount(int id);
 	public List<Arrange> queryPersonalCourse(@Param("start")int start,@Param("end")int end,@Param("sno")String sno);
 	public int queryCountP(String sno);
+	public void cancleCourse(@Param("aid")int aid, @Param("sno")String sno);
+	public void cancleArrange(int id);
+	public int selectNum(int id);
 }

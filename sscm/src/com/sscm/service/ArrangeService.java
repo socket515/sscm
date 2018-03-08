@@ -15,6 +15,7 @@ public interface ArrangeService {
 	public DatatablesViewPage<Arrange> getViewS(int start,int end,String cno,String cname,
 			String type,String tname, String atime, String address);
 	public void arrangeCourse(int id,String sno) throws ZeroException;
+	public void cancleCourse(int id, String sno) throws ZeroException;
 	public boolean selected(String sno,int time);
 	public DatatablesViewPage<Arrange> getViewSP(int start,int end,String sno);
 }

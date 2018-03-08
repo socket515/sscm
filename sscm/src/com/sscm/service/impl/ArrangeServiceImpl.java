@@ -86,6 +86,15 @@ public class ArrangeServiceImpl implements ArrangeService {
 		arrangeDao.selectCourse(id, sno);
 		
 	}
+	
+	@Override
+	@Transactional
+	public void cancleCourse(int id, String sno)throws ZeroException{
+		int num = arrangeDao.selectNum(id);
+		if(num<=0) throw new ZeroException();
+		arrangeDao.cancleCourse(id, sno);
+		arrangeDao.cancleArrange(id);
+	}
 
 	@Override
 	public boolean selected(String sno, int time) {
@@ -104,5 +113,6 @@ public class ArrangeServiceImpl implements ArrangeService {
 		view.setiTotalRecords(5);
 		return view;
 	}
+
 
 }

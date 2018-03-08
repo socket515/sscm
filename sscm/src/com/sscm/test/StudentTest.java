@@ -7,8 +7,10 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.sscm.dao.ArrangeDao;
 import com.sscm.entity.Student;
 import com.sscm.service.AdminService;
+import com.sscm.service.ArrangeService;
 import com.sscm.service.DataService;
 import com.sscm.service.StudentService;
 import com.sscm.service.TeacherService;
@@ -25,11 +27,17 @@ public class StudentTest {
 	private AdminService adminService;
 	@Resource
 	private DataService dataService;
-	
+	@Resource
+	private ArrangeService arrangeService;
 	
 	@Test
 	public void test(){
-		System.out.println(dataService.getBar("ss"));
+		try {
+			arrangeService.cancleCourse(7, "201430340506");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 	
 

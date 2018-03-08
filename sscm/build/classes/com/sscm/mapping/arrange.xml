@@ -27,6 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <result property="sd" column="sd"/> 
   </resultMap>
   <resultMap id="pArrangeResultMap" type="com.sscm.entity.Arrange"> 
+  <result property="id" column="id"/> 
   <result property="cno" column="cno"/> 
   <result property="cname" column="cname"/>
   <result property="credit" column="credit"/>
@@ -37,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <result property="sd" column="sd"/> 
   </resultMap>
   <select id="queryPersonalCourse" resultMap="pArrangeResultMap">
-      select c.cno,c.cname,credit,c.type,t.tname,a.atime,a.address,a.sd
+      select a.id,c.cno,c.cname,credit,c.type,t.tname,a.atime,a.address,a.sd
       from arrange a left join sc s on a.id=s.aid
       left join course c on a.cno=c.cno
       left join teacher t on a.tno=t.tno
@@ -126,7 +127,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <update id="selectArrange">
       update arrange set anum=anum-1 where id=#{0}
   </update>
+  <update id="cancleArrange">
+      update arrange set anum=anum+1 where id=#{0}
+  </update>
   <insert id="selectCourse">
       insert into sc(aid,sno) values(#{id},#{sno})
   </insert>
+  <delete id="cancleCourse">
+      delete from sc where aid=#{aid} and sno=#{sno}
+  </delete>
+  <select id="selectNum" resultType="int">
+      select maxnum-anum  from arrange where id=#{0};
+  </select>
+  
 </mapper>
