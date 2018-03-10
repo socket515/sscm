@@ -147,5 +147,20 @@ public class StudentController {
 		}
 	}
 	
+	@RequestMapping(value="/teacher/queryStudent", method=RequestMethod.GET)
+	@ResponseBody
+	public DatatablesViewPage<Student> queryStudent(int id,HttpServletResponse response,HttpServletRequest request){
+		response.reset();
+		try {
+			int start =Integer.parseInt(request.getParameter("start"));    
+	        int length = Integer.parseInt(request.getParameter("length"));
+			DatatablesViewPage<Student> view = studentService.querySelectStudent(id, start, length);
+			return view;
+		} catch (Exception e) {
+			logger.info("changeStudents ³ö´íÁË£¡",e);
+			return null;
+		}
+	}
+	
 	
 }

@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.sscm.dao.ArrangeDao;
 import com.sscm.dao.StudentDao;
+import com.sscm.entity.DatatablesViewPage;
 import com.sscm.entity.Student;
 import com.sscm.service.StudentService;
 
@@ -18,6 +20,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Resource
 	private StudentDao studentDao;
+	@Resource
+	private ArrangeDao arrangeDao;
 	
 	private  SimpleDateFormat sdf =  new SimpleDateFormat( "yyyy-MM-dd" ); 
 	
@@ -82,5 +86,17 @@ public class StudentServiceImpl implements StudentService {
 	public void changepassword(String sno, String password) {
 		studentDao.changepassword(sno, password);
 	}
+
+	@Override
+	public DatatablesViewPage<Student> querySelectStudent(int id, int start,
+			int end) {
+		List<Student> list = studentDao.querySelectStudent(id, start, end);
+		DatatablesViewPage<Student> view = new DatatablesViewPage<Student>();
+		view.setAaData(list);
+		view.setiTotalDisplayRecords(arrangeDao.selectNum(id));
+		view.setiTotalRecords(5);
+		return view;
+	}
+
 
 }

@@ -31,7 +31,6 @@ public class TeacherInterceptor implements HandlerInterceptor {
 			Object arg2) throws Exception {
 		HttpSession session = request.getSession();
 		Teacher teacher = (Teacher)session.getAttribute("teacher");
-		System.out.println("teacher");
 		if(teacher!=null){
 			return true;
 		}

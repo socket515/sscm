@@ -36,7 +36,16 @@ public class DatatablesViewPage<T> {
 
 	public void setiTotalRecords(int iTotalRecords) {
 		this.iTotalRecords = iTotalRecords;
-	}  
+	}
+
+	@Override
+	public String toString() {
+		return "DatatablesViewPage [aaData=" + aaData
+				+ ", iTotalDisplayRecords=" + iTotalDisplayRecords
+				+ ", iTotalRecords=" + iTotalRecords + "]";
+	}
+	
+	
     
     
 

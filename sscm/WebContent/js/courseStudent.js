@@ -1,7 +1,6 @@
 ﻿var state = 0;
 var table;
-$(document).ready( function () {
-/*
+$(document).ready( function () { 
 		table=$('#table11').DataTable(
         {
         searching: false,//屏蔽datatales的查询框
@@ -36,19 +35,10 @@ $(document).ready( function () {
             // "scrollY": "300px",//滚动宽度
     		//"scrollCollapse": "false",//滚动条
     		"ajax":{
-    			"url":"/sscm/admin/queryStudents",
+    			"url":"/sscm/teacher/queryStudent",
     		    "dataSrc": "aaData", 
     		    "data": function ( d ) {
-                    if(state==1){
-						d.sno = $('#outListNum').val();
-					}
-					else if(state==2){
-						d.sdept = $('#sdept').val(); 
-						d.sname = $('#sname').val();
-						d.sdate = $('#sdate').val();
-						d.edate = $('#edate').val();
-					}
-					d.state = state;
+					d.id = GetQueryString("aid");
 				}
     		},
 //    		"aoColumnDefs": [
@@ -76,19 +66,9 @@ $(document).ready( function () {
 				{"mDataProp":"dt"},
 				{"mDataProp":"major"},
     			{"mDataProp":"sdept"},
-				{
-                 "sClass": "text-center",
-				 "mDataProp":"sno",
-                 "render": function (mDataProp, type, full, meta) {
-                     return '<button class="btns" onclick="detailFunc(' + full.sno +',\''+full.sname+'\',\''+ full.password +'\','+full.ssex+','+full.sage+',\'' + full.dt +'\',\''+full.sdept+'\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
-                 },
-                 "bSortable": false
-             },
     		],
             
         });
-		*/
-		alert(GetQueryString("aid"));
 		
 });
 function GetQueryString(name){
