@@ -98,7 +98,10 @@ $(document).ready( function () {
 		 alert("暂无学生选该课程");
 		 return;
 	 }
-	 alert(aid);
+	 var id = "arrange" + aid;
+	 var title = "查看学生";
+	 var url = "courseStudent.html?aid="+aid;
+	 parent.addTag(id, title, url);
 	 
  }
 	 

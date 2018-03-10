@@ -23,6 +23,16 @@ function actionFn(node, url) {
     });
 }
 
+function addTag(id, title, url) {
+    var n = tab.add({
+        'id':id,
+        'title':title,
+        closable:true,  //通过html载入目标页
+        html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="' + url + '"></iframe>'
+    });
+	tab.setActiveTab(n);
+}
+
 Ext.onReady(function() {
     //layout
     var viewport = new Ext.Viewport({
