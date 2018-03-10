@@ -1,4 +1,5 @@
 ﻿var state = 0;
+var id = GetQueryString("aid");
 var table;
 $(document).ready( function () { 
 		table=$('#table11').DataTable(
@@ -38,7 +39,7 @@ $(document).ready( function () {
     			"url":"/sscm/teacher/queryStudent",
     		    "dataSrc": "aaData", 
     		    "data": function ( d ) {
-					d.id = GetQueryString("aid");
+					d.id = id;
 				}
     		},
 //    		"aoColumnDefs": [
@@ -76,4 +77,7 @@ function GetQueryString(name){
     var r = window.location.search.substr(1).match(reg);
     if(r!=null) return  unescape(r[2]); 
 	return null;
+}
+function download(){
+	window.location.href= "/sscm/teacher/getStudentFile?id="+id;
 }

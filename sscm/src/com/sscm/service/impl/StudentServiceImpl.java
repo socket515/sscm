@@ -12,6 +12,7 @@ import com.sscm.service.StudentService;
 
 import javax.annotation.Resource;
 
+
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
@@ -96,6 +97,12 @@ public class StudentServiceImpl implements StudentService {
 		view.setiTotalDisplayRecords(arrangeDao.selectNum(id));
 		view.setiTotalRecords(5);
 		return view;
+	}
+
+	@Override
+	public List<Student> getStudentFile(int id) {
+		return studentDao.querySelectAllStudent(id);
+		
 	}
 
 

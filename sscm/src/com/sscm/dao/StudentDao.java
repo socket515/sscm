@@ -27,6 +27,8 @@ public interface StudentDao {
 	
 	public List<Student> querySelectStudent(int aid, int start, int end); //老师查看该课程有那些学生选了
 	
+	public List<Student> querySelectAllStudent(int id);//查询选择该课程的所有学生
+	
 	public void delete(String sno);
 	
 	public void update(Student student);
