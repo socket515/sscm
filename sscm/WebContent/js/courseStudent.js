@@ -1,8 +1,7 @@
-﻿var table;
-var times = new Array('周一3-4节','周一5-6节','周一7-8节','周二1-2节','周二3-4节','周二5-6节','周二5-6节','周二7-8节', '周三1-2节', '周三3-4节', '周三5-6节', '周三7-8节', '周四1-2节', '周四3-4节', '周四5-6节', '周四7-8节', '周五1-2节', '周五3-4节', '周五5-6节', '周五7-8节');
-var address = new Array('1101课室', '1102课室', '1103课室', '1104课室', '1201课室', '1202课室', '1203课室', '1204课室', '1301课室', '1302课室', '1303课室', '1304课室', '1401课室', '1402课室', '1403课室', '1404课室', '1501课室', '1502课室', '1503课室', '1504课室');
+﻿var state = 0;
+var table;
 $(document).ready( function () {
-
+/*
 		table=$('#table11').DataTable(
         {
         searching: false,//屏蔽datatales的查询框
@@ -37,8 +36,20 @@ $(document).ready( function () {
             // "scrollY": "300px",//滚动宽度
     		//"scrollCollapse": "false",//滚动条
     		"ajax":{
-    			"url":"/sscm/teacher/getArrange",
+    			"url":"/sscm/admin/queryStudents",
     		    "dataSrc": "aaData", 
+    		    "data": function ( d ) {
+                    if(state==1){
+						d.sno = $('#outListNum').val();
+					}
+					else if(state==2){
+						d.sdept = $('#sdept').val(); 
+						d.sname = $('#sname').val();
+						d.sdate = $('#sdate').val();
+						d.edate = $('#edate').val();
+					}
+					d.state = state;
+				}
     		},
 //    		"aoColumnDefs": [
 //            {
@@ -48,59 +59,41 @@ $(document).ready( function () {
 //             ],
     		
     		"aoColumns" :[
-				{"mDataProp":"cno"},
-    			{"mDataProp":"cname"},
-				{
+				{"mDataProp":"sno"},
+    			{"mDataProp":"sname"},
+    			{
                  "sClass": "text-center",
-                 "mDataProp": "type",
+                 "mDataProp": "ssex",
                  "render": function (mDataProp, type, full, meta) {
-                     if(mDataProp)
-						 return '选修';
+                     if(mDataProp==true)
+						 return '男';
 					 else
-						 return '必修';
+						 return '女';
                  },
                  "bSortable": false
-                },
-    			{"mDataProp":"credit"},
-				{"mDataProp":"maxnum"},
+             },
+    			{"mDataProp":"sage"},
+				{"mDataProp":"dt"},
+				{"mDataProp":"major"},
+    			{"mDataProp":"sdept"},
 				{
-					"sClass": "text-center",
-					"mDataProp":"atime",
-					"render": function (mDataProp, type, full, meta) {
-						return times[mDataProp];
-					},
+                 "sClass": "text-center",
+				 "mDataProp":"sno",
+                 "render": function (mDataProp, type, full, meta) {
+                     return '<button class="btns" onclick="detailFunc(' + full.sno +',\''+full.sname+'\',\''+ full.password +'\','+full.ssex+','+full.sage+',\'' + full.dt +'\',\''+full.sdept+'\')" >修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btns" onclick="deletefunc(' + mDataProp + ')" >删除</button>';
+                 },
                  "bSortable": false
-				},
-				{
-					"sClass": "text-center",
-					"mDataProp":"address",
-					"render": function (mDataProp, type, full, meta) {
-						return address[mDataProp];
-					},
-                 "bSortable": false
-				},
-				{"mDataProp":"sd"},
-				{
-					"sClass": "text-center",
-					"mDataProp":"id",
-					"render": function (mDataProp, type, full, meta) {
-						return '<button class="btns" onclick="queryStudent('+mDataProp+','+full.anum+','+full.maxnum+')" >查看学生</button>';
-					},
-                 "bSortable": false
-				},
+             },
     		],
             
         });
- });
- 
- function queryStudent(aid, anum, maxnum){
-	 if(maxnum==anum){
-		 alert("暂无学生选该课程");
-		 return;
-	 }
-	 alert(aid);
-	 
- }
-	 
-
-
+		*/
+		alert(GetQueryString("aid"));
+		
+});
+function GetQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null) return  unescape(r[2]); 
+	return null;
+}
