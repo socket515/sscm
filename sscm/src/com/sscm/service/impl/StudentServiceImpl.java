@@ -7,6 +7,7 @@ import java.util.List;
 import com.sscm.dao.ArrangeDao;
 import com.sscm.dao.StudentDao;
 import com.sscm.entity.DatatablesViewPage;
+import com.sscm.entity.Excel;
 import com.sscm.entity.Student;
 import com.sscm.service.StudentService;
 
@@ -100,9 +101,11 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public List<Student> getStudentFile(int id) {
-		return studentDao.querySelectAllStudent(id);
-		
+	public Excel getStudentFile(int id) {
+		String[] headr = {"学号","姓名","性别","年龄","专业","院系"};
+		Excel excel = new Excel("学生名单", headr);
+		excel.setContent(studentDao.querySelectAllStudent(id));
+		return excel;
 	}
 
 

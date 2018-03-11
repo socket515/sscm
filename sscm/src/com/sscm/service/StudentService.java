@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.dao.DuplicateKeyException;
 
 import com.sscm.entity.DatatablesViewPage;
+import com.sscm.entity.Excel;
 import com.sscm.entity.Student;
 
 public interface StudentService {
@@ -20,5 +21,5 @@ public interface StudentService {
 	public void add(Student student) throws DuplicateKeyException ;
 	public void changepassword(String sno,String password);
 	public DatatablesViewPage<Student> querySelectStudent(int id, int start, int end);//查询该课程有多少学生选
-	public List<Student> getStudentFile(int id);
+	public Excel getStudentFile(int id);
 }

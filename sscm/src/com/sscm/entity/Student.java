@@ -1,6 +1,6 @@
 package com.sscm.entity;
 
-public class Student {
+public class Student implements Filed {
 	private String sno;
 	private String sname;
 	private String password;
@@ -85,6 +85,16 @@ public class Student {
 		return "Student [sno=" + sno + ", sname=" + sname + ", password="
 				+ password + ", ssex=" + ssex + ", sage=" + sage + ", sdept="
 				+ sdept + ", major=" + major + ", dt=" + dt + "]";
+	}
+	@Override
+	public String[] getFiled() {
+		String[] result = {getSno(), getSname(), isSsex()?"ÄÐ":"Å®", String.valueOf(getSage()),
+				getMajor(), getSdept()};
+		return result;
+	}
+	@Override
+	public int getNum() {
+		return 6;
 	}
 	
 	
