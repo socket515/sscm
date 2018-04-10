@@ -5115,11 +5115,33 @@
 		    (object Class "NewInterface2"
 			quid       	"5ACB1B520153"
 			stereotype 	"Interface")
-		    (object Class "NewInterface3"
-			quid       	"5ACB208D032B"
-			stereotype 	"control")
-		    (object Class "$UNNAMED$96"
-			quid       	"5ACB20B00176"))
+		    (object Mechanism @225
+			logical_models 	(list unit_reference_list
+			    (object Object "ÓÃ»§"
+				quid       	"5ACB1B9E0166"
+				collaborators 	(list link_list
+				    (object Link
+					quid       	"5ACB1BC602C7"
+					supplier   	"µÇÂ¼Ò³Ãæ"
+					quidu      	"5ACB1BBE03E4"
+					messages   	(list Messages
+					    (object Message ""
+						quid       	"5ACB1BC602C8"
+						frequency  	"Aperiodic"
+						synchronization 	"Simple"
+						dir        	"FromClientToSupplier"
+						sequence   	"1"
+						ordinal    	0
+						quidu      	"000000000000"
+						creation   	FALSE))))
+				persistence 	"Transient"
+				creationObj 	TRUE
+				multi      	FALSE)
+			    (object Object "µÇÂ¼Ò³Ãæ"
+				quid       	"5ACB1BBE03E4"
+				persistence 	"Transient"
+				creationObj 	TRUE
+				multi      	FALSE))))
 		logical_presentations 	(list unit_reference_list
 		    (object ClassDiagram "Main"
 			quid       	"5ACB1B4902E0"
@@ -5130,7 +5152,7 @@
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object ClassView "Class" "Logical View::ÓÃ»§µÇÂ¼::NewInterface2" @225
+			    (object ClassView "Class" "Logical View::ÓÃ»§µÇÂ¼::NewInterface2" @226
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -5145,7 +5167,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@225
+				    Parent_View 	@226
 				    location   	(351, 316)
 				    anchor_loc 	1
 				    nlines     	2
@@ -5160,81 +5182,145 @@
 				width      	58
 				height     	58
 				annotation 	8
-				autoResize 	TRUE))))))
-	statemachine 	(object State_Machine "State/Activity Model"
-	    quid       	"5ACB1C140310"
-	    states     	(list States
-		(object State "$UNNAMED$97"
-		    quid       	"5ACB1C450139"
-		    type       	"StartState")
-		(object State "µÇÂ¼Ò³Ãæ"
-		    quid       	"5ACB1F640193"
-		    type       	"Normal"))
-	    partitions 	(list Partitions)
-	    objects    	(list Objects)
-	    transitions 	(list transition_list
-		(object State_Transition
-		    quid       	"5ACB1F700232"
-		    supplier   	"Logical View::State/Activity Model::µÇÂ¼Ò³Ãæ"
-		    supplier_quidu 	"5ACB1F640193"
-		    client     	"$UNNAMED$97"
-		    client_quidu 	"5ACB1C450139"
-		    sendEvent  	(object sendEvent
-			quid       	"5ACB1F700235")))
-	    objectflows 	(list objectflow_list)
-	    statediagrams 	(list StateDiagrams
-		(object State_Diagram "µÇÂ¼"
-		    quid       	"5ACB1C140330"
-		    title      	"µÇÂ¼"
-		    zoom       	100
-		    max_height 	28350
-		    max_width  	21600
-		    origin_x   	0
-		    origin_y   	0
-		    items      	(list diagram_item_list
-			(object StateView "StartState" "$UNNAMED$97" @226
-			    location   	(560, 256)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5ACB1C450139"
-			    autoResize 	TRUE)
-			(object StateView "Normal" "µÇÂ¼Ò³Ãæ" @227
-			    location   	(512, 544)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@227
-				location   	(512, 533)
+				autoResize 	TRUE)))
+		    (object InteractionDiagram "NewDiagram"
+			mechanism_ref 	@225
+			quid       	"5ACB1B84035D"
+			title      	"NewDiagram"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	0
+			origin_y   	0
+			items      	(list diagram_item_list
+			    (object InterObjView "ÓÃ»§" @227
+				location   	(384, 256)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	TRUE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@227
+				    location   	(384, 256)
+				    fill_color 	13434879
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	282
+				    justify    	0
+				    label      	"ÓÃ»§")
+				icon_style 	"Icon"
+				line_color 	3342489
 				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	204
-				justify    	0
-				label      	"µÇÂ¼Ò³Ãæ")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5ACB1F640193"
-			    height     	134
-			    autoResize 	TRUE)
-			(object TransView "" @228
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5ACB1F700232"
-			    client     	@226
-			    supplier   	@227
-			    vertices   	(list Points
-				(555, 286)
-				(523, 476))
-			    line_style 	0
-			    x_offset   	FALSE)))))
+				quidu      	"5ACB1B9E0166"
+				width      	300
+				height     	388
+				icon_height 	0
+				icon_width 	0
+				icon_y_offset 	0
+				annotation 	1
+				Focus_Of_Control 	(object Focus_Of_Control "" @228
+				    location   	(384, 336)
+				    line_color 	3342489
+				    InterObjView 	@227
+				    height     	90
+				    y_coord    	0
+				    Nested     	FALSE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @229
+				    location   	(384, 464)
+				    line_color 	3342489
+				    InterObjView 	@227
+				    height     	90
+				    y_coord    	0
+				    Nested     	FALSE))
+			    (object InterObjView "µÇÂ¼Ò³Ãæ" @230
+				location   	(896, 256)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	TRUE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@230
+				    location   	(896, 256)
+				    fill_color 	13434879
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	282
+				    justify    	0
+				    label      	"µÇÂ¼Ò³Ãæ")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"5ACB1BBE03E4"
+				width      	300
+				height     	388
+				icon_height 	0
+				icon_width 	0
+				icon_y_offset 	0
+				annotation 	1
+				Focus_Of_Control 	(object Focus_Of_Control "" @231
+				    location   	(896, 336)
+				    line_color 	3342489
+				    InterObjView 	@230
+				    height     	90
+				    y_coord    	0
+				    Nested     	FALSE)
+				Focus_Of_Control 	(object Focus_Of_Control "" @232
+				    location   	(896, 464)
+				    line_color 	3342489
+				    InterObjView 	@230
+				    height     	90
+				    y_coord    	0
+				    Nested     	FALSE))
+			    (object InterMessView "" @233
+				location   	(16, 456)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object SegLabel @234
+				    Parent_View 	@233
+				    location   	(639, 412)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    quidu      	"5ACB1BC602C8"
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	450
+				    justify    	0
+				    label      	""
+				    pctDist    	0.500000
+				    height     	45
+				    orientation 	0)
+				line_color 	3342489
+				client     	@227
+				supplier   	@230
+				Focus_Src  	@229
+				Focus_Entry 	@232
+				origin     	(399, 456)
+				terminus   	(880, 456)
+				ordinal    	0))))))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Package Hierarchy"
 		quid       	"39C9261001B8"
@@ -5245,7 +5331,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object CategoryView "Logical View::java" @229
+		    (object CategoryView "Logical View::java" @235
 			location   	(208, 272)
 			font       	(object Font
 			    size       	10
@@ -5257,7 +5343,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@229
+			    Parent_View 	@235
 			    location   	(64, 188)
 			    nlines     	2
 			    max_width  	288
@@ -5269,7 +5355,7 @@
 			quidu      	"39C92661003B"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::javax" @230
+		    (object CategoryView "Logical View::javax" @236
 			location   	(656, 272)
 			font       	(object Font
 			    size       	10
@@ -5281,7 +5367,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@230
+			    Parent_View 	@236
 			    location   	(512, 188)
 			    nlines     	2
 			    max_width  	288
@@ -5293,7 +5379,7 @@
 			quidu      	"39C926610018"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::org" @231
+		    (object CategoryView "Logical View::org" @237
 			location   	(1104, 272)
 			font       	(object Font
 			    size       	10
@@ -5305,7 +5391,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@231
+			    Parent_View 	@237
 			    location   	(960, 188)
 			    nlines     	2
 			    max_width  	288
@@ -5317,7 +5403,7 @@
 			quidu      	"39C92693036F"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::ÓÃ»§µÇÂ¼" @232
+		    (object CategoryView "Logical View::ÓÃ»§µÇÂ¼" @238
 			location   	(432, 592)
 			font       	(object Font
 			    size       	10
@@ -5329,7 +5415,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@232
+			    Parent_View 	@238
 			    location   	(288, 508)
 			    fill_color 	13434879
 			    nlines     	2
@@ -5351,7 +5437,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @233
+		    (object NoteView @239
 			location   	(224, 624)
 			font       	(object Font
 			    size       	10
@@ -5366,7 +5452,7 @@
 			fill_color 	12632256
 			width      	300
 			height     	132)
-		    (object NoteView @234
+		    (object NoteView @240
 			location   	(704, 624)
 			font       	(object Font
 			    size       	10
@@ -5381,7 +5467,7 @@
 			fill_color 	8421631
 			width      	300
 			height     	132)
-		    (object NoteView @235
+		    (object NoteView @241
 			location   	(1200, 624)
 			font       	(object Font
 			    size       	10
@@ -5396,7 +5482,7 @@
 			fill_color 	12615680
 			width      	300
 			height     	132)
-		    (object NoteView @236
+		    (object NoteView @242
 			location   	(1664, 624)
 			font       	(object Font
 			    size       	10
@@ -5411,7 +5497,7 @@
 			fill_color 	16777215
 			width      	300
 			height     	132)
-		    (object Label @237
+		    (object Label @243
 			location   	(81, 369)
 			font       	(object Font
 			    size       	12
@@ -5426,7 +5512,7 @@
 			max_width  	1163
 			justify    	1
 			label      	"J2EE: Java 2 Platform, Enterprise Edition - v 1.2.1")
-		    (object Label @238
+		    (object Label @244
 			location   	(96, 608)
 			font       	(object Font
 			    size       	10
@@ -5441,7 +5527,7 @@
 			max_width  	268
 			justify    	1
 			label      	"Abstract Class")
-		    (object Label @239
+		    (object Label @245
 			location   	(592, 608)
 			font       	(object Font
 			    size       	10
@@ -5456,7 +5542,7 @@
 			max_width  	225
 			justify    	1
 			label      	"Final Class")
-		    (object Label @240
+		    (object Label @246
 			location   	(1104, 608)
 			font       	(object Font
 			    size       	10
@@ -5471,7 +5557,7 @@
 			max_width  	206
 			justify    	1
 			label      	"Interface")
-		    (object Label @241
+		    (object Label @247
 			location   	(1552, 608)
 			font       	(object Font
 			    size       	10

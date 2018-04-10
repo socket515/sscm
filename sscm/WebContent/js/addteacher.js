@@ -23,16 +23,12 @@
 			url: "/sscm/admin/addTeacher",
 			data: { tno:sno,tname:name,tdept:dept,dt:dt,tcomment:comment },
 					success: function(msg) {
-						if (msg=="false"){
-							alert("添加失败！");
-						} else if(msg=="true"){
+						if(msg=="true"){
 							alert("添加成功！");
 							resetAttr();
 						}else(msg=="key"){
 							alert("教师工号不要重复");
 						}
-						
-						
 					},
 					error: function(a) {
 						alert("增加失败");
