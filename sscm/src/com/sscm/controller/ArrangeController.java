@@ -128,13 +128,12 @@ public class ArrangeController {
 	
 	@RequestMapping(value="/student/getPersonalCourse", method=RequestMethod.GET)
 	@ResponseBody
-	public DatatablesViewPage<Arrange> getPersonalCourse(HttpServletRequest request,HttpServletResponse response){
+	public DatatablesViewPage<Arrange> getPersonalCourse(int start, int length, HttpServletRequest request,HttpServletResponse response){
 		response.reset();
 		HttpSession session = request.getSession();
 		Student student = (Student)session.getAttribute("student");
 		if(student==null) return null;
-		int start =Integer.parseInt(request.getParameter("start"));    
-        int length = Integer.parseInt(request.getParameter("length"));
+		System.out.println(start+","+length+","+student.getSno());
 		return arrangeService.getViewSP(start, length, student.getSno());
 	}
 	

@@ -31,7 +31,6 @@ public class AdminInterceptors implements HandlerInterceptor  {
 			Object arg2) throws Exception {
 		HttpSession session = request.getSession();
 		Admin admin = (Admin)session.getAttribute("admin");
-		System.out.println("admin");
 		if(admin!=null){
 			return true;
 		}

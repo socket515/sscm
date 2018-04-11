@@ -26,7 +26,7 @@
 						if(msg=="true"){
 							alert("添加成功！");
 							resetAttr();
-						}else(msg=="key"){
+						}else if (msg=="key"){
 							alert("教师工号不要重复");
 						}
 					},

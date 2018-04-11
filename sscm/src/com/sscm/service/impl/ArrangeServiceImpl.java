@@ -84,7 +84,6 @@ public class ArrangeServiceImpl implements ArrangeService {
 		if(num<=0) throw new ZeroException();
 		arrangeDao.selectArrange(id);
 		arrangeDao.selectCourse(id, sno);
-		
 	}
 	
 	@Override

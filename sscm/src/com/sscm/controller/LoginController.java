@@ -40,7 +40,6 @@ public class LoginController {
 	@RequestMapping(value="userLogin",method=RequestMethod.POST)
 	public void userLogin(String username,String password,int value,
 			HttpServletRequest request,HttpServletResponse response) throws IOException{
-		logger.info("进入登录方法");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		Object obj = null;
@@ -57,7 +56,7 @@ public class LoginController {
 				key = "admin";
 			}
 		} catch (Exception e) {
-			logger.info("出错！！");
+			logger.info("userLogin出错！！");
 			e.printStackTrace();
 		}finally{
 			if(key!=null&&obj!=null){
